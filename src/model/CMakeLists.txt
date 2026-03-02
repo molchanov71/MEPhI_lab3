@@ -1,0 +1,3 @@
+add_subdirectory(entity)
+add_subdirectory(repository)
+add_subdirectory(service)
