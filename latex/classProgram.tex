@@ -1,0 +1,520 @@
+\doxysection{Program Class Reference}
+\hypertarget{classProgram}{}\label{classProgram}\index{Program@{Program}}
+Inheritance diagram for Program:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classProgram}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classProgram_aba2cc6c93fc145b30569c9aa7119680e}{Program}} (std::\+string path\+\_\+, const size\+\_\+t quota\+\_\+)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
+std::\+string\+\_\+view \doxymbox{\hyperlink{classProgram_a50a4005a4113f9c570992a8b2cac802a}{get\+Path}} () const
+\begin{DoxyCompactList}\small\item\em Геттер пути программы \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{classProgram_a8931c31093becadf257be92cb1c59f0e}{get\+Quota}} () const
+\begin{DoxyCompactList}\small\item\em Геттер квоты программы \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classProgram_af9317e1852720a2d475da51895da7077}{create\+Var}} (std::\+string name, size\+\_\+t address, size\+\_\+t size) override
+\begin{DoxyCompactList}\small\item\em Создать переменную \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classProgram_a882edd509e3afc9f5288cf9e665f6738}{create\+Arr}} (std::\+string name, size\+\_\+t address, size\+\_\+t size, size\+\_\+t el\+\_\+size) override
+\begin{DoxyCompactList}\small\item\em Создать массив \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{classProgram_abfd76f1a96720879eda786ab55b99352}{has\+Own\+Unit}} (const std::\+string \&name) const override
+\begin{DoxyCompactList}\small\item\em Есть ли у программы такой собственный элемент \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{classTable}{Table}}$<$ std::\+string, std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classOwnUnit}{Own\+Unit}} $>$ $>$ \& \doxymbox{\hyperlink{classProgram_a0a09bd23446c470680871a1e5983a9a7}{get\+Own\+Units}} () const override
+\begin{DoxyCompactList}\small\item\em Геттер таблицы собственных элементов \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classProgram_a5c8fdf29059820246747cb0c43c932e8}{create\+Ref}} (const std::\+string \&unit\+\_\+name, std::\+string ref\+\_\+name) override
+\begin{DoxyCompactList}\small\item\em Создать ссылку \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classProgram_aafcb0fba7e4d8e62864fa8fc9ffc572d}{remove\+Ref}} (const std::\+string \&ref\+\_\+name) override
+\begin{DoxyCompactList}\small\item\em Удалить ссылку \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classReference}{Reference}} \& \doxymbox{\hyperlink{classProgram_a7463a26ab8b57fb011d7d56f08436866}{get\+Ref}} (const std::\+string \&ref\+\_\+name) override
+\begin{DoxyCompactList}\small\item\em Геттер ссылки \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{classReference}{Reference}} \& \doxymbox{\hyperlink{classProgram_a6846540d6de53d2f203d424c5470977e}{get\+Ref}} (const std::\+string \&ref\+\_\+name) const override
+\begin{DoxyCompactList}\small\item\em Геттер ссылки (константный). \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{classProgram_a3c10cab2a9efd2e38982d501e82872fe}{has\+Ref}} (const std::\+string \&ref\+\_\+name) const override
+\begin{DoxyCompactList}\small\item\em Есть ли у программы ссылка с указанным именем \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{classTable}{Table}}$<$ std::\+string, \doxymbox{\hyperlink{classReference}{Reference}} $>$ \& \doxymbox{\hyperlink{classProgram_ad6453b78bdd7e2849b5a741f45c073dc}{get\+Refs}} () const override
+\begin{DoxyCompactList}\small\item\em Геттер таблицы \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classProgram_ae5773ef6ff2af3277b641deea8a2153e}{get\+Access}} (std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classAbstractShared}{Abstract\+Shared}} $>$ sptr) override
+\begin{DoxyCompactList}\small\item\em Получить доступ к разделяемому сегменту \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classProgram_a7f07daf3d05952d967c469bf9c545298}{detach\+Access}} (const std::\+string \&name) override
+\begin{DoxyCompactList}\small\item\em Отделить разделяемый сегмент \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{classProgram_afe83619c2b78fcd9060e0b0980b5700a}{has\+Shared}} (const std::\+string \&name) const override
+\begin{DoxyCompactList}\small\item\em Есть ли у программы доступ к разделяемому сегменту с данным именем \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{classTable}{Table}}$<$ std::\+string, std::\+weak\+\_\+ptr$<$ \doxymbox{\hyperlink{classAbstractShared}{Abstract\+Shared}} $>$ $>$ \& \doxymbox{\hyperlink{classProgram_aced4075113cf00b0cb5cc7fb6abf8f15}{get\+Shared\+Units}} () const override
+\begin{DoxyCompactList}\small\item\em Геттер таблицы всех разделяемых сегментов \end{DoxyCompactList}\item 
+std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classOwnUnit}{Own\+Unit}} $>$ \doxymbox{\hyperlink{classProgram_a08131a50e0caaea1b49bb1ca2e85cc5f}{extract\+Own\+Unit}} (const std::\+string \&name) override
+\begin{DoxyCompactList}\small\item\em Отделить собственный элемент \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classAbstractUnit}{Abstract\+Unit}} \& \doxymbox{\hyperlink{classProgram_aadebc7ea4de902737b46718dec15a9ed}{get\+Unit}} (const std::\+string \&)
+\begin{DoxyCompactList}\small\item\em Геттер элемента по имени (собственный/\+разделяемый/\+ссылка). \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{classAbstractUnit}{Abstract\+Unit}} \& \doxymbox{\hyperlink{classProgram_a66570084446616c25da5cdad386458bb}{get\+Unit}} (const std::\+string \&name) const
+\begin{DoxyCompactList}\small\item\em Геттер элемента по имени (собственный/\+разделяемый/\+ссылка) (константный). \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{classProgram_a7dcea18ef6c1948cc9c87e25694c28bf}{has\+Any\+Unit}} (const std::\+string \&name) const
+\begin{DoxyCompactList}\small\item\em Есть ли такое имя среди собственных/\+разделяемых элементов или ссылок \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{classProgram_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classProgram_aba2cc6c93fc145b30569c9aa7119680e}\index{Program@{Program}!Program@{Program}}
+\index{Program@{Program}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{Program()}{Program()}}
+{\footnotesize\ttfamily \label{classProgram_aba2cc6c93fc145b30569c9aa7119680e} 
+Program::\+\+Program (\begin{DoxyParamCaption}\item[{std::\+string}]{path\+\_\+}{, }\item[{const size\+\_\+t}]{quota\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path\+\_\+} & Путь программы \\
+\hline
+{\em quota\+\_\+} & Квота программы \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classProgram_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classProgram_a882edd509e3afc9f5288cf9e665f6738}\index{Program@{Program}!createArr@{createArr}}
+\index{createArr@{createArr}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{createArr()}{createArr()}}
+{\footnotesize\ttfamily \label{classProgram_a882edd509e3afc9f5288cf9e665f6738} 
+void Program::\+create\+Arr (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{, }\item[{size\+\_\+t}]{address}{, }\item[{size\+\_\+t}]{size}{, }\item[{size\+\_\+t}]{el\+\_\+size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Создать массив 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя \\
+\hline
+{\em address} & Адрес \\
+\hline
+{\em size} & Полный размер \\
+\hline
+{\em el\+\_\+size} & Размер одного элемента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если имя дублируется или превышена квота \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIUnitManager_a0d43412d42c5558bc97855f27a9c1a26}{IUnit\+Manager}}.
+
+\Hypertarget{classProgram_a5c8fdf29059820246747cb0c43c932e8}\index{Program@{Program}!createRef@{createRef}}
+\index{createRef@{createRef}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{createRef()}{createRef()}}
+{\footnotesize\ttfamily \label{classProgram_a5c8fdf29059820246747cb0c43c932e8} 
+void Program::\+create\+Ref (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{unit\+\_\+name}{, }\item[{std::\+string}]{ref\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Создать ссылку 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unit\+\_\+name} & Имя элемента, на который указывает ссылка \\
+\hline
+{\em ref\+\_\+name} & Имя создаваемой ссылки \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если элемент не найден или имя дублируется \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIRefManager_a2df612607e7cec83e12ef1981e0871d4}{IRef\+Manager}}.
+
+\Hypertarget{classProgram_af9317e1852720a2d475da51895da7077}\index{Program@{Program}!createVar@{createVar}}
+\index{createVar@{createVar}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{createVar()}{createVar()}}
+{\footnotesize\ttfamily \label{classProgram_af9317e1852720a2d475da51895da7077} 
+void Program::\+create\+Var (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{, }\item[{size\+\_\+t}]{address}{, }\item[{size\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Создать переменную 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя \\
+\hline
+{\em address} & Адрес \\
+\hline
+{\em size} & Размер \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если имя дублируется или превышена квота \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIUnitManager_a33282ff77e4cd56107b9e51dbd99dde4}{IUnit\+Manager}}.
+
+\Hypertarget{classProgram_a7f07daf3d05952d967c469bf9c545298}\index{Program@{Program}!detachAccess@{detachAccess}}
+\index{detachAccess@{detachAccess}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{detachAccess()}{detachAccess()}}
+{\footnotesize\ttfamily \label{classProgram_a7f07daf3d05952d967c469bf9c545298} 
+void Program::\+detach\+Access (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Отделить разделяемый сегмент 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя разделяемого сегмента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если сегмент не найден \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classISharedManager_afd634d72e1c2f17a68ca86bd2e0522fe}{IShared\+Manager}}.
+
+\Hypertarget{classProgram_a08131a50e0caaea1b49bb1ca2e85cc5f}\index{Program@{Program}!extractOwnUnit@{extractOwnUnit}}
+\index{extractOwnUnit@{extractOwnUnit}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{extractOwnUnit()}{extractOwnUnit()}}
+{\footnotesize\ttfamily \label{classProgram_a08131a50e0caaea1b49bb1ca2e85cc5f} 
+std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classOwnUnit}{Own\+Unit}} $>$ Program::\+extract\+Own\+Unit (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Отделить собственный элемент 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя собственного элемента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Указатель на отделённый элемент 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если элемент не найден \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIUnitManager_ae891ce556a813b4725c894453a3495f6}{IUnit\+Manager}}.
+
+\Hypertarget{classProgram_ae5773ef6ff2af3277b641deea8a2153e}\index{Program@{Program}!getAccess@{getAccess}}
+\index{getAccess@{getAccess}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{getAccess()}{getAccess()}}
+{\footnotesize\ttfamily \label{classProgram_ae5773ef6ff2af3277b641deea8a2153e} 
+void Program::\+get\+Access (\begin{DoxyParamCaption}\item[{std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classAbstractShared}{Abstract\+Shared}} $>$}]{sptr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Получить доступ к разделяемому сегменту 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sptr} & Указатель на разделяемый сегмент \\
+\hline
+\end{DoxyParams}
+
+
+Implements \doxymbox{\hyperlink{classISharedManager_a94a36f5120468bcf056080d64888728d}{IShared\+Manager}}.
+
+\Hypertarget{classProgram_a0a09bd23446c470680871a1e5983a9a7}\index{Program@{Program}!getOwnUnits@{getOwnUnits}}
+\index{getOwnUnits@{getOwnUnits}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{getOwnUnits()}{getOwnUnits()}}
+{\footnotesize\ttfamily \label{classProgram_a0a09bd23446c470680871a1e5983a9a7} 
+const \doxymbox{\hyperlink{classTable}{Table}}$<$ std::\+string, std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classOwnUnit}{Own\+Unit}} $>$ $>$ \& Program::\+get\+Own\+Units (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Геттер таблицы собственных элементов 
+
+\begin{DoxyReturn}{Returns}
+Константная ссылка на таблицу собственных элементов 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classIUnitManager_acb82398b0342fedb79f1f979ba1e4673}{IUnit\+Manager}}.
+
+\Hypertarget{classProgram_a50a4005a4113f9c570992a8b2cac802a}\index{Program@{Program}!getPath@{getPath}}
+\index{getPath@{getPath}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{getPath()}{getPath()}}
+{\footnotesize\ttfamily \label{classProgram_a50a4005a4113f9c570992a8b2cac802a} 
+std::\+string\+\_\+view Program::\+get\+Path (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Геттер пути программы 
+
+\begin{DoxyReturn}{Returns}
+Путь программы 
+\end{DoxyReturn}
+\Hypertarget{classProgram_a8931c31093becadf257be92cb1c59f0e}\index{Program@{Program}!getQuota@{getQuota}}
+\index{getQuota@{getQuota}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{getQuota()}{getQuota()}}
+{\footnotesize\ttfamily \label{classProgram_a8931c31093becadf257be92cb1c59f0e} 
+size\+\_\+t Program::\+get\+Quota (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Геттер квоты программы 
+
+\begin{DoxyReturn}{Returns}
+Квота программы 
+\end{DoxyReturn}
+\Hypertarget{classProgram_a6846540d6de53d2f203d424c5470977e}\index{Program@{Program}!getRef@{getRef}}
+\index{getRef@{getRef}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{getRef()}{getRef()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classProgram_a6846540d6de53d2f203d424c5470977e} 
+const \doxymbox{\hyperlink{classReference}{Reference}} \& Program::\+get\+Ref (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{ref\+\_\+name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Геттер ссылки (константный). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ref\+\_\+name} & Имя искомой ссылки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Константная ссылка на ссылку))) 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если ссылка не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIRefManager_ae517c15ddab7221c024357e5b35688d1}{IRef\+Manager}}.
+
+\Hypertarget{classProgram_a7463a26ab8b57fb011d7d56f08436866}\index{Program@{Program}!getRef@{getRef}}
+\index{getRef@{getRef}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{getRef()}{getRef()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classProgram_a7463a26ab8b57fb011d7d56f08436866} 
+\doxymbox{\hyperlink{classReference}{Reference}} \& Program::\+get\+Ref (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{ref\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Геттер ссылки 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ref\+\_\+name} & Имя искомой ссылки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ссылка на ссылку))) 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если ссылка не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIRefManager_ad707d5f5a056b972a1b4c3ce13cf89ea}{IRef\+Manager}}.
+
+\Hypertarget{classProgram_ad6453b78bdd7e2849b5a741f45c073dc}\index{Program@{Program}!getRefs@{getRefs}}
+\index{getRefs@{getRefs}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{getRefs()}{getRefs()}}
+{\footnotesize\ttfamily \label{classProgram_ad6453b78bdd7e2849b5a741f45c073dc} 
+const \doxymbox{\hyperlink{classTable}{Table}}$<$ std::\+string, \doxymbox{\hyperlink{classReference}{Reference}} $>$ \& Program::\+get\+Refs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Геттер таблицы 
+
+\begin{DoxyReturn}{Returns}
+Константная ссылка на таблицу всех ссылок программы 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classIRefManager_aad2de32dd619bdbb1fe14df29639c99a}{IRef\+Manager}}.
+
+\Hypertarget{classProgram_aced4075113cf00b0cb5cc7fb6abf8f15}\index{Program@{Program}!getSharedUnits@{getSharedUnits}}
+\index{getSharedUnits@{getSharedUnits}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{getSharedUnits()}{getSharedUnits()}}
+{\footnotesize\ttfamily \label{classProgram_aced4075113cf00b0cb5cc7fb6abf8f15} 
+const \doxymbox{\hyperlink{classTable}{Table}}$<$ std::\+string, std::\+weak\+\_\+ptr$<$ \doxymbox{\hyperlink{classAbstractShared}{Abstract\+Shared}} $>$ $>$ \& Program::\+get\+Shared\+Units (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Геттер таблицы всех разделяемых сегментов 
+
+\begin{DoxyReturn}{Returns}
+Константную ссылку на таблицу всех разделяемых сегментов 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classISharedManager_a834f7a0f535357516e1a00f9609eeb12}{IShared\+Manager}}.
+
+\Hypertarget{classProgram_aadebc7ea4de902737b46718dec15a9ed}\index{Program@{Program}!getUnit@{getUnit}}
+\index{getUnit@{getUnit}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{getUnit()}{getUnit()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classProgram_aadebc7ea4de902737b46718dec15a9ed} 
+\doxymbox{\hyperlink{classAbstractUnit}{Abstract\+Unit}} \& Program::\+get\+Unit (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Геттер элемента по имени (собственный/\+разделяемый/\+ссылка). 
+
+\begin{DoxyReturn}{Returns}
+Ссылка на искомый элемент 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если элемент не найден \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classProgram_a66570084446616c25da5cdad386458bb}\index{Program@{Program}!getUnit@{getUnit}}
+\index{getUnit@{getUnit}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{getUnit()}{getUnit()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classProgram_a66570084446616c25da5cdad386458bb} 
+const \doxymbox{\hyperlink{classAbstractUnit}{Abstract\+Unit}} \& Program::\+get\+Unit (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Геттер элемента по имени (собственный/\+разделяемый/\+ссылка) (константный). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя искомого элемента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Константная ссылка на искомый элемент 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если элемент не найден \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classProgram_a7dcea18ef6c1948cc9c87e25694c28bf}\index{Program@{Program}!hasAnyUnit@{hasAnyUnit}}
+\index{hasAnyUnit@{hasAnyUnit}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{hasAnyUnit()}{hasAnyUnit()}}
+{\footnotesize\ttfamily \label{classProgram_a7dcea18ef6c1948cc9c87e25694c28bf} 
+bool Program::\+has\+Any\+Unit (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Есть ли такое имя среди собственных/\+разделяемых элементов или ссылок 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя искомого элемента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Есть ли такое имя среди собственных/\+разделяемых элементов или ссылок 
+\end{DoxyReturn}
+\Hypertarget{classProgram_abfd76f1a96720879eda786ab55b99352}\index{Program@{Program}!hasOwnUnit@{hasOwnUnit}}
+\index{hasOwnUnit@{hasOwnUnit}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{hasOwnUnit()}{hasOwnUnit()}}
+{\footnotesize\ttfamily \label{classProgram_abfd76f1a96720879eda786ab55b99352} 
+bool Program::\+has\+Own\+Unit (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Есть ли у программы такой собственный элемент 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя искомого элемента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Есть ли у программы такой собственный элемент 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classIUnitManager_a112fca853b697d044deb9ed9b71b6c6f}{IUnit\+Manager}}.
+
+\Hypertarget{classProgram_a3c10cab2a9efd2e38982d501e82872fe}\index{Program@{Program}!hasRef@{hasRef}}
+\index{hasRef@{hasRef}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{hasRef()}{hasRef()}}
+{\footnotesize\ttfamily \label{classProgram_a3c10cab2a9efd2e38982d501e82872fe} 
+bool Program::\+has\+Ref (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{ref\+\_\+name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Есть ли у программы ссылка с указанным именем 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ref\+\_\+name} & Имя искомой ссылки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Есть ли у программы ссылка с указанным именем 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classIRefManager_a65cd754c9358c0f713adfa9a2f5828c2}{IRef\+Manager}}.
+
+\Hypertarget{classProgram_afe83619c2b78fcd9060e0b0980b5700a}\index{Program@{Program}!hasShared@{hasShared}}
+\index{hasShared@{hasShared}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{hasShared()}{hasShared()}}
+{\footnotesize\ttfamily \label{classProgram_afe83619c2b78fcd9060e0b0980b5700a} 
+bool Program::\+has\+Shared (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Есть ли у программы доступ к разделяемому сегменту с данным именем 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя искомого сегмента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Есть ли у программы доступ к разделяемому сегменту с данным именем 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classISharedManager_a854c7ad491cc16bd4830f5c90b6f21e8}{IShared\+Manager}}.
+
+\Hypertarget{classProgram_aafcb0fba7e4d8e62864fa8fc9ffc572d}\index{Program@{Program}!removeRef@{removeRef}}
+\index{removeRef@{removeRef}!Program@{Program}}
+\doxysubsubsection{\texorpdfstring{removeRef()}{removeRef()}}
+{\footnotesize\ttfamily \label{classProgram_aafcb0fba7e4d8e62864fa8fc9ffc572d} 
+void Program::\+remove\+Ref (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{ref\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Удалить ссылку 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ref\+\_\+name} & Имя удаляемой ссылки \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если ссылка не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIRefManager_ab8b51586707ae20d8d59c2804a6f38c0}{IRef\+Manager}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+entity/\+program.\+hpp\item 
+src/\+model/\+entity/\+program/\+program.\+cpp\end{DoxyCompactItemize}

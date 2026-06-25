@@ -1,0 +1,197 @@
+\doxysection{unit.\+hpp}
+\hypertarget{unit_8hpp_source}{}\label{unit_8hpp_source}\index{include/model/entity/unit.hpp@{include/model/entity/unit.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#pragma\ region\ interfaces}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIMemoryUnit}{IMemoryUnit}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{classIMemoryUnit_af7e2efc674c91ffc19ecd4e6b8cd9580}{getTotalSize}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00025\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{classIMemoryUnit_ab080f0cece697c1db2459498981258a9}{getAddress}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00031\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ std::string\ \doxymbox{\hyperlink{classIMemoryUnit_ae52e436ae57a1ecef0346f321271d09e}{getType}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIMemoryUnit_ac86f5f437aeb669e37e58641d485ebed}{setAddress}}(\textcolor{keywordtype}{size\_t})\ =\ 0;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIMemoryUnit}{\string~IMemoryUnit}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00044\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classINamed}{INamed}}}
+\DoxyCodeLine{00045\ \{}
+\DoxyCodeLine{00046\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00051\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ std::string\ \&\doxymbox{\hyperlink{classINamed_a63e2450e90464a98a029906644f2be6f}{getName}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classINamed}{\string~INamed}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00059\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIIndexed}{IIndexed}}}
+\DoxyCodeLine{00060\ \{}
+\DoxyCodeLine{00061\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00066\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{classIIndexed_ab9a092b2a149031d9a6eae9b18674713}{getElSize}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00072\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{classIIndexed_aaf5b150dad59119e02622bbc3ca9530a}{getLen}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIIndexed}{\string~IIndexed}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00080\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIShared}{IShared}}}
+\DoxyCodeLine{00081\ \{}
+\DoxyCodeLine{00082\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIShared_a15f5f071fa89690b8dcf0d938b6873d8}{grantAccess}}(std::string)\ =\ 0;}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIShared_a4f3df1eab47474b643c19e6acdad62d9}{revokeAccess}}(\textcolor{keyword}{const}\ std::string\ \&)\ =\ 0;}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIShared}{\string~IShared}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00094\ \};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00099\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIReference}{IReference}}}
+\DoxyCodeLine{00100\ \{}
+\DoxyCodeLine{00101\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00106\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classOwnUnit}{OwnUnit}}\ *\doxymbox{\hyperlink{classIReference_a0944b872aeb92e46bb25db963342751d}{getPtr}}()\ =\ 0;}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00112\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classOwnUnit}{OwnUnit}}\ *\doxymbox{\hyperlink{classIReference_a85ecc3c568ee70622908fd41906f5497}{getPtr}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00118\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classIReference_a7ff43c54ad50fa200e18f720e38b2e1e}{detached}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIReference_adbb4480c2c76deb372a326354483be9a}{detach}}()\ =\ 0;}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIReference}{\string~IReference}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00126\ \};}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#pragma\ region\ abstract\ classes}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00135\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classAbstractNamed_a194eb0c237f5cc1645bd1a24ec980b2d}{AbstractNamed}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classINamed}{INamed}}}
+\DoxyCodeLine{00136\ \{}
+\DoxyCodeLine{00137\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00138\ \ \ \ \ std::string\ \doxymbox{\hyperlink{classAbstractNamed_af5b03ff30628721ab63afe569e9ae30e}{name}};\ }
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{classAbstractNamed_a194eb0c237f5cc1645bd1a24ec980b2d}{AbstractNamed}}(std::string\ name\_)\ :\ \doxymbox{\hyperlink{classAbstractNamed_af5b03ff30628721ab63afe569e9ae30e}{name}}(std::move(name\_))\ \{\}}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00151\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ std::string\ \&\doxymbox{\hyperlink{classAbstractNamed_ae8fcdd2f0c52d16496e980f6f589d0d9}{getName}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{classAbstractNamed_af5b03ff30628721ab63afe569e9ae30e}{name}};\ \}}
+\DoxyCodeLine{00152\ \};}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00157\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classAbstractMemoryUnit_affcebd40bee840d8364a054b9ef7e320}{AbstractMemoryUnit}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classIMemoryUnit}{IMemoryUnit}}}
+\DoxyCodeLine{00158\ \{}
+\DoxyCodeLine{00159\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ address,\ \doxymbox{\hyperlink{classAbstractMemoryUnit_aa399e91410b1a9084cd3cfc11074de36}{size}};\ }
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00168\ \ \ \ \ \doxymbox{\hyperlink{classAbstractMemoryUnit_affcebd40bee840d8364a054b9ef7e320}{AbstractMemoryUnit}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ address\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ size\_)\ :\ address(address\_),\ \doxymbox{\hyperlink{classAbstractMemoryUnit_aa399e91410b1a9084cd3cfc11074de36}{size}}(size\_)\ \{\}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00174\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{classAbstractMemoryUnit_a7267e158e65f00a74fddc3f04e6e894b}{getAddress}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ address;\ \}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00180\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{classAbstractMemoryUnit_a0334245161b37ab95263c2fec3b9c474}{getTotalSize}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{classAbstractMemoryUnit_aa399e91410b1a9084cd3cfc11074de36}{size}};\ \}}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00186\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classAbstractMemoryUnit_ad466d8149aa9fb108c39a2567597ffbc}{setAddress}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ new\_address)\textcolor{keyword}{\ override\ }\{\ address\ =\ new\_address;\ \}}
+\DoxyCodeLine{00187\ \};}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00192\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classAbstractUnit_a75098e8eb0021401a4237d385e078b70}{AbstractUnit}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classAbstractNamed_a194eb0c237f5cc1645bd1a24ec980b2d}{AbstractNamed}},\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classAbstractMemoryUnit_affcebd40bee840d8364a054b9ef7e320}{AbstractMemoryUnit}}}
+\DoxyCodeLine{00193\ \{}
+\DoxyCodeLine{00194\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00201\ \ \ \ \ \doxymbox{\hyperlink{classAbstractUnit_a75098e8eb0021401a4237d385e078b70}{AbstractUnit}}(std::string\ name\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ address\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ size\_)\ :\ \doxymbox{\hyperlink{classAbstractNamed_a194eb0c237f5cc1645bd1a24ec980b2d}{AbstractNamed}}(std::move(name\_)),}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classAbstractMemoryUnit_affcebd40bee840d8364a054b9ef7e320}{AbstractMemoryUnit}}(address\_,\ size\_)\ \{\}}
+\DoxyCodeLine{00203\ \};}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00208\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classOwnUnit_a09c43717bd7348d38d41d6cb2f3ae522}{OwnUnit}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classAbstractUnit_a75098e8eb0021401a4237d385e078b70}{AbstractUnit}}}
+\DoxyCodeLine{00209\ \{}
+\DoxyCodeLine{00210\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00217\ \ \ \ \ \doxymbox{\hyperlink{classOwnUnit_a09c43717bd7348d38d41d6cb2f3ae522}{OwnUnit}}(std::string\ name\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ address\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ size\_)\ :\ \doxymbox{\hyperlink{classAbstractUnit_a75098e8eb0021401a4237d385e078b70}{AbstractUnit}}(}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ std::move(name\_),\ address\_,\ size\_)\ \{\}}
+\DoxyCodeLine{00219\ \};}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00224\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classAbstractIndexed_a47db509d8188abc26844ac6e9025e529}{AbstractIndexed}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classIIndexed}{IIndexed}}}
+\DoxyCodeLine{00225\ \{}
+\DoxyCodeLine{00226\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{classAbstractIndexed_a81ba94691c2b8ad4a246a50675ab49b5}{el\_size}};\ }
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00234\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{classAbstractIndexed_a47db509d8188abc26844ac6e9025e529}{AbstractIndexed}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ el\_size\_)\ :\ \doxymbox{\hyperlink{classAbstractIndexed_a81ba94691c2b8ad4a246a50675ab49b5}{el\_size}}(el\_size\_)\ \{\}}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00240\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{classAbstractIndexed_ad0ae44051e548923fea2a42ed71fe75e}{getElSize}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{classAbstractIndexed_a81ba94691c2b8ad4a246a50675ab49b5}{el\_size}};\ \}}
+\DoxyCodeLine{00241\ \};}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00246\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classAbstractShared_a57bdd064ad0ab7bd0bb37c27b187ddac}{AbstractShared}}\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classAbstractUnit_a75098e8eb0021401a4237d385e078b70}{AbstractUnit}},\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classAbstractIndexed_a47db509d8188abc26844ac6e9025e529}{AbstractIndexed}},\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classIShared}{IShared}}}
+\DoxyCodeLine{00247\ \{}
+\DoxyCodeLine{00248\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00249\ \ \ \ \ std::unordered\_set<std::string>\ \doxymbox{\hyperlink{classAbstractShared_aaf667bb0eb1a0c2a6f3d047c178c5ca1}{owning\_programs}};\ }
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00259\ \ \ \ \ \doxymbox{\hyperlink{classAbstractShared_a57bdd064ad0ab7bd0bb37c27b187ddac}{AbstractShared}}(std::string\ name\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ address\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ size\_,}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ el\_size\_)\ :\ \doxymbox{\hyperlink{classAbstractUnit_a75098e8eb0021401a4237d385e078b70}{AbstractUnit}}(std::move(name\_),\ address\_,\ size\_),}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classAbstractIndexed_a47db509d8188abc26844ac6e9025e529}{AbstractIndexed}}(el\_size\_)\ \{\}}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00266\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classAbstractShared_a37b28593a7b0ee9a3445663d454bf70d}{grantAccess}}(std::string)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00271\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classAbstractShared_a3ccf74583afe6e19d4c749ed4c135bb0}{revokeAccess}}(\textcolor{keyword}{const}\ std::string\ \&)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00277\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ std::unordered\_set<std::string>\ \&\doxymbox{\hyperlink{classAbstractShared_a07246dfd0eee2b80e788eb28f3257487}{getOwningPrograms}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00278\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{classAbstractShared_aaf667bb0eb1a0c2a6f3d047c178c5ca1}{owning\_programs}};}
+\DoxyCodeLine{00280\ \ \ \ \ \}}
+\DoxyCodeLine{00281\ \};}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00283\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{00284\ }
+\DoxyCodeLine{00285\ \textcolor{preprocessor}{\#pragma\ region\ implementations}}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00290\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classVariable_ad1e98049705b832b50353646fc945e90}{Variable}}\ final\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classOwnUnit_a09c43717bd7348d38d41d6cb2f3ae522}{OwnUnit}}}
+\DoxyCodeLine{00291\ \{}
+\DoxyCodeLine{00292\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00299\ \ \ \ \ \doxymbox{\hyperlink{classVariable_ad1e98049705b832b50353646fc945e90}{Variable}}(std::string\ name\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ address\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ size\_)\ :\ \doxymbox{\hyperlink{classOwnUnit_a09c43717bd7348d38d41d6cb2f3ae522}{OwnUnit}}(}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ std::move(name\_),\ address\_,\ size\_)\ \{\}}
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00306\ \ \ \ \ [[nodiscard]]\ std::string\ \doxymbox{\hyperlink{classVariable_ae3bcc79e3cfdab6fe4474f846000ff06}{getType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Variable"{}};\ \}}
+\DoxyCodeLine{00307\ \};}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00312\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classArray_af141fe3d0f9ba68addb17a387f537e2a}{Array}}\ final\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classOwnUnit_a09c43717bd7348d38d41d6cb2f3ae522}{OwnUnit}},\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classAbstractIndexed_a47db509d8188abc26844ac6e9025e529}{AbstractIndexed}}}
+\DoxyCodeLine{00313\ \{}
+\DoxyCodeLine{00314\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00322\ \ \ \ \ \doxymbox{\hyperlink{classArray_af141fe3d0f9ba68addb17a387f537e2a}{Array}}(std::string\ name\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ address\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ size\_,}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ el\_size\_)\ :\ \doxymbox{\hyperlink{classOwnUnit_a09c43717bd7348d38d41d6cb2f3ae522}{OwnUnit}}(std::move(name\_),\ address\_,\ size\_),\ \doxymbox{\hyperlink{classAbstractIndexed_a47db509d8188abc26844ac6e9025e529}{AbstractIndexed}}(el\_size\_)\ \{\}}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00329\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{classArray_a2443be8cb021882dfdfc84fe31364051}{getLen}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{classAbstractMemoryUnit_aa399e91410b1a9084cd3cfc11074de36}{size}}\ /\ \doxymbox{\hyperlink{classAbstractIndexed_a81ba94691c2b8ad4a246a50675ab49b5}{el\_size}};\ \}}
+\DoxyCodeLine{00330\ }
+\DoxyCodeLine{00335\ \ \ \ \ [[nodiscard]]\ std::string\ \doxymbox{\hyperlink{classArray_ac7b2821ca734787ab2009301e04d6ea0}{getType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Array"{}};\ \}}
+\DoxyCodeLine{00336\ \};}
+\DoxyCodeLine{00337\ }
+\DoxyCodeLine{00341\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classShared_ac86339394bba210d00b83ad2c79687f5}{Shared}}\ final\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classAbstractShared_a57bdd064ad0ab7bd0bb37c27b187ddac}{AbstractShared}}}
+\DoxyCodeLine{00342\ \{}
+\DoxyCodeLine{00343\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00351\ \ \ \ \ \doxymbox{\hyperlink{classShared_ac86339394bba210d00b83ad2c79687f5}{Shared}}(std::string\ name\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ address\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ size\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ el\_size\_)\ :\ \doxymbox{\hyperlink{classAbstractShared_a57bdd064ad0ab7bd0bb37c27b187ddac}{AbstractShared}}(}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ std::move(name\_),\ address\_,\ size\_,\ el\_size\_)\ \{\}}
+\DoxyCodeLine{00353\ }
+\DoxyCodeLine{00358\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{classShared_a4d1c613ce0bf9575578d16016558055d}{getLen}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{classAbstractMemoryUnit_aa399e91410b1a9084cd3cfc11074de36}{size}}\ /\ \doxymbox{\hyperlink{classAbstractIndexed_a81ba94691c2b8ad4a246a50675ab49b5}{el\_size}};\ \}}
+\DoxyCodeLine{00359\ }
+\DoxyCodeLine{00364\ \ \ \ \ [[nodiscard]]\ std::string\ \doxymbox{\hyperlink{classShared_a4f0d7a41f124d89645ed6a743092d08c}{getType}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Shared\ element"{}};\ \}}
+\DoxyCodeLine{00365\ \};}
+\DoxyCodeLine{00366\ }
+\DoxyCodeLine{00370\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classReference_afa89ccdcb101ff664c13e888fc163cf4}{Reference}}\ final\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classIReference}{IReference}},\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classAbstractNamed_a194eb0c237f5cc1645bd1a24ec980b2d}{AbstractNamed}}}
+\DoxyCodeLine{00371\ \{}
+\DoxyCodeLine{00372\ \ \ \ \ \doxymbox{\hyperlink{classOwnUnit}{OwnUnit}}\ *ptr;\ }
+\DoxyCodeLine{00373\ }
+\DoxyCodeLine{00374\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00380\ \ \ \ \ \doxymbox{\hyperlink{classReference_afa89ccdcb101ff664c13e888fc163cf4}{Reference}}(std::string\ \doxymbox{\hyperlink{classAbstractNamed_af5b03ff30628721ab63afe569e9ae30e}{name}},\ \doxymbox{\hyperlink{classOwnUnit}{OwnUnit}}\ *ptr\_)\ :\ \doxymbox{\hyperlink{classAbstractNamed_a194eb0c237f5cc1645bd1a24ec980b2d}{AbstractNamed}}(std::move(\doxymbox{\hyperlink{classAbstractNamed_af5b03ff30628721ab63afe569e9ae30e}{name}})),\ ptr(ptr\_)\ \{\}}
+\DoxyCodeLine{00381\ }
+\DoxyCodeLine{00386\ \ \ \ \ [[nodiscard]]\ \doxymbox{\hyperlink{classOwnUnit}{OwnUnit}}\ *\doxymbox{\hyperlink{classReference_a8ee70955df739f1e6b5f59dec339d86b}{getPtr}}()\textcolor{keyword}{\ override\ }\{\ \textcolor{keywordflow}{return}\ ptr;\ \}}
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00392\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classOwnUnit}{OwnUnit}}\ *\doxymbox{\hyperlink{classReference_a78e2d03356f214a27c47bde0cd1cc5c9}{getPtr}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ ptr;\ \}}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00398\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classReference_a1314bf84df443059ba35a8fc6f52f484}{detached}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ ptr\ ==\ \textcolor{keyword}{nullptr};\ \}}
+\DoxyCodeLine{00399\ }
+\DoxyCodeLine{00403\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classReference_ac45528cd597a38dca46210c88fc9363c}{detach}}()\textcolor{keyword}{\ override\ }\{\ ptr\ =\ \textcolor{keyword}{nullptr};\ \}}
+\DoxyCodeLine{00404\ \};}
+\DoxyCodeLine{00405\ }
+\DoxyCodeLine{00406\ \textcolor{preprocessor}{\#pragma\ endregion}}
+
+\end{DoxyCode}

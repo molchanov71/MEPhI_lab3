@@ -1,0 +1,93 @@
+\doxysection{IMemory\+Service Class Reference}
+\hypertarget{classIMemoryService}{}\label{classIMemoryService}\index{IMemoryService@{IMemoryService}}
+
+
+Интерфейс сервиса по управлению памятью  
+
+
+
+
+{\ttfamily \+\#include $<$service.\+hpp$>$}
+
+Inheritance diagram for IMemory\+Service:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIMemoryService}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual size\+\_\+t \doxymbox{\hyperlink{classIMemoryService_ac021224d546ea660dde602e84f041bc4}{search\+Forward}} (size\+\_\+t size) const =0
+\begin{DoxyCompactList}\small\item\em Поиск свободного места в памяти \end{DoxyCompactList}\item 
+virtual \doxymbox{\hyperlink{classIProgramRepository}{IProgram\+Repository}} \& \doxymbox{\hyperlink{classIMemoryService_a1d5bab0b9c034f2fad050e1055542537}{get\+Repo}} () const =0
+\begin{DoxyCompactList}\small\item\em Геттер репозитория \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIMemoryService_a66663c389df40fe991ae970b21037b5f}{defragment}} ()=0
+\begin{DoxyCompactList}\small\item\em Дефрагментация \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Интерфейс сервиса по управлению памятью 
+
+\label{doc-func-members}
+\Hypertarget{classIMemoryService_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIMemoryService_a66663c389df40fe991ae970b21037b5f}\index{IMemoryService@{IMemoryService}!defragment@{defragment}}
+\index{defragment@{defragment}!IMemoryService@{IMemoryService}}
+\doxysubsubsection{\texorpdfstring{defragment()}{defragment()}}
+{\footnotesize\ttfamily \label{classIMemoryService_a66663c389df40fe991ae970b21037b5f} 
+virtual void IMemory\+Service::\+defragment (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Дефрагментация 
+
+
+
+Implemented in \doxymbox{\hyperlink{classMemoryService_a928c6899ce7a9eeda272fc94597043db}{Memory\+Service}}.
+
+\Hypertarget{classIMemoryService_a1d5bab0b9c034f2fad050e1055542537}\index{IMemoryService@{IMemoryService}!getRepo@{getRepo}}
+\index{getRepo@{getRepo}!IMemoryService@{IMemoryService}}
+\doxysubsubsection{\texorpdfstring{getRepo()}{getRepo()}}
+{\footnotesize\ttfamily \label{classIMemoryService_a1d5bab0b9c034f2fad050e1055542537} 
+virtual \doxymbox{\hyperlink{classIProgramRepository}{IProgram\+Repository}} \& IMemory\+Service::\+get\+Repo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Геттер репозитория 
+
+\begin{DoxyReturn}{Returns}
+Ссылка на репозиторий 
+\end{DoxyReturn}
+
+
+Implemented in \doxymbox{\hyperlink{classMemoryService_a94c96de52ebb214b9a3018775f2580d2}{Memory\+Service}}.
+
+\Hypertarget{classIMemoryService_ac021224d546ea660dde602e84f041bc4}\index{IMemoryService@{IMemoryService}!searchForward@{searchForward}}
+\index{searchForward@{searchForward}!IMemoryService@{IMemoryService}}
+\doxysubsubsection{\texorpdfstring{searchForward()}{searchForward()}}
+{\footnotesize\ttfamily \label{classIMemoryService_ac021224d546ea660dde602e84f041bc4} 
+virtual size\+\_\+t IMemory\+Service::\+search\+Forward (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Поиск свободного места в памяти 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Размер искомого свободного места \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Адрес первой найденной свободной области 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если size == 0 или свободное место не найдено \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+service.\+hpp\end{DoxyCompactItemize}

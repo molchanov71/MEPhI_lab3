@@ -1,0 +1,434 @@
+\doxysection{Program\+Repository Class Reference}
+\hypertarget{classProgramRepository}{}\label{classProgramRepository}\index{ProgramRepository@{ProgramRepository}}
+Inheritance diagram for Program\+Repository:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classProgramRepository}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classProgramRepository_a6a706d0f6d780f6f3d6bf55512379881}{Program\+Repository}} (const size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classProgramRepository_a07f657063b00b55c5844d3646d08fc6b}{add\+Program}} (std::\+string path, std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classProgram}{Program}} $>$ prog) override
+\begin{DoxyCompactList}\small\item\em Добавить программу \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classProgramRepository_aea18d436dda5c5be94ae880a4f89ba3a}{add\+Shared}} (std::\+string name, std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classAbstractShared}{Abstract\+Shared}} $>$ el) override
+\begin{DoxyCompactList}\small\item\em Добавить разделяемый сегмент \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classProgramRepository_a7436d9f4263d1025ff4217c28647f652}{add\+Error}} (const std::\+string \&path, std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} $>$ err) override
+\begin{DoxyCompactList}\small\item\em Добавить информацию об ошибке \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classProgram}{Program}} \& \doxymbox{\hyperlink{classProgramRepository_aa865129af6fc081c3e6ff9c49ab9a779}{get\+Program}} (const std::\+string \&path) override
+\begin{DoxyCompactList}\small\item\em Геттер программы \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{classProgram}{Program}} \& \doxymbox{\hyperlink{classProgramRepository_ab0081a30effd574aec9a8477f6f1295e}{get\+Program}} (const std::\+string \&path) const override
+\begin{DoxyCompactList}\small\item\em Геттер программы (константный). \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classAbstractShared}{Abstract\+Shared}} $>$ \doxymbox{\hyperlink{classProgramRepository_a02c7d377289e289918eb93ff44d802ed}{get\+Shared}} (const std::\+string \&name) override
+\begin{DoxyCompactList}\small\item\em Геттер разделяемого сегмента \end{DoxyCompactList}\item 
+std::\+shared\+\_\+ptr$<$ const \doxymbox{\hyperlink{classAbstractShared}{Abstract\+Shared}} $>$ \doxymbox{\hyperlink{classProgramRepository_a24fd24e231af3160926eda2b3d945b6a}{get\+Shared}} (const std::\+string \&name) const override
+\begin{DoxyCompactList}\small\item\em Геттер разделяемого сегмента (константный). \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classProgramRepository_af4a26861562c4ea91aec1c2b24352eeb}{remove\+Program}} (const std::\+string \&path) override
+\begin{DoxyCompactList}\small\item\em Удалить программу из репозитория \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classProgramRepository_aa7294f9f04f281c53697022a8bbd666d}{remove\+Shared}} (const std::\+string \&name) override
+\begin{DoxyCompactList}\small\item\em Удалить разделяемый сегмент из репозитория \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classByte}{Byte}} \& \doxymbox{\hyperlink{classProgramRepository_a9571372ba4ac3a4b624d62e8b8f51482}{operator\+[$\,$]\+}} (const size\+\_\+t idx) override
+\begin{DoxyCompactList}\small\item\em Перегрузка оператора \+[]\+. \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{classByte}{Byte}} \& \doxymbox{\hyperlink{classProgramRepository_aa695776ae93ff0266594927bef04e904}{operator\+[$\,$]\+}} (const size\+\_\+t idx) const override
+\begin{DoxyCompactList}\small\item\em Перегрузка оператора \+[]\+ (константная). \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{classTable}{Table}}$<$ std::\+string, std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classProgram}{Program}} $>$ $>$ \& \doxymbox{\hyperlink{classProgramRepository_a68f5c2babfdc373f4b111a44049682f4}{get\+Programs}} () const override
+\begin{DoxyCompactList}\small\item\em Геттер таблицы всех программ \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{classTable}{Table}}$<$ std::\+string, std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classAbstractShared}{Abstract\+Shared}} $>$ $>$ \& \doxymbox{\hyperlink{classProgramRepository_ab771f2d842aa4d2ac4756e684978c473}{get\+Shared\+Elems}} () const override
+\begin{DoxyCompactList}\small\item\em Геттер таблицы всех разделяемых сегментов \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{classTable}{Table}}$<$ std::\+string, std::\+vector$<$ std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} $>$ $>$ $>$ \& \doxymbox{\hyperlink{classProgramRepository_a49304d9b8603056f156668ff2fd80a42}{get\+Errors}} () const override
+\begin{DoxyCompactList}\small\item\em Геттер таблицы всех зарегистрированных ошибок \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{classProgramRepository_a15828df66dba73fc3db90e041f60ac93}{get\+Total\+Size}} () const override
+\begin{DoxyCompactList}\small\item\em Общий объём занимаемой памяти \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{classByte}{Byte}} $>$ \& \doxymbox{\hyperlink{classProgramRepository_a681686dd6779478d8bdfd88d0f09fade}{read\+Data}} () const override
+\begin{DoxyCompactList}\small\item\em Геттер вектора байтов \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-constructors}
+\Hypertarget{classProgramRepository_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classProgramRepository_a6a706d0f6d780f6f3d6bf55512379881}\index{ProgramRepository@{ProgramRepository}!ProgramRepository@{ProgramRepository}}
+\index{ProgramRepository@{ProgramRepository}!ProgramRepository@{ProgramRepository}}
+\doxysubsubsection{\texorpdfstring{ProgramRepository()}{ProgramRepository()}}
+{\footnotesize\ttfamily \label{classProgramRepository_a6a706d0f6d780f6f3d6bf55512379881} 
+Program\+Repository::\+\+Program\+Repository (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Конструктор 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & Размер создаваемой памяти \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classProgramRepository_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classProgramRepository_a7436d9f4263d1025ff4217c28647f652}\index{ProgramRepository@{ProgramRepository}!addError@{addError}}
+\index{addError@{addError}!ProgramRepository@{ProgramRepository}}
+\doxysubsubsection{\texorpdfstring{addError()}{addError()}}
+{\footnotesize\ttfamily \label{classProgramRepository_a7436d9f4263d1025ff4217c28647f652} 
+void Program\+Repository::\+add\+Error (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{path}{, }\item[{std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} $>$}]{err}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Добавить информацию об ошибке 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Путь программы, в которой возникла ошибка \\
+\hline
+{\em err} & Указатель на ошибку \\
+\hline
+\end{DoxyParams}
+
+
+Implements \doxymbox{\hyperlink{classIProgramRepository_ad85ca0afe9261e007a9a54a242830dc7}{IProgram\+Repository}}.
+
+\Hypertarget{classProgramRepository_a07f657063b00b55c5844d3646d08fc6b}\index{ProgramRepository@{ProgramRepository}!addProgram@{addProgram}}
+\index{addProgram@{addProgram}!ProgramRepository@{ProgramRepository}}
+\doxysubsubsection{\texorpdfstring{addProgram()}{addProgram()}}
+{\footnotesize\ttfamily \label{classProgramRepository_a07f657063b00b55c5844d3646d08fc6b} 
+void Program\+Repository::\+add\+Program (\begin{DoxyParamCaption}\item[{std::\+string}]{path}{, }\item[{std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classProgram}{Program}} $>$}]{prog}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Добавить программу 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Путь программы \\
+\hline
+{\em prog} & Указатель на программу \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если такой путь уже есть или квота программы слишком большая \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIProgramRepository_ada06f2d4a433cf08afc7c1a8729f19a1}{IProgram\+Repository}}.
+
+\Hypertarget{classProgramRepository_aea18d436dda5c5be94ae880a4f89ba3a}\index{ProgramRepository@{ProgramRepository}!addShared@{addShared}}
+\index{addShared@{addShared}!ProgramRepository@{ProgramRepository}}
+\doxysubsubsection{\texorpdfstring{addShared()}{addShared()}}
+{\footnotesize\ttfamily \label{classProgramRepository_aea18d436dda5c5be94ae880a4f89ba3a} 
+void Program\+Repository::\+add\+Shared (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{, }\item[{std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classAbstractShared}{Abstract\+Shared}} $>$}]{el}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Добавить разделяемый сегмент 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя сегмента \\
+\hline
+{\em el} & Указатель на сегмент \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если такой сегмент уже есть \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIProgramRepository_a2ac64fbb32bc1cc0c3c9d7be801788d8}{IProgram\+Repository}}.
+
+\Hypertarget{classProgramRepository_a49304d9b8603056f156668ff2fd80a42}\index{ProgramRepository@{ProgramRepository}!getErrors@{getErrors}}
+\index{getErrors@{getErrors}!ProgramRepository@{ProgramRepository}}
+\doxysubsubsection{\texorpdfstring{getErrors()}{getErrors()}}
+{\footnotesize\ttfamily \label{classProgramRepository_a49304d9b8603056f156668ff2fd80a42} 
+const \doxymbox{\hyperlink{classTable}{Table}}$<$ std::\+string, std::\+vector$<$ std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} $>$ $>$ $>$ \& Program\+Repository::\+get\+Errors (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Геттер таблицы всех зарегистрированных ошибок 
+
+\begin{DoxyReturn}{Returns}
+Константная ссылка на таблицу ошибок 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classIProgramRepository_a79edf1c5fe64061ea304aafa87f94953}{IProgram\+Repository}}.
+
+\Hypertarget{classProgramRepository_ab0081a30effd574aec9a8477f6f1295e}\index{ProgramRepository@{ProgramRepository}!getProgram@{getProgram}}
+\index{getProgram@{getProgram}!ProgramRepository@{ProgramRepository}}
+\doxysubsubsection{\texorpdfstring{getProgram()}{getProgram()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classProgramRepository_ab0081a30effd574aec9a8477f6f1295e} 
+const \doxymbox{\hyperlink{classProgram}{Program}} \& Program\+Repository::\+get\+Program (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{path}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Геттер программы (константный). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Путь искомой программы \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Константную ссылку на \doxylink{classProgram}{Program} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIProgramRepository_af637168ab270ebc4b1b67d865db5cbf3}{IProgram\+Repository}}.
+
+\Hypertarget{classProgramRepository_aa865129af6fc081c3e6ff9c49ab9a779}\index{ProgramRepository@{ProgramRepository}!getProgram@{getProgram}}
+\index{getProgram@{getProgram}!ProgramRepository@{ProgramRepository}}
+\doxysubsubsection{\texorpdfstring{getProgram()}{getProgram()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classProgramRepository_aa865129af6fc081c3e6ff9c49ab9a779} 
+\doxymbox{\hyperlink{classProgram}{Program}} \& Program\+Repository::\+get\+Program (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Геттер программы 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Путь искомой программы \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ссылку на \doxylink{classProgram}{Program} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIProgramRepository_a4bf5ba4356677ea06528eab39f358bf0}{IProgram\+Repository}}.
+
+\Hypertarget{classProgramRepository_a68f5c2babfdc373f4b111a44049682f4}\index{ProgramRepository@{ProgramRepository}!getPrograms@{getPrograms}}
+\index{getPrograms@{getPrograms}!ProgramRepository@{ProgramRepository}}
+\doxysubsubsection{\texorpdfstring{getPrograms()}{getPrograms()}}
+{\footnotesize\ttfamily \label{classProgramRepository_a68f5c2babfdc373f4b111a44049682f4} 
+const \doxymbox{\hyperlink{classTable}{Table}}$<$ std::\+string, std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classProgram}{Program}} $>$ $>$ \& Program\+Repository::\+get\+Programs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Геттер таблицы всех программ 
+
+\begin{DoxyReturn}{Returns}
+Константная ссылка на таблицу программ 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classIProgramRepository_a15e9abd438eff0d1971d592a04f26cc0}{IProgram\+Repository}}.
+
+\Hypertarget{classProgramRepository_a24fd24e231af3160926eda2b3d945b6a}\index{ProgramRepository@{ProgramRepository}!getShared@{getShared}}
+\index{getShared@{getShared}!ProgramRepository@{ProgramRepository}}
+\doxysubsubsection{\texorpdfstring{getShared()}{getShared()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classProgramRepository_a24fd24e231af3160926eda2b3d945b6a} 
+std::\+shared\+\_\+ptr$<$ const \doxymbox{\hyperlink{classAbstractShared}{Abstract\+Shared}} $>$ Program\+Repository::\+get\+Shared (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Геттер разделяемого сегмента (константный). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя искомого мегмента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Указатель на \doxylink{classAbstractShared}{Abstract\+Shared} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если сегмент не найден \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIProgramRepository_a7de221237d81e28820a1c6d68e7437b0}{IProgram\+Repository}}.
+
+\Hypertarget{classProgramRepository_a02c7d377289e289918eb93ff44d802ed}\index{ProgramRepository@{ProgramRepository}!getShared@{getShared}}
+\index{getShared@{getShared}!ProgramRepository@{ProgramRepository}}
+\doxysubsubsection{\texorpdfstring{getShared()}{getShared()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classProgramRepository_a02c7d377289e289918eb93ff44d802ed} 
+std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classAbstractShared}{Abstract\+Shared}} $>$ Program\+Repository::\+get\+Shared (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Геттер разделяемого сегмента 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя искомого мегмента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Указатель на \doxylink{classAbstractShared}{Abstract\+Shared} 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если сегмент не найден \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIProgramRepository_ae672ee65bcfcd0797623f5cdfc7c230c}{IProgram\+Repository}}.
+
+\Hypertarget{classProgramRepository_ab771f2d842aa4d2ac4756e684978c473}\index{ProgramRepository@{ProgramRepository}!getSharedElems@{getSharedElems}}
+\index{getSharedElems@{getSharedElems}!ProgramRepository@{ProgramRepository}}
+\doxysubsubsection{\texorpdfstring{getSharedElems()}{getSharedElems()}}
+{\footnotesize\ttfamily \label{classProgramRepository_ab771f2d842aa4d2ac4756e684978c473} 
+const \doxymbox{\hyperlink{classTable}{Table}}$<$ std::\+string, std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classAbstractShared}{Abstract\+Shared}} $>$ $>$ \& Program\+Repository::\+get\+Shared\+Elems (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Геттер таблицы всех разделяемых сегментов 
+
+\begin{DoxyReturn}{Returns}
+Константная ссылка на таблицу разделяемых сегментов 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classIProgramRepository_a9193b17fa94a86de5d76e6fa94412d5b}{IProgram\+Repository}}.
+
+\Hypertarget{classProgramRepository_a15828df66dba73fc3db90e041f60ac93}\index{ProgramRepository@{ProgramRepository}!getTotalSize@{getTotalSize}}
+\index{getTotalSize@{getTotalSize}!ProgramRepository@{ProgramRepository}}
+\doxysubsubsection{\texorpdfstring{getTotalSize()}{getTotalSize()}}
+{\footnotesize\ttfamily \label{classProgramRepository_a15828df66dba73fc3db90e041f60ac93} 
+size\+\_\+t Program\+Repository::\+get\+Total\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Общий объём занимаемой памяти 
+
+\begin{DoxyReturn}{Returns}
+Общий объём занимаемой памяти 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classIProgramRepository_ae8c1739fa647832cfb2e4b7427df24fa}{IProgram\+Repository}}.
+
+\Hypertarget{classProgramRepository_aa695776ae93ff0266594927bef04e904}\index{ProgramRepository@{ProgramRepository}!operator\+[]\+@{operator[]}}
+\index{operator\+[]\+@{operator[]}!ProgramRepository@{ProgramRepository}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classProgramRepository_aa695776ae93ff0266594927bef04e904} 
+const \doxymbox{\hyperlink{classByte}{Byte}} \& Program\+Repository::\+operator\+[$\,$]\+ (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{idx}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Перегрузка оператора \+[]\+ (константная). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & Индекс искомого байта \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Константная ссылка на байт 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classIProgramRepository_a232d9da76bd090740b82b64edea2f227}{IProgram\+Repository}}.
+
+\Hypertarget{classProgramRepository_a9571372ba4ac3a4b624d62e8b8f51482}\index{ProgramRepository@{ProgramRepository}!operator\+[]\+@{operator[]}}
+\index{operator\+[]\+@{operator[]}!ProgramRepository@{ProgramRepository}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classProgramRepository_a9571372ba4ac3a4b624d62e8b8f51482} 
+\doxymbox{\hyperlink{classByte}{Byte}} \& Program\+Repository::\+operator\+[$\,$]\+ (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{idx}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Перегрузка оператора \+[]\+. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em idx} & Индекс искомого байта \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ссылка на байт 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classIProgramRepository_adcbd98c265b4b2117fc880f2ddc1420e}{IProgram\+Repository}}.
+
+\Hypertarget{classProgramRepository_a681686dd6779478d8bdfd88d0f09fade}\index{ProgramRepository@{ProgramRepository}!readData@{readData}}
+\index{readData@{readData}!ProgramRepository@{ProgramRepository}}
+\doxysubsubsection{\texorpdfstring{readData()}{readData()}}
+{\footnotesize\ttfamily \label{classProgramRepository_a681686dd6779478d8bdfd88d0f09fade} 
+const std::\+vector$<$ \doxymbox{\hyperlink{classByte}{Byte}} $>$ \& Program\+Repository::\+read\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Геттер вектора байтов 
+
+\begin{DoxyReturn}{Returns}
+Константная ссылка на вектор байтов 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classIProgramRepository_a0258e0c19fb8992eefdcc26ec3232dfc}{IProgram\+Repository}}.
+
+\Hypertarget{classProgramRepository_af4a26861562c4ea91aec1c2b24352eeb}\index{ProgramRepository@{ProgramRepository}!removeProgram@{removeProgram}}
+\index{removeProgram@{removeProgram}!ProgramRepository@{ProgramRepository}}
+\doxysubsubsection{\texorpdfstring{removeProgram()}{removeProgram()}}
+{\footnotesize\ttfamily \label{classProgramRepository_af4a26861562c4ea91aec1c2b24352eeb} 
+void Program\+Repository::\+remove\+Program (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Удалить программу из репозитория 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Путь удаляемой программы \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIProgramRepository_a1c091122cf12376653f1251959de7564}{IProgram\+Repository}}.
+
+\Hypertarget{classProgramRepository_aa7294f9f04f281c53697022a8bbd666d}\index{ProgramRepository@{ProgramRepository}!removeShared@{removeShared}}
+\index{removeShared@{removeShared}!ProgramRepository@{ProgramRepository}}
+\doxysubsubsection{\texorpdfstring{removeShared()}{removeShared()}}
+{\footnotesize\ttfamily \label{classProgramRepository_aa7294f9f04f281c53697022a8bbd666d} 
+void Program\+Repository::\+remove\+Shared (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Удалить разделяемый сегмент из репозитория 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя удаляемого сегмента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если сегмент не найден \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIProgramRepository_aad2de680c1e6e5a8653db289036e150b}{IProgram\+Repository}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+repository.\+hpp\item 
+src/\+model/\+repository/\+repository.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,145 @@
+\doxysection{controller.\+hpp}
+\hypertarget{controller_8hpp_source}{}\label{controller_8hpp_source}\index{include/controller.hpp@{include/controller.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}errors.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}model/service.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIProgramRepository}{IProgramRepository}};}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIMemoryService}{IMemoryService}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIProgramService}{IProgramService}};}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classISharedService}{ISharedService}};}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIIndexedService}{IIndexedService}};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIUnitService}{IUnitService}};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIController}{IController}}}
+\DoxyCodeLine{00018\ \{}
+\DoxyCodeLine{00019\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIController_ac2cc30aeaa96a23e86b63a63cc68b6af}{defragment}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIController_a9da4f1757201ec6d8ae4b31ea8ce9d6d}{createProgram}}(std::string\ prog\_path,\ \textcolor{keywordtype}{size\_t}\ quota)\ =\ 0;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIController_aa755be9b63fe36c612236f61e7f42348}{destroyProgram}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path)\ =\ 0;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00047\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{classIController_a64a7912c59fe5035f7684b932505d5a3}{getTotalMemoryUsage}}(\textcolor{keyword}{const}\ std::string\ \&path)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIController_a1a0e45af9372973c16dd70feb87166df}{createShared}}(std::string\ unit\_name,\ \textcolor{keywordtype}{size\_t}\ total\_size,\ \textcolor{keywordtype}{size\_t}\ el\_size)\ =\ 0;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIController_ae13f779ef3fc0614f690a66bf1b2f178}{grantShared}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ =\ 0;}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIController_a370b19a0b3e550c0277da24b2fae34ab}{revokeShared}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ =\ 0;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIController_a82bc635f8abb2384d6b504b2d6ded64c}{createArray}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ unit\_name,}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ total\_size,}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ el\_size)\ =\ 0;}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIController_ac6a6c1f2907ccbfd0529afd69d862ff3}{createRef}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name,\ \textcolor{keyword}{const}\ std::string\ \&ref\_name)\ =\ 0;}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIController_a476635fa6a250d0d6cf01b0cbac00149}{removeRef}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&ref\_name)\ =\ 0;}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00116\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ std::vector\ <uint8\_t>\ \doxymbox{\hyperlink{classIController_a7a74d8201d007416004735b7dc0b07ee}{readIndex}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name,}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIController_a20b6f6b1881ff3b45e49ee667892ad6d}{writeIndex}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name,}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx,}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector\ <uint8\_t>\ \&new\_data)\ =\ 0;}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00146\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ std::vector\ <uint8\_t>\ \doxymbox{\hyperlink{classIController_a8a7626869c3d7b048b4b81d17a29dfbd}{getArrRange}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name,}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ begin,}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ end)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00161\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ std::vector\ <uint8\_t>\ \doxymbox{\hyperlink{classIController_a41fdba9ab7d900fe691df8c9e0f42cdc}{getShRange}}(\textcolor{keyword}{const}\ std::string\ \&unit\_name,\ \textcolor{keywordtype}{size\_t}\ begin,\ \textcolor{keywordtype}{size\_t}\ end)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIController_ac3a89260a0b48711ccac61d66c7faffa}{createVariable}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ std::string\ unit\_name,\ \textcolor{keywordtype}{size\_t}\ size)\ =\ 0;}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00180\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classAbstractUnit}{AbstractUnit}}\ \&\doxymbox{\hyperlink{classIController_a33596598034e9dfb48b48461fd072402}{getUnit}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ \textcolor{keyword}{const}}
+\DoxyCodeLine{00181\ \ \ \ \ =\ 0;}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00191\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ std::vector\ <uint8\_t>\ \doxymbox{\hyperlink{classIController_abca5407cca15c0fac0d83b4344052fcc}{readUnit}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00193\ }
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIController_ab630e96e66069e7e0b421a0a2a2d58f1}{writeUnit}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name,}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector\ <uint8\_t>\ \&new\_data)\ =\ 0;}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIController_a91ef9dc977f61fcbc33f65220a5231a0}{destroyOwnUnit}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ =\ 0;}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIController}{\string~IController}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00216\ \};}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00221\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classController_a3da390f4f132f5e8e9e3273cb1eddf40}{Controller}}\ final\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classIController}{IController}}}
+\DoxyCodeLine{00222\ \{}
+\DoxyCodeLine{00223\ \ \ \ \ \doxymbox{\hyperlink{classIProgramRepository}{IProgramRepository}}\ \&repo;\ }
+\DoxyCodeLine{00224\ \ \ \ \ \doxymbox{\hyperlink{classIMemoryService}{IMemoryService}}\ \&mem\_service;\ }
+\DoxyCodeLine{00225\ \ \ \ \ \doxymbox{\hyperlink{classIProgramService}{IProgramService}}\ \&prog\_service;\ }
+\DoxyCodeLine{00226\ \ \ \ \ \doxymbox{\hyperlink{classISharedService}{ISharedService}}\ \&sh\_service;\ }
+\DoxyCodeLine{00227\ \ \ \ \ \doxymbox{\hyperlink{classIIndexedService}{IIndexedService}}\ \&idx\_service;\ }
+\DoxyCodeLine{00228\ \ \ \ \ \doxymbox{\hyperlink{classIUnitService}{IUnitService}}\ \&unit\_service;\ }
+\DoxyCodeLine{00229\ \ \ \ \ \doxymbox{\hyperlink{classIRefService}{IRefService}}\ \&ref\_service;\ }
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00242\ \ \ \ \ \doxymbox{\hyperlink{classController_a3da390f4f132f5e8e9e3273cb1eddf40}{Controller}}(\doxymbox{\hyperlink{classIProgramRepository}{IProgramRepository}}\ \&repo,}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classIMemoryService}{IMemoryService}}\ \&mem\_service,}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classIProgramService}{IProgramService}}\ \&prog\_service,}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classISharedService}{ISharedService}}\ \&sh\_service,}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classIIndexedService}{IIndexedService}}\ \&idx\_service,}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classIUnitService}{IUnitService}}\ \&unit\_service,}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{classIRefService}{IRefService}}\ \&ref\_service);}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00256\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classController_ac5038f9e9699179c97915c2c2480d8f8}{createProgram}}(std::string\ prog\_path,\ \textcolor{keywordtype}{size\_t}\ quota)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00264\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classController_aa58329160d4af32e2702c5e3c5da35a5}{destroyProgram}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00272\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{classController_ab266cb75a82fc733045671342af7d682}{getTotalMemoryUsage}}(\textcolor{keyword}{const}\ std::string\ \&path)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00281\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classController_a8db3b5f7c69ff2976cb3543c27ed7eb6}{createShared}}(std::string\ unit\_name,\ \textcolor{keywordtype}{size\_t}\ total\_size,\ \textcolor{keywordtype}{size\_t}\ el\_size)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00282\ }
+\DoxyCodeLine{00289\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classController_a2e0057fe08f955d061da221bf3aaa0ce}{grantShared}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00290\ }
+\DoxyCodeLine{00297\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classController_aeb8bd5082425a73d034bf82d268bba2a}{revokeShared}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00298\ }
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classController_aba26cd9d13ed0180c83d6d7cddb2f811}{createArray}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ std::string\ unit\_name,\ \textcolor{keywordtype}{size\_t}\ total\_size,\ \textcolor{keywordtype}{size\_t}\ el\_size)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00317\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classController_ae71a19093f1faec9c5b84a6d5d50c4c3}{createRef}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name,\ \textcolor{keyword}{const}\ std::string\ \&ref\_name)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00318\ }
+\DoxyCodeLine{00326\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classController_ab3290818728cf03a1c7a81ecb396c88c}{removeRef}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&ref\_name)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00327\ }
+\DoxyCodeLine{00338\ \ \ \ \ [[nodiscard]]\ std::vector\ <uint8\_t>\ \doxymbox{\hyperlink{classController_aa86197d06e30124388e52ae17bfd18ca}{readIndex}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name,}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00341\ }
+\DoxyCodeLine{00352\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classController_a888de0a6be8f36c7221db5009d36a5ef}{writeIndex}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name,}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx,}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector\ <uint8\_t>\ \&new\_data)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00356\ }
+\DoxyCodeLine{00368\ \ \ \ \ [[nodiscard]]\ std::vector\ <uint8\_t>\ \doxymbox{\hyperlink{classController_a2b5322e4191cc6d915079ca64de36597}{getArrRange}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name,}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ begin,}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ end)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00372\ }
+\DoxyCodeLine{00383\ \ \ \ \ [[nodiscard]]\ std::vector\ <uint8\_t>\ \doxymbox{\hyperlink{classController_a34e5ef1b2561ae941815c40a59b5d0d3}{getShRange}}(\textcolor{keyword}{const}\ std::string\ \&unit\_name,\ \textcolor{keywordtype}{size\_t}\ begin,\ \textcolor{keywordtype}{size\_t}\ end)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00384\ }
+\DoxyCodeLine{00392\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classController_a95fbf8db44d02c255f527f03c15fb2b5}{createVariable}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ std::string\ unit\_name,\ \textcolor{keywordtype}{size\_t}\ size)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00393\ }
+\DoxyCodeLine{00402\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classAbstractUnit}{AbstractUnit}}\ \&}
+\DoxyCodeLine{00403\ \ \ \ \ \doxymbox{\hyperlink{classController_aeb2db7b17eb8f8316e7e098d15886b85}{getUnit}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00404\ }
+\DoxyCodeLine{00413\ \ \ \ \ [[nodiscard]]\ std::vector\ <uint8\_t>\ \doxymbox{\hyperlink{classController_a240dd2906ae4f131db779b9e883b0503}{readUnit}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00415\ }
+\DoxyCodeLine{00424\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classController_a073ed62404a7a80ea3d3073d45a53cf1}{writeUnit}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name,\ \textcolor{keyword}{const}\ std::vector\ <uint8\_t>\ \&new\_data)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00425\ }
+\DoxyCodeLine{00433\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classController_a7abbbe5a2dc499f49d5aba4d4931986f}{destroyOwnUnit}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00434\ }
+\DoxyCodeLine{00438\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classController_af2d6915e0013c0aa0a843ba7bb25a6bb}{defragment}}()\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00439\ \};}
+
+\end{DoxyCode}

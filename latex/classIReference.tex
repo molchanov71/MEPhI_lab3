@@ -1,0 +1,106 @@
+\doxysection{IReference Class Reference}
+\hypertarget{classIReference}{}\label{classIReference}\index{IReference@{IReference}}
+
+
+Интерфейс ссылки  
+
+
+
+
+{\ttfamily \+\#include $<$unit.\+hpp$>$}
+
+Inheritance diagram for IReference:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIReference}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual class \doxymbox{\hyperlink{classOwnUnit}{Own\+Unit}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classIReference_a0944b872aeb92e46bb25db963342751d}{get\+Ptr}} ()=0
+\begin{DoxyCompactList}\small\item\em Геттер указателя на элемент \end{DoxyCompactList}\item 
+virtual const \doxymbox{\hyperlink{classOwnUnit}{Own\+Unit}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classIReference_a85ecc3c568ee70622908fd41906f5497}{get\+Ptr}} () const =0
+\begin{DoxyCompactList}\small\item\em Геттер указателя на элемент (константный). \end{DoxyCompactList}\item 
+virtual bool \doxymbox{\hyperlink{classIReference_a7ff43c54ad50fa200e18f720e38b2e1e}{detached}} () const =0
+\begin{DoxyCompactList}\small\item\em Действует ссылка или нет \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIReference_adbb4480c2c76deb372a326354483be9a}{detach}} ()=0
+\begin{DoxyCompactList}\small\item\em Сделать ссылку недействительной \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Интерфейс ссылки 
+
+\label{doc-func-members}
+\Hypertarget{classIReference_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIReference_adbb4480c2c76deb372a326354483be9a}\index{IReference@{IReference}!detach@{detach}}
+\index{detach@{detach}!IReference@{IReference}}
+\doxysubsubsection{\texorpdfstring{detach()}{detach()}}
+{\footnotesize\ttfamily \label{classIReference_adbb4480c2c76deb372a326354483be9a} 
+virtual void IReference::\+detach (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Сделать ссылку недействительной 
+
+
+
+Implemented in \doxymbox{\hyperlink{classReference_ac45528cd597a38dca46210c88fc9363c}{Reference}}.
+
+\Hypertarget{classIReference_a7ff43c54ad50fa200e18f720e38b2e1e}\index{IReference@{IReference}!detached@{detached}}
+\index{detached@{detached}!IReference@{IReference}}
+\doxysubsubsection{\texorpdfstring{detached()}{detached()}}
+{\footnotesize\ttfamily \label{classIReference_a7ff43c54ad50fa200e18f720e38b2e1e} 
+virtual bool IReference::\+detached (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Действует ссылка или нет 
+
+\begin{DoxyReturn}{Returns}
+Является ли ссылка недействительной 
+\end{DoxyReturn}
+
+
+Implemented in \doxymbox{\hyperlink{classReference_a1314bf84df443059ba35a8fc6f52f484}{Reference}}.
+
+\Hypertarget{classIReference_a85ecc3c568ee70622908fd41906f5497}\index{IReference@{IReference}!getPtr@{getPtr}}
+\index{getPtr@{getPtr}!IReference@{IReference}}
+\doxysubsubsection{\texorpdfstring{getPtr()}{getPtr()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classIReference_a85ecc3c568ee70622908fd41906f5497} 
+virtual const \doxymbox{\hyperlink{classOwnUnit}{Own\+Unit}} \texorpdfstring{$\ast$}{*} IReference::\+get\+Ptr (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Геттер указателя на элемент (константный). 
+
+\begin{DoxyReturn}{Returns}
+Константный указатель на соответствующий элемент 
+\end{DoxyReturn}
+
+
+Implemented in \doxymbox{\hyperlink{classReference_a78e2d03356f214a27c47bde0cd1cc5c9}{Reference}}.
+
+\Hypertarget{classIReference_a0944b872aeb92e46bb25db963342751d}\index{IReference@{IReference}!getPtr@{getPtr}}
+\index{getPtr@{getPtr}!IReference@{IReference}}
+\doxysubsubsection{\texorpdfstring{getPtr()}{getPtr()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classIReference_a0944b872aeb92e46bb25db963342751d} 
+virtual class \doxymbox{\hyperlink{classOwnUnit}{Own\+Unit}} \texorpdfstring{$\ast$}{*} IReference::\+get\+Ptr (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Геттер указателя на элемент 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classOwnUnit}{Own\+Unit} \texorpdfstring{$\ast$}{*} -\/ указатель на соответствующий элемент 
+\end{DoxyReturn}
+
+
+Implemented in \doxymbox{\hyperlink{classReference_a8ee70955df739f1e6b5f59dec339d86b}{Reference}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+entity/\+unit.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,123 @@
+\doxysection{IShared\+Manager Class Reference}
+\hypertarget{classISharedManager}{}\label{classISharedManager}\index{ISharedManager@{ISharedManager}}
+
+
+Интерфейс взаимодействия с разделяемыми сегментами  
+
+
+
+
+{\ttfamily \+\#include $<$program.\+hpp$>$}
+
+Inheritance diagram for IShared\+Manager:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classISharedManager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{classISharedManager_a94a36f5120468bcf056080d64888728d}{get\+Access}} (std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classAbstractShared}{Abstract\+Shared}} $>$ sptr)=0
+\begin{DoxyCompactList}\small\item\em Получить доступ к разделяемому сегменту \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classISharedManager_afd634d72e1c2f17a68ca86bd2e0522fe}{detach\+Access}} (const std::\+string \&name)=0
+\begin{DoxyCompactList}\small\item\em Отделить разделяемый сегмент \end{DoxyCompactList}\item 
+virtual bool \doxymbox{\hyperlink{classISharedManager_a854c7ad491cc16bd4830f5c90b6f21e8}{has\+Shared}} (const std::\+string \&name) const =0
+\begin{DoxyCompactList}\small\item\em Есть ли у программы доступ к разделяемому сегменту с данным именем \end{DoxyCompactList}\item 
+virtual const \doxymbox{\hyperlink{classTable}{Table}}$<$ std::\+string, std::\+weak\+\_\+ptr$<$ \doxymbox{\hyperlink{classAbstractShared}{Abstract\+Shared}} $>$ $>$ \& \doxymbox{\hyperlink{classISharedManager_a834f7a0f535357516e1a00f9609eeb12}{get\+Shared\+Units}} () const =0
+\begin{DoxyCompactList}\small\item\em Геттер таблицы всех разделяемых сегментов \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Интерфейс взаимодействия с разделяемыми сегментами 
+
+\label{doc-func-members}
+\Hypertarget{classISharedManager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classISharedManager_afd634d72e1c2f17a68ca86bd2e0522fe}\index{ISharedManager@{ISharedManager}!detachAccess@{detachAccess}}
+\index{detachAccess@{detachAccess}!ISharedManager@{ISharedManager}}
+\doxysubsubsection{\texorpdfstring{detachAccess()}{detachAccess()}}
+{\footnotesize\ttfamily \label{classISharedManager_afd634d72e1c2f17a68ca86bd2e0522fe} 
+virtual void IShared\+Manager::\+detach\+Access (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Отделить разделяемый сегмент 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя разделяемого сегмента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если сегмент не найден \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classProgram_a7f07daf3d05952d967c469bf9c545298}{Program}}.
+
+\Hypertarget{classISharedManager_a94a36f5120468bcf056080d64888728d}\index{ISharedManager@{ISharedManager}!getAccess@{getAccess}}
+\index{getAccess@{getAccess}!ISharedManager@{ISharedManager}}
+\doxysubsubsection{\texorpdfstring{getAccess()}{getAccess()}}
+{\footnotesize\ttfamily \label{classISharedManager_a94a36f5120468bcf056080d64888728d} 
+virtual void IShared\+Manager::\+get\+Access (\begin{DoxyParamCaption}\item[{std::\+shared\+\_\+ptr$<$ \doxymbox{\hyperlink{classAbstractShared}{Abstract\+Shared}} $>$}]{sptr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Получить доступ к разделяемому сегменту 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sptr} & Указатель на разделяемый сегмент \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \doxymbox{\hyperlink{classProgram_ae5773ef6ff2af3277b641deea8a2153e}{Program}}.
+
+\Hypertarget{classISharedManager_a834f7a0f535357516e1a00f9609eeb12}\index{ISharedManager@{ISharedManager}!getSharedUnits@{getSharedUnits}}
+\index{getSharedUnits@{getSharedUnits}!ISharedManager@{ISharedManager}}
+\doxysubsubsection{\texorpdfstring{getSharedUnits()}{getSharedUnits()}}
+{\footnotesize\ttfamily \label{classISharedManager_a834f7a0f535357516e1a00f9609eeb12} 
+virtual const \doxymbox{\hyperlink{classTable}{Table}}$<$ std::\+string, std::\+weak\+\_\+ptr$<$ \doxymbox{\hyperlink{classAbstractShared}{Abstract\+Shared}} $>$ $>$ \& IShared\+Manager::\+get\+Shared\+Units (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Геттер таблицы всех разделяемых сегментов 
+
+\begin{DoxyReturn}{Returns}
+Константную ссылку на таблицу всех разделяемых сегментов 
+\end{DoxyReturn}
+
+
+Implemented in \doxymbox{\hyperlink{classProgram_aced4075113cf00b0cb5cc7fb6abf8f15}{Program}}.
+
+\Hypertarget{classISharedManager_a854c7ad491cc16bd4830f5c90b6f21e8}\index{ISharedManager@{ISharedManager}!hasShared@{hasShared}}
+\index{hasShared@{hasShared}!ISharedManager@{ISharedManager}}
+\doxysubsubsection{\texorpdfstring{hasShared()}{hasShared()}}
+{\footnotesize\ttfamily \label{classISharedManager_a854c7ad491cc16bd4830f5c90b6f21e8} 
+virtual bool IShared\+Manager::\+has\+Shared (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Есть ли у программы доступ к разделяемому сегменту с данным именем 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя искомого сегмента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Есть ли у программы доступ к разделяемому сегменту с данным именем 
+\end{DoxyReturn}
+
+
+Implemented in \doxymbox{\hyperlink{classProgram_afe83619c2b78fcd9060e0b0980b5700a}{Program}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+entity/\+program.\+hpp\end{DoxyCompactItemize}

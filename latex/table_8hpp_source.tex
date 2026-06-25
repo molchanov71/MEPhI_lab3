@@ -1,0 +1,752 @@
+\doxysection{table.\+hpp}
+\hypertarget{table_8hpp_source}{}\label{table_8hpp_source}\index{include/table.hpp@{include/table.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <ranges>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ K,\ \textcolor{keyword}{typename}\ V,\ \textcolor{keywordtype}{bool}\ is\_const\ =\ false>}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classTableIterator}{TableIterator}};}
+\DoxyCodeLine{00013\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ K,\ \textcolor{keyword}{typename}\ V>}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classTableNode}{TableNode}};}
+\DoxyCodeLine{00015\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ K,\ \textcolor{keyword}{typename}\ V,\ \textcolor{keyword}{typename}\ Hash\ =\ std::hash<K>,\ \textcolor{keyword}{typename}\ KeyEqual\ =\ std::equal\_to<K>\ >}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classTable}{Table}};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ K,\ \textcolor{keyword}{class}\ V>}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }TableNode}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{using\ }value\_type\ =\ std::pair<K,\ V>;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00025\ \ \ \ \ value\_type\ value\_;}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ engaged\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ TableNode()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ TableNode\ \&operator\ =(\textcolor{keyword}{const}\ TableNode\ \&)\ \textcolor{keyword}{requires}\ std::copy\_constructible<V>\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ TableNode\ \&operator\ =(\textcolor{keyword}{const}\ TableNode\ \&)\ \textcolor{keyword}{requires}\ (!std::copy\_constructible<V>)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{explicit}\ TableNode(value\_type\ \&\&v)\ :\ value\_(std::move(v)),\ engaged(\textcolor{keyword}{true})\ \{\}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ empty()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ !engaged;\ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ value\_type\ \&value()\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ value\_;\ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{const}\ value\_type\ \&value()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ value\_;\ \}}
+\DoxyCodeLine{00041\ \};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{template}<\textcolor{keyword}{typename}\ K,\ \textcolor{keyword}{typename}\ V,\ \textcolor{keywordtype}{bool}\ is\_const>}
+\DoxyCodeLine{00044\ \textcolor{keyword}{class\ }TableIterator}
+\DoxyCodeLine{00045\ \{}
+\DoxyCodeLine{00046\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{using\ }key\_type\ =\ K;}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{using\ }mapped\_type\ =\ V;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{using\ }value\_type\ =\ std::pair<const\ K,\ V>;}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{using\ }difference\_type\ =\ ptrdiff\_t;}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{using\ }pointer\ =\ std::conditional\_t<is\_const,\ const\ value\_type,\ value\_type>\ *;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{using\ }reference\ =\ std::conditional\_t<is\_const,\ const\ value\_type,\ value\_type>\ \&;}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{using\ }iterator\_category\ =\ std::forward\_iterator\_tag;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{using\ }iterator\_concept\ =\ std::forward\_iterator\_tag;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{using\ }Bucket\ =\ std::list<value\_type>;}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{using\ }bucket\_iterator\ =\ std::conditional\_t<is\_const,\ typename\ Bucket::const\_iterator,\ typename\ Bucket::iterator>;}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{using\ }bucket\_container\ =\ std::conditional\_t<is\_const,\ const\ std::vector<Bucket>,\ std::vector<Bucket>\ >;}
+\DoxyCodeLine{00060\ \ \ \ \ bucket\_container\ *buckets;}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ bucket\_index;}
+\DoxyCodeLine{00062\ \ \ \ \ bucket\_iterator\ it;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{typename},\ \textcolor{keyword}{typename},\ \textcolor{keyword}{typename},\ \textcolor{keyword}{typename}>}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{friend}\ \textcolor{keyword}{class\ }Table;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{friend}\ TableIterator<K,\ V,\ !is\_const>;}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ advance\_to\_valid()}
+\DoxyCodeLine{00070\ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (bucket\_index\ <\ buckets-\/>size()\ \&\&\ (*buckets)[bucket\_index].empty())}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ ++bucket\_index;}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bucket\_index\ <\ buckets-\/>size())}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ it\ =\ (*buckets)[bucket\_index].begin();}
+\DoxyCodeLine{00075\ \ \ \ \ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00078\ \ \ \ \ TableIterator()\ noexcept\ :\ buckets(\textcolor{keyword}{nullptr}),\ bucket\_index(0),\ it()\ \{\};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ TableIterator(std::vector<Bucket>\ *buckets\_ptr,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ index,}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bucket\_iterator\ it\_)\ noexcept\ :\ buckets(buckets\_ptr),\ bucket\_index(index),\ it(it\_)}
+\DoxyCodeLine{00082\ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buckets\ \&\&\ bucket\_index\ <\ buckets-\/>size()\ \&\&\ it\ ==\ (*buckets)[bucket\_index].end())}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ advance\_to\_valid();}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ TableIterator(\textcolor{keyword}{const}\ std::vector<Bucket>\ *buckets\_ptr,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ index,}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bucket\_iterator\ it\_)\ noexcept\ :\ buckets(\textcolor{keyword}{const\_cast<}std::vector<Bucket>\ *\textcolor{keyword}{>}(buckets\_ptr)),}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bucket\_index(index),\ it(it\_)}
+\DoxyCodeLine{00092\ \ \ \ \ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buckets\ \&\&\ bucket\_index\ <\ buckets-\/>size()\ \&\&\ it\ ==\ (*buckets)[bucket\_index].end())}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ advance\_to\_valid();}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keywordtype}{bool}\ B\ =\ is\_const>\ \textcolor{keyword}{requires}\ B}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{explicit}\ TableIterator(\textcolor{keyword}{const}\ TableIterator<K,\ V,\ false>\ \&other)\ noexcept\ :\ buckets(other.buckets),}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bucket\_index(other.bucket\_index),}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ it(other.it)\ \{\}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ reference\ operator\ *()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ *it;\ \}}
+\DoxyCodeLine{00105\ \ \ \ \ pointer\ operator\ -\/>()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \&(*it);\ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ TableIterator\ \&operator\ ++()}
+\DoxyCodeLine{00108\ \ \ \ \ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!buckets)}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ ++it;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ ==\ (*buckets)[bucket\_index].end())}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ ++bucket\_index;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ advance\_to\_valid();}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bucket\_index\ ==\ buckets-\/>size())}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ buckets\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ bucket\_index\ =\ 0;}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ it\ =\ bucket\_iterator();}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00124\ \ \ \ \ \}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ TableIterator\ operator\ ++(\textcolor{keywordtype}{int})}
+\DoxyCodeLine{00127\ \ \ \ \ \{}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ TableIterator\ tmp(buckets,\ bucket\_index,\ it);}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ ++(*this);}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ tmp;}
+\DoxyCodeLine{00131\ \ \ \ \ \}}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ ==(\textcolor{keyword}{const}\ TableIterator\ \&other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00134\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!buckets\ \&\&\ !other.buckets)}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!buckets\ ||\ !other.buckets)}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (buckets\ ==\ other.buckets)}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bucket\_index\ ==\ other.bucket\_index\ \&\&\ (bucket\_index\ ==\ buckets-\/>size()\ ||\ it\ ==\ other.it);}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00144\ \ \ \ \ \}}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ !=(\textcolor{keyword}{const}\ TableIterator\ \&other)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00147\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !(*\textcolor{keyword}{this}\ ==\ other);}
+\DoxyCodeLine{00149\ \ \ \ \ \}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ TableIterator(\textcolor{keyword}{const}\ TableIterator\ \&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ TableIterator\ \&operator=(\textcolor{keyword}{const}\ TableIterator\ \&)\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \ \ TableIterator(TableIterator\ \&\&)\ \textcolor{keyword}{noexcept}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ TableIterator\ \&operator=(TableIterator\ \&\&)\ \textcolor{keyword}{noexcept}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00158\ \};}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ K,\ \textcolor{keyword}{class}\ V,\ \textcolor{keyword}{class}\ Hash,\ \textcolor{keyword}{class}\ KeyEqual>}
+\DoxyCodeLine{00161\ \textcolor{keyword}{class\ }Table}
+\DoxyCodeLine{00162\ \{}
+\DoxyCodeLine{00163\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keyword}{using\ }key\_type\ =\ K;}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keyword}{using\ }value\_type\ =\ std::pair<const\ K,\ V>;}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keyword}{using\ }pointer\ =\ value\_type\ *;}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keyword}{using\ }const\_pointer\ =\ \textcolor{keyword}{const}\ value\_type\ *;}
+\DoxyCodeLine{00168\ \ \ \ \ \textcolor{keyword}{using\ }reference\ =\ value\_type\ \&;}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keyword}{using\ }const\_reference\ =\ \textcolor{keyword}{const}\ value\_type\ \&;}
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keyword}{using\ }iterator\ =\ \doxymbox{\hyperlink{classTableIterator}{TableIterator<K,\ V,\ false>}};}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keyword}{using\ }const\_iterator\ =\ \doxymbox{\hyperlink{classTableIterator}{TableIterator<K,\ V,\ true>}};}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keyword}{using\ }difference\_type\ =\ ptrdiff\_t;}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keyword}{using\ }size\_type\ =\ size\_t;}
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keyword}{using\ }hasher\ =\ Hash;}
+\DoxyCodeLine{00175\ \ \ \ \ \textcolor{keyword}{using\ }key\_equal\ =\ KeyEqual;}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keyword}{using\ }node\_type\ =\ \doxymbox{\hyperlink{classTableNode}{TableNode<K,\ V>}};}
+\DoxyCodeLine{00177\ \ \ \ \ \textcolor{keyword}{using\ }allocator\_type\ =\ std::allocator<value\_type>;}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{keyword}{using\ }Bucket\ =\ std::list<value\_type>;}
+\DoxyCodeLine{00181\ \ \ \ \ Hash\ hasher\_;}
+\DoxyCodeLine{00182\ \ \ \ \ std::vector<std::list<value\_type>\ >\ buckets;}
+\DoxyCodeLine{00183\ \ \ \ \ size\_type\ table\_size;}
+\DoxyCodeLine{00184\ \ \ \ \ KeyEqual\ key\_eq\_;}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{float}\ max\_lf;}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keyword}{using\ }local\_iterator\ =\ Bucket::iterator;}
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keyword}{using\ }const\_local\_iterator\ =\ Bucket::const\_iterator;}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{keyword}{explicit}\ Table(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ initial\ =\ 101,\ Hash\ hf\ =\ std::hash<K>(),}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ KeyEqual\ eq\ =\ std::equal\_to<K>())\ :\ hasher\_(hf),\ buckets(initial),\ table\_size(0),\ key\_eq\_(eq),}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_lf(1.0)\ \{\}}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \ \ \ \ Table(\textcolor{keyword}{const}\ Table\ \&)\ \textcolor{keyword}{requires}\ std::copy\_constructible<V>\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ Table(\textcolor{keyword}{const}\ Table\ \&)\ \textcolor{keyword}{requires}\ (!std::copy\_constructible<V>)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ Table(Table\ \&\&other)\ noexcept\ :\ hasher\_(std::move(other.hasher\_)),\ buckets(std::move(other.buckets)),}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ table\_size(other.table\_size),\ key\_eq\_(std::move(other.key\_eq\_)),}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_lf(other.max\_lf)}
+\DoxyCodeLine{00202\ \ \ \ \ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ other.table\_size\ =\ 0;}
+\DoxyCodeLine{00204\ \ \ \ \ \}}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keyword}{template}<std::input\_iterator\ Iter>\ \textcolor{keyword}{requires}\ std::convertible\_to<std::iter\_value\_t<Iter>,\ value\_type>}
+\DoxyCodeLine{00207\ \ \ \ \ Table(Iter\ from,\ Iter\ to,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ initial\ =\ 101,\ Hash\ hf\ =\ std::hash<K>(),}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ KeyEqual\ eq\ =\ std::equal\_to<K>())\ :\ hasher\_(hf),\ buckets(initial),\ table\_size(0),\ key\_eq\_(eq),\ max\_lf(1.0)}
+\DoxyCodeLine{00209\ \ \ \ \ \{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ from;\ it\ !=\ to;\ ++it)}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ insert(*it);}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00214\ \ \ \ \ \}}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \ \ Table(std::initializer\_list<value\_type>\ il,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ initial\ =\ 101,\ Hash\ hf\ =\ std::hash<K>(),}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ KeyEqual\ eq\ =\ std::equal\_to<K>())\ :\ Table(il.begin(),\ il.end(),\ initial,\ hf,\ eq)\ \{\}}
+\DoxyCodeLine{00218\ }
+\DoxyCodeLine{00219\ \ \ \ \ Table\ \&operator\ =(\textcolor{keyword}{const}\ Table\ \&other)\ \textcolor{keyword}{requires}\ (std::copy\_constructible<V>)}
+\DoxyCodeLine{00220\ \ \ \ \ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&other)}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ clear();}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ hasher\_\ =\ other.hasher\_;}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ max\_lf\ =\ other.max\_lf;}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ key\_eq\_\ =\ other.key\_eq\_;}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&[k,\ v]:\ other)}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ insert(\{k,\ v\});}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00231\ \ \ \ \ \}}
+\DoxyCodeLine{00232\ }
+\DoxyCodeLine{00233\ \ \ \ \ Table\ \&operator\ =(\textcolor{keyword}{const}\ Table\ \&other)\ \textcolor{keyword}{requires}\ (!std::copy\_constructible<V>)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \ \ \ \ Table\ \&operator\ =(Table\ \&\&other)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00236\ \ \ \ \ \{}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&other)}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ table\_size\ =\ other.table\_size;}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ max\_lf\ =\ other.max\_lf;}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ key\_eq\_\ =\ other.key\_eq\_;}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ std::swap(hasher\_,\ other.hasher\_);}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ std::swap(buckets,\ other.buckets);}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00246\ \ \ \ \ \}}
+\DoxyCodeLine{00247\ }
+\DoxyCodeLine{00248\ \ \ \ \ Table\ \&operator\ =(std::initializer\_list<value\_type>\ il)}
+\DoxyCodeLine{00249\ \ \ \ \ \{}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ clear();}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&el:\ il)}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ insert(el);}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00256\ \ \ \ \ \}}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}...\ Args>}
+\DoxyCodeLine{00259\ \ \ \ \ std::pair<iterator,\ bool>\ emplace(Args\ \&\&...\ args)}
+\DoxyCodeLine{00260\ \ \ \ \ \{}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ value\_type\ tmp(std::forward<Args>(args)...);}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ K\ \&k\ =\ tmp.first;}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ hasher\_(k)\ \%\ buckets.size();}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&bucket\ =\ buckets[idx];}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ bucket.begin();\ it\ !=\ bucket.end();\ ++it)}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (key\_eq\_(it-\/>first,\ k))}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{iterator(\&buckets,\ idx,\ it),\ \textcolor{keyword}{false}\};}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ bucket.emplace\_back(std::move(tmp));}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ std::prev(bucket.end());}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ ++table\_size;}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{iterator(\&buckets,\ idx,\ it),\ \textcolor{keyword}{true}\};}
+\DoxyCodeLine{00272\ \ \ \ \ \}}
+\DoxyCodeLine{00273\ }
+\DoxyCodeLine{00274\ \ \ \ \ std::pair<iterator,\ bool>\ insert(\textcolor{keyword}{const}\ value\_type\ \&value)}
+\DoxyCodeLine{00275\ \ \ \ \ \{}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ K\ \&k\ =\ value.first;}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ hasher\_(k)\ \%\ buckets.size();}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&bucket\ =\ buckets[idx];}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ bucket.begin();\ it\ !=\ bucket.end();\ ++it)}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (key\_eq\_(it-\/>first,\ k))}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{iterator(\&buckets,\ idx,\ it),\ \textcolor{keyword}{false}\};}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ bucket.push\_back(value);}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ ++table\_size;}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ std::prev(bucket.end());}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{iterator(\&buckets,\ idx,\ it),\ \textcolor{keyword}{true}\};}
+\DoxyCodeLine{00286\ \ \ \ \ \}}
+\DoxyCodeLine{00287\ }
+\DoxyCodeLine{00288\ \ \ \ \ std::pair<iterator,\ bool>\ insert(value\_type\ \&\&value)}
+\DoxyCodeLine{00289\ \ \ \ \ \{}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ K\ \&k\ =\ value.first;}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ hasher\_(k)\ \%\ buckets.size();}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&bucket\ =\ buckets[idx];}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ bucket.begin();\ it\ !=\ bucket.end();\ ++it)}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (key\_eq\_(it-\/>first,\ k))}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{iterator(\&buckets,\ idx,\ it),\ \textcolor{keyword}{false}\};}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ bucket.push\_back(std::move(value));}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ ++table\_size;}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ std::prev(bucket.end());}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{iterator(\&buckets,\ idx,\ it),\ \textcolor{keyword}{true}\};}
+\DoxyCodeLine{00300\ \ \ \ \ \}}
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{keyword}{template}<\textcolor{keyword}{class}\ P>\ \textcolor{keyword}{requires}\ std::convertible\_to<P,\ value\_type>}
+\DoxyCodeLine{00303\ \ \ \ \ std::pair<iterator,\ bool>\ insert(P\ \&\&value)}
+\DoxyCodeLine{00304\ \ \ \ \ \{}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ value\_type\ tmp(std::forward<P>(value));}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ insert(std::move(tmp));}
+\DoxyCodeLine{00307\ \ \ \ \ \}}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00309\ \ \ \ \ \textcolor{keywordtype}{void}\ insert(const\_iterator\ from,\ const\_iterator\ to)}
+\DoxyCodeLine{00310\ \ \ \ \ \{}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ from;\ it\ !=\ to;\ ++it)}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ insert(*it);}
+\DoxyCodeLine{00313\ \ \ \ \ \}}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \ \ \ \ \textcolor{keyword}{template}<std::ranges::input\_range\ R>\ \textcolor{keyword}{requires}\ std::convertible\_to<std::ranges::range\_reference\_t<R>,\ value\_type>}
+\DoxyCodeLine{00316\ \ \ \ \ \textcolor{keywordtype}{void}\ insert\_range(R\ \&\&r)}
+\DoxyCodeLine{00317\ \ \ \ \ \{}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&\&elem:\ r)}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \ \ \ \ insert(std::forward<\textcolor{keyword}{decltype}\ (elem)>(elem));}
+\DoxyCodeLine{00320\ \ \ \ \ \}}
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00322\ \ \ \ \ \textcolor{keywordtype}{void}\ insert(std::initializer\_list<value\_type>\ il)}
+\DoxyCodeLine{00323\ \ \ \ \ \{}
+\DoxyCodeLine{00324\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&\&elem\ :\ il)}
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \ \ \ \ insert(elem);}
+\DoxyCodeLine{00326\ \ \ \ \ \}}
+\DoxyCodeLine{00327\ }
+\DoxyCodeLine{00328\ \ \ \ \ iterator\ insert(node\_type\ \&\&nh)}
+\DoxyCodeLine{00329\ \ \ \ \ \{}
+\DoxyCodeLine{00330\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nh.empty())}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ end();}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ K\ \&k\ =\ nh.value().first;}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ hasher\_(k)\ \%\ buckets.size();}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&bucket\ =\ buckets[idx];}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ bucket.begin();\ it\ !=\ bucket.end();\ ++it)}
+\DoxyCodeLine{00336\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (key\_eq\_(it-\/>first,\ k))}
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ iterator(\&buckets,\ idx,\ it);}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ bucket.push\_front(std::move(nh.value()));}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ bucket.begin();}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ ++table\_size;}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ iterator(\&buckets,\ idx,\ it);}
+\DoxyCodeLine{00342\ \ \ \ \ \}}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00344\ \ \ \ \ iterator\ insert(const\_iterator,\ node\_type\ \&\&nh)}
+\DoxyCodeLine{00345\ \ \ \ \ \{}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ insert(nh);}
+\DoxyCodeLine{00347\ \ \ \ \ \}}
+\DoxyCodeLine{00348\ }
+\DoxyCodeLine{00349\ \ \ \ \ node\_type\ extract(\textcolor{keyword}{const}\ K\ \&k)}
+\DoxyCodeLine{00350\ \ \ \ \ \{}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ hasher\_(k)\ \%\ buckets.size();}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&bucket\ =\ buckets[idx];}
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ bucket.begin();\ it\ !=\ bucket.end();\ ++it)}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (key\_eq\_(it-\/>first,\ k))}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ node\_type\ nh(std::move(*it));}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bucket.erase(it);}
+\DoxyCodeLine{00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/table\_size;}
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ nh;}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ node\_type();}
+\DoxyCodeLine{00362\ \ \ \ \ \}}
+\DoxyCodeLine{00363\ }
+\DoxyCodeLine{00364\ \ \ \ \ node\_type\ extract(iterator\ q)}
+\DoxyCodeLine{00365\ \ \ \ \ \{}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (q.bucket\_index\ >=\ buckets.size())}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ node\_type\{\};}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&bucket\ =\ buckets[q.bucket\_index];}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ q.it;}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ ==\ bucket.end())}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ node\_type\{\};}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ node\_type\ nh(std::move(*it));}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ bucket.erase(it);}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ -\/-\/table\_size;}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ nh;}
+\DoxyCodeLine{00376\ \ \ \ \ \}}
+\DoxyCodeLine{00377\ }
+\DoxyCodeLine{00378\ \ \ \ \ \textcolor{keywordtype}{void}\ merge(Table\ \&other)}
+\DoxyCodeLine{00379\ \ \ \ \ \{}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ ==\ \&other)}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ other.buckets.size();\ ++i)}
+\DoxyCodeLine{00383\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00384\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&src\_bucket\ =\ other.buckets[i];}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ src\_bucket.begin();}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (it\ !=\ src\_bucket.end())}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{const}\ K\ \&k\ =\ it-\/>first;\ find(k)\ !=\ end())}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++it;}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ nh\ =\ other.extract(iterator(\&other.buckets,\ i,\ it++));}
+\DoxyCodeLine{00394\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ insert(std::move(nh));}
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00397\ \ \ \ \ \}}
+\DoxyCodeLine{00398\ }
+\DoxyCodeLine{00399\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ erase(\textcolor{keyword}{const}\ K\ \&k)}
+\DoxyCodeLine{00400\ \ \ \ \ \{}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ hasher\_(k)\ \%\ buckets.size();}
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&bucket\ =\ buckets[idx];}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ bucket.begin();\ it\ !=\ bucket.end();\ ++it)}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (key\_eq\_(k,\ it-\/>first))}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bucket.erase(it);}
+\DoxyCodeLine{00408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ -\/-\/table\_size;}
+\DoxyCodeLine{00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00410\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00411\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00413\ \ \ \ \ \}}
+\DoxyCodeLine{00414\ }
+\DoxyCodeLine{00415\ \ \ \ \ iterator\ erase(iterator\ it)}
+\DoxyCodeLine{00416\ \ \ \ \ \{}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it.buckets\ ==\ \textcolor{keyword}{nullptr}\ ||\ it.bucket\_index\ >=\ buckets.size())}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ end();}
+\DoxyCodeLine{00419\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ it.bucket\_index;}
+\DoxyCodeLine{00420\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&bucket\ =\ buckets[idx];}
+\DoxyCodeLine{00421\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ next\_it\ =\ bucket.erase(it.it);}
+\DoxyCodeLine{00422\ \ \ \ \ \ \ \ \ -\/-\/table\_size;}
+\DoxyCodeLine{00423\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (next\_it\ !=\ bucket.end())}
+\DoxyCodeLine{00424\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ iterator(\&buckets,\ idx,\ next\_it);}
+\DoxyCodeLine{00425\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ idx\ +\ 1;\ i\ <\ buckets.size();\ ++i)}
+\DoxyCodeLine{00426\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!buckets[i].empty())}
+\DoxyCodeLine{00427\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ iterator(\&buckets,\ i,\ buckets[i].begin());}
+\DoxyCodeLine{00428\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ end();}
+\DoxyCodeLine{00429\ \ \ \ \ \}}
+\DoxyCodeLine{00430\ }
+\DoxyCodeLine{00431\ \ \ \ \ iterator\ erase(const\_iterator\ it)}
+\DoxyCodeLine{00432\ \ \ \ \ \{}
+\DoxyCodeLine{00433\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it.buckets\ ==\ \textcolor{keyword}{nullptr}\ ||\ it.bucket\_index\ >=\ buckets.size())}
+\DoxyCodeLine{00434\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ end();}
+\DoxyCodeLine{00435\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ it.bucket\_index;}
+\DoxyCodeLine{00436\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&bucket\ =\ buckets[idx];}
+\DoxyCodeLine{00437\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ next\_it\ =\ bucket.erase(it.it);}
+\DoxyCodeLine{00438\ \ \ \ \ \ \ \ \ -\/-\/table\_size;}
+\DoxyCodeLine{00439\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (next\_it\ !=\ bucket.end())}
+\DoxyCodeLine{00440\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ iterator(\&buckets,\ it.bucket\_index,\ next\_it);}
+\DoxyCodeLine{00441\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ idx\ +\ 1;\ i\ <\ buckets.size();\ ++i)}
+\DoxyCodeLine{00442\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!buckets[i].empty())}
+\DoxyCodeLine{00443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ iterator(\&buckets,\ i,\ buckets[i].begin());}
+\DoxyCodeLine{00444\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ end();}
+\DoxyCodeLine{00445\ \ \ \ \ \}}
+\DoxyCodeLine{00446\ }
+\DoxyCodeLine{00447\ \ \ \ \ iterator\ erase(const\_iterator\ from,\ const\_iterator\ to)}
+\DoxyCodeLine{00448\ \ \ \ \ \{}
+\DoxyCodeLine{00449\ \ \ \ \ \ \ \ \ const\_iterator\ it\ =\ from;}
+\DoxyCodeLine{00450\ \ \ \ \ \ \ \ \ iterator\ res\ =\ end();}
+\DoxyCodeLine{00451\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (it\ !=\ to)}
+\DoxyCodeLine{00452\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00453\ \ \ \ \ \ \ \ \ \ \ \ \ res\ =\ erase(it);}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \ \ \ \ it\ =\ const\_iterator(res);}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00456\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ res;}
+\DoxyCodeLine{00457\ \ \ \ \ \}}
+\DoxyCodeLine{00458\ }
+\DoxyCodeLine{00459\ \ \ \ \ iterator\ find(\textcolor{keyword}{const}\ K\ \&k)}
+\DoxyCodeLine{00460\ \ \ \ \ \{}
+\DoxyCodeLine{00461\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ hasher\_(k)\ \%\ buckets.size();}
+\DoxyCodeLine{00462\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&bucket\ =\ buckets[idx];}
+\DoxyCodeLine{00463\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ bucket.begin();\ it\ !=\ bucket.end();\ ++it)}
+\DoxyCodeLine{00464\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00465\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (key\_eq\_(k,\ it-\/>first))}
+\DoxyCodeLine{00466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ iterator(\&buckets,\ idx,\ it);}
+\DoxyCodeLine{00467\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ end();}
+\DoxyCodeLine{00469\ \ \ \ \ \}}
+\DoxyCodeLine{00470\ }
+\DoxyCodeLine{00471\ \ \ \ \ const\_iterator\ find(\textcolor{keyword}{const}\ K\ \&k)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00472\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ hasher\_(k)\ \%\ buckets.size();}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&bucket\ =\ buckets[idx];}
+\DoxyCodeLine{00475\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ bucket.begin();\ it\ !=\ bucket.end();\ ++it)}
+\DoxyCodeLine{00476\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00477\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (key\_eq\_(k,\ it-\/>first))}
+\DoxyCodeLine{00478\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ const\_iterator(\&buckets,\ idx,\ it);}
+\DoxyCodeLine{00479\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ end();}
+\DoxyCodeLine{00481\ \ \ \ \ \}}
+\DoxyCodeLine{00482\ }
+\DoxyCodeLine{00483\ \ \ \ \ \textcolor{keywordtype}{bool}\ contains(\textcolor{keyword}{const}\ K\ \&k)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00484\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ find(k)\ !=\ end();}
+\DoxyCodeLine{00486\ \ \ \ \ \}}
+\DoxyCodeLine{00487\ }
+\DoxyCodeLine{00488\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ bucket\_count()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00489\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00490\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buckets.size();}
+\DoxyCodeLine{00491\ \ \ \ \ \}}
+\DoxyCodeLine{00492\ }
+\DoxyCodeLine{00493\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ max\_bucket\_count()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00494\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buckets.max\_size();}
+\DoxyCodeLine{00496\ \ \ \ \ \}}
+\DoxyCodeLine{00497\ }
+\DoxyCodeLine{00498\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ bucket(\textcolor{keyword}{const}\ K\ \&k)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00499\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ hasher\_(k)\ \%\ buckets.size();}
+\DoxyCodeLine{00501\ \ \ \ \ \}}
+\DoxyCodeLine{00502\ }
+\DoxyCodeLine{00503\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ bucket\_size(\textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ n)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00504\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00505\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ >=\ buckets.size())}
+\DoxyCodeLine{00506\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00507\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buckets[n].size();}
+\DoxyCodeLine{00508\ \ \ \ \ \}}
+\DoxyCodeLine{00509\ }
+\DoxyCodeLine{00510\ \ \ \ \ V\ \&operator\ [](\textcolor{keyword}{const}\ K\ \&k)}
+\DoxyCodeLine{00511\ \ \ \ \ \{}
+\DoxyCodeLine{00512\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ hasher\_(k)\ \%\ buckets.size();}
+\DoxyCodeLine{00513\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&bucket\ =\ buckets[idx];}
+\DoxyCodeLine{00514\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ bucket.begin();\ it\ !=\ bucket.end();\ ++it)}
+\DoxyCodeLine{00515\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00516\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (key\_eq\_(it-\/>first,\ k))}
+\DoxyCodeLine{00517\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;}
+\DoxyCodeLine{00518\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00519\ \ \ \ \ \ \ \ \ bucket.emplace\_back(k,\ V\{\});}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ ++table\_size;}
+\DoxyCodeLine{00521\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bucket.back().second;}
+\DoxyCodeLine{00522\ \ \ \ \ \}}
+\DoxyCodeLine{00523\ }
+\DoxyCodeLine{00524\ \ \ \ \ V\ \&operator\ [](K\ \&\&k)}
+\DoxyCodeLine{00525\ \ \ \ \ \{}
+\DoxyCodeLine{00526\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ hasher\_(k)\ \%\ buckets.size();}
+\DoxyCodeLine{00527\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&bucket\ =\ buckets[idx];}
+\DoxyCodeLine{00528\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ bucket.begin();\ it\ !=\ bucket.end();\ ++it)}
+\DoxyCodeLine{00529\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00530\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (key\_eq\_(it-\/>first,\ k))}
+\DoxyCodeLine{00531\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;}
+\DoxyCodeLine{00532\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00533\ \ \ \ \ \ \ \ \ bucket.emplace\_back(std::move(k),\ V\{\});}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ ++table\_size;}
+\DoxyCodeLine{00535\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bucket.back().second;}
+\DoxyCodeLine{00536\ \ \ \ \ \}}
+\DoxyCodeLine{00537\ }
+\DoxyCodeLine{00538\ \ \ \ \ V\ \&at(\textcolor{keyword}{const}\ K\ \&k)}
+\DoxyCodeLine{00539\ \ \ \ \ \{}
+\DoxyCodeLine{00540\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ hasher\_(k)\ \%\ buckets.size();}
+\DoxyCodeLine{00541\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&bucket\ =\ buckets[idx];}
+\DoxyCodeLine{00542\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ bucket.begin();\ it\ !=\ bucket.end();\ ++it)}
+\DoxyCodeLine{00543\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (key\_eq\_(it-\/>first,\ k))}
+\DoxyCodeLine{00544\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;}
+\DoxyCodeLine{00545\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}No\ such\ value"{}});}
+\DoxyCodeLine{00546\ \ \ \ \ \}}
+\DoxyCodeLine{00547\ }
+\DoxyCodeLine{00548\ \ \ \ \ \textcolor{keyword}{const}\ V\ \&at(\textcolor{keyword}{const}\ K\ \&k)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00549\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx\ =\ hasher\_(k)\ \%\ buckets.size();}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&bucket\ =\ buckets[idx];}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ =\ bucket.begin();\ it\ !=\ bucket.end();\ ++it)}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (key\_eq\_(it-\/>first,\ k))}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}No\ such\ value"{}});}
+\DoxyCodeLine{00556\ \ \ \ \ \}}
+\DoxyCodeLine{00557\ }
+\DoxyCodeLine{00558\ \ \ \ \ \textcolor{keywordtype}{void}\ clear()}
+\DoxyCodeLine{00559\ \ \ \ \ \{}
+\DoxyCodeLine{00560\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&bucket:\ buckets)}
+\DoxyCodeLine{00561\ \ \ \ \ \ \ \ \ \ \ \ \ bucket.clear();}
+\DoxyCodeLine{00562\ \ \ \ \ \ \ \ \ table\_size\ =\ 0;}
+\DoxyCodeLine{00563\ \ \ \ \ \}}
+\DoxyCodeLine{00564\ }
+\DoxyCodeLine{00565\ \ \ \ \ allocator\_type\ get\_allocator()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00566\ \ \ \ \ \{}
+\DoxyCodeLine{00567\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::allocator<value\_type>\{\};}
+\DoxyCodeLine{00568\ \ \ \ \ \}}
+\DoxyCodeLine{00569\ }
+\DoxyCodeLine{00570\ \ \ \ \ \textcolor{keywordtype}{void}\ rehash(size\_type\ n)}
+\DoxyCodeLine{00571\ \ \ \ \ \{}
+\DoxyCodeLine{00572\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ ==\ 0)}
+\DoxyCodeLine{00573\ \ \ \ \ \ \ \ \ \ \ \ \ n\ =\ 1;}
+\DoxyCodeLine{00574\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ size\_type\ required\_buckets\ =\ std::max<size\_type>(}
+\DoxyCodeLine{00575\ \ \ \ \ \ \ \ \ \ \ \ \ 1,\ std::max(n,\ \textcolor{keyword}{static\_cast<}size\_type\textcolor{keyword}{>}(std::ceil(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(table\_size)\ /\ max\_lf))));}
+\DoxyCodeLine{00576\ }
+\DoxyCodeLine{00577\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (required\_buckets\ <=\ buckets.size())}
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ std::vector<Bucket>\ new\_buckets(required\_buckets);}
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&bucket:\ buckets)}
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ \&elem:\ bucket)}
+\DoxyCodeLine{00582\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ new\_idx\ =\ hasher\_(elem.first)\ \%\ required\_buckets;}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_buckets[new\_idx].push\_back(std::move(elem));}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ buckets\ =\ std::move(new\_buckets);}
+\DoxyCodeLine{00587\ \ \ \ \ \}}
+\DoxyCodeLine{00588\ }
+\DoxyCodeLine{00589\ \ \ \ \ \textcolor{keywordtype}{void}\ reserve(\textcolor{keyword}{const}\ size\_type\ n)}
+\DoxyCodeLine{00590\ \ \ \ \ \{}
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ ==\ 0)}
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ \ \ \ \ rehash(0);}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00595\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00596\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ required\_buckets\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(ceil(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(n)\ /\ max\_lf));}
+\DoxyCodeLine{00597\ \ \ \ \ \ \ \ \ rehash(required\_buckets);}
+\DoxyCodeLine{00598\ \ \ \ \ \}}
+\DoxyCodeLine{00599\ }
+\DoxyCodeLine{00600\ \ \ \ \ size\_type\ count(\textcolor{keyword}{const}\ K\ \&k)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00601\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00602\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ contains(k)\ ?\ 1\ :\ 0;}
+\DoxyCodeLine{00603\ \ \ \ \ \}}
+\DoxyCodeLine{00604\ }
+\DoxyCodeLine{00605\ \ \ \ \ std::pair<iterator,\ iterator>\ equal\_range(\textcolor{keyword}{const}\ K\ \&k)}
+\DoxyCodeLine{00606\ \ \ \ \ \{}
+\DoxyCodeLine{00607\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ find(k);}
+\DoxyCodeLine{00608\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ end())}
+\DoxyCodeLine{00609\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{it,\ std::next(it)\};}
+\DoxyCodeLine{00610\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{end(),\ end()\};}
+\DoxyCodeLine{00611\ \ \ \ \ \}}
+\DoxyCodeLine{00612\ }
+\DoxyCodeLine{00613\ \ \ \ \ std::pair<const\_iterator,\ const\_iterator>\ equal\_range(\textcolor{keyword}{const}\ K\ \&k)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00614\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00615\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ find(k);}
+\DoxyCodeLine{00616\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ end())}
+\DoxyCodeLine{00617\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{it,\ std::next(it)\};}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \{end(),\ end()\};}
+\DoxyCodeLine{00619\ \ \ \ \ \}}
+\DoxyCodeLine{00620\ }
+\DoxyCodeLine{00621\ \ \ \ \ iterator\ begin()\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00622\ \ \ \ \ \{}
+\DoxyCodeLine{00623\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ buckets.size();\ ++i)}
+\DoxyCodeLine{00624\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00625\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!buckets[i].empty())}
+\DoxyCodeLine{00626\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ iterator(\&buckets,\ i,\ buckets[i].begin());}
+\DoxyCodeLine{00627\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00628\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ end();}
+\DoxyCodeLine{00629\ \ \ \ \ \}}
+\DoxyCodeLine{00630\ }
+\DoxyCodeLine{00631\ \ \ \ \ iterator\ end()\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00632\ \ \ \ \ \{}
+\DoxyCodeLine{00633\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ iterator\{\};}
+\DoxyCodeLine{00634\ \ \ \ \ \}}
+\DoxyCodeLine{00635\ }
+\DoxyCodeLine{00636\ \ \ \ \ const\_iterator\ begin()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00637\ \ \ \ \ \{}
+\DoxyCodeLine{00638\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ buckets.size();\ ++i)}
+\DoxyCodeLine{00639\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!buckets[i].empty())}
+\DoxyCodeLine{00640\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ const\_iterator(\&buckets,\ i,\ buckets[i].begin());}
+\DoxyCodeLine{00641\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ end();}
+\DoxyCodeLine{00642\ \ \ \ \ \}}
+\DoxyCodeLine{00643\ }
+\DoxyCodeLine{00644\ \ \ \ \ const\_iterator\ end()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00645\ \ \ \ \ \{}
+\DoxyCodeLine{00646\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ const\_iterator\{\};}
+\DoxyCodeLine{00647\ \ \ \ \ \}}
+\DoxyCodeLine{00648\ }
+\DoxyCodeLine{00649\ \ \ \ \ const\_iterator\ cbegin()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00650\ \ \ \ \ \{}
+\DoxyCodeLine{00651\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ buckets.size();\ ++i)}
+\DoxyCodeLine{00652\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!buckets[i].empty())}
+\DoxyCodeLine{00653\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ const\_iterator(\&buckets,\ i,\ buckets[i].begin());}
+\DoxyCodeLine{00654\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ cend();}
+\DoxyCodeLine{00655\ \ \ \ \ \}}
+\DoxyCodeLine{00656\ }
+\DoxyCodeLine{00657\ \ \ \ \ const\_iterator\ cend()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00658\ \ \ \ \ \{}
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ const\_iterator\{\};}
+\DoxyCodeLine{00660\ \ \ \ \ \}}
+\DoxyCodeLine{00661\ }
+\DoxyCodeLine{00662\ \ \ \ \ local\_iterator\ begin(size\_type\ idx)}
+\DoxyCodeLine{00663\ \ \ \ \ \{}
+\DoxyCodeLine{00664\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buckets[idx].begin();}
+\DoxyCodeLine{00665\ \ \ \ \ \}}
+\DoxyCodeLine{00666\ }
+\DoxyCodeLine{00667\ \ \ \ \ local\_iterator\ end(size\_type\ idx)}
+\DoxyCodeLine{00668\ \ \ \ \ \{}
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buckets[idx].end();}
+\DoxyCodeLine{00670\ \ \ \ \ \}}
+\DoxyCodeLine{00671\ }
+\DoxyCodeLine{00672\ \ \ \ \ const\_local\_iterator\ begin(size\_type\ idx)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00673\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00674\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buckets[idx].begin();}
+\DoxyCodeLine{00675\ \ \ \ \ \}}
+\DoxyCodeLine{00676\ }
+\DoxyCodeLine{00677\ \ \ \ \ const\_local\_iterator\ end(size\_type\ idx)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00678\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00679\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buckets[idx].end();}
+\DoxyCodeLine{00680\ \ \ \ \ \}}
+\DoxyCodeLine{00681\ }
+\DoxyCodeLine{00682\ \ \ \ \ const\_local\_iterator\ cbegin(size\_type\ idx)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00683\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00684\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buckets[idx].begin();}
+\DoxyCodeLine{00685\ \ \ \ \ \}}
+\DoxyCodeLine{00686\ }
+\DoxyCodeLine{00687\ \ \ \ \ const\_local\_iterator\ cend(size\_type\ idx)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00688\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00689\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buckets[idx].end();}
+\DoxyCodeLine{00690\ \ \ \ \ \}}
+\DoxyCodeLine{00691\ }
+\DoxyCodeLine{00692\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ ==(\textcolor{keyword}{const}\ Table\ \&other)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00693\ \ \ \ \ \{}
+\DoxyCodeLine{00694\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (size()\ !=\ other.size())}
+\DoxyCodeLine{00695\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00696\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&[k,\ v]:\ *\textcolor{keyword}{this})}
+\DoxyCodeLine{00697\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00698\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ other.find(k);}
+\DoxyCodeLine{00699\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ ==\ other.end()\ ||\ it-\/>second\ !=\ v)}
+\DoxyCodeLine{00700\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00701\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00702\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00703\ \ \ \ \ \}}
+\DoxyCodeLine{00704\ }
+\DoxyCodeLine{00705\ \ \ \ \ \textcolor{keywordtype}{bool}\ operator\ !=(\textcolor{keyword}{const}\ Table\ \&other)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00706\ \ \ \ \ \{}
+\DoxyCodeLine{00707\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !(*\textcolor{keyword}{this}\ ==\ other);}
+\DoxyCodeLine{00708\ \ \ \ \ \}}
+\DoxyCodeLine{00709\ }
+\DoxyCodeLine{00710\ \ \ \ \ \textcolor{keywordtype}{void}\ swap(Table\ \&other)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00711\ \ \ \ \ \{}
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \ \ std::swap(hasher\_,\ other.hasher\_);}
+\DoxyCodeLine{00713\ \ \ \ \ \ \ \ \ std::swap(buckets,\ other.buckets);}
+\DoxyCodeLine{00714\ \ \ \ \ \ \ \ \ std::swap(table\_size,\ other.table\_size);}
+\DoxyCodeLine{00715\ \ \ \ \ \ \ \ \ std::swap(key\_eq\_,\ other.key\_eq\_);}
+\DoxyCodeLine{00716\ \ \ \ \ \ \ \ \ std::swap(max\_lf,\ other.max\_lf);}
+\DoxyCodeLine{00717\ \ \ \ \ \}}
+\DoxyCodeLine{00718\ }
+\DoxyCodeLine{00719\ \ \ \ \ [[nodiscard]]\ size\_type\ size()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ table\_size;\ \}}
+\DoxyCodeLine{00720\ }
+\DoxyCodeLine{00721\ \ \ \ \ [[nodiscard]]\ size\_type\ max\_size()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00722\ \ \ \ \ \{}
+\DoxyCodeLine{00723\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ buckets.max\_size();}
+\DoxyCodeLine{00724\ \ \ \ \ \}}
+\DoxyCodeLine{00725\ }
+\DoxyCodeLine{00726\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{float}\ load\_factor()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00727\ \ \ \ \ \{}
+\DoxyCodeLine{00728\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ bucket\_count()\ ?\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(size())\ /\ bucket\_count()\ :\ 0.0f;}
+\DoxyCodeLine{00729\ \ \ \ \ \}}
+\DoxyCodeLine{00730\ }
+\DoxyCodeLine{00731\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{float}\ max\_load\_factor()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ max\_lf;\ \}}
+\DoxyCodeLine{00732\ }
+\DoxyCodeLine{00733\ \ \ \ \ \textcolor{keywordtype}{void}\ max\_load\_factor(\textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ z)\ \textcolor{keyword}{noexcept}}
+\DoxyCodeLine{00734\ \ \ \ \ \{}
+\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (z\ >\ 0)}
+\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \ \ \ \ max\_lf\ =\ z;}
+\DoxyCodeLine{00737\ \ \ \ \ \}}
+\DoxyCodeLine{00738\ }
+\DoxyCodeLine{00739\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ empty()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ table\_size\ ==\ 0;\ \}}
+\DoxyCodeLine{00740\ }
+\DoxyCodeLine{00741\ \ \ \ \ hasher\ hash\_function()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ hasher\_;\ \}}
+\DoxyCodeLine{00742\ }
+\DoxyCodeLine{00743\ \ \ \ \ key\_equal\ key\_eq()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \{\ \textcolor{keywordflow}{return}\ key\_eq\_;\ \}}
+\DoxyCodeLine{00744\ }
+\DoxyCodeLine{00745\ \ \ \ \ \string~Table()\ \textcolor{keyword}{noexcept}\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00746\ \};}
+
+\end{DoxyCode}

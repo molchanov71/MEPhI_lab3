@@ -1,0 +1,30 @@
+\doxysection{input\+\_\+index\+\_\+dialog.\+hpp}
+\hypertarget{input__index__dialog_8hpp_source}{}\label{input__index__dialog_8hpp_source}\index{include/dialogs/input\_index\_dialog.hpp@{include/dialogs/input\_index\_dialog.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <QDialog>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ QT\_BEGIN\_NAMESPACE}
+\DoxyCodeLine{00006\ \textcolor{keyword}{namespace\ }Ui}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \ \ \ \ \textcolor{keyword}{class\ }InputIndexDialog;}
+\DoxyCodeLine{00009\ \}}
+\DoxyCodeLine{00010\ QT\_END\_NAMESPACE}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }InputIndexDialog\ final\ :\ \textcolor{keyword}{public}\ QDialog}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00015\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keyword}{explicit}\ InputIndexDialog(\textcolor{keywordtype}{size\_t},\ QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ value()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \string~InputIndexDialog()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00021\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022\ \ \ \ \ Ui::InputIndexDialog\ *ui;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ val;}
+\DoxyCodeLine{00024\ \};}
+
+\end{DoxyCode}

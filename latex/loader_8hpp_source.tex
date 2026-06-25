@@ -1,0 +1,76 @@
+\doxysection{loader.\+hpp}
+\hypertarget{loader_8hpp_source}{}\label{loader_8hpp_source}\index{loader/loader.hpp@{loader/loader.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <memory>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classView}{View}};}
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIController}{IController}};}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIMemoryService}{IMemoryService}};}
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIProgramService}{IProgramService}};}
+\DoxyCodeLine{00009\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classISharedService}{ISharedService}};}
+\DoxyCodeLine{00010\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIIndexedService}{IIndexedService}};}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIUnitService}{IUnitService}};}
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIRefService}{IRefService}};}
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIProgramRepository}{IProgramRepository}};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classLoader}{Loader}}}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classView}{View}}\ \&getView()\ =\ 0;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIController}{IController}}\ \&getController()\ =\ 0;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIMemoryService}{IMemoryService}}\ \&getMemoryService()\ =\ 0;}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIProgramService}{IProgramService}}\ \&getProgramService()\ =\ 0;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classISharedService}{ISharedService}}\ \&getSharedService()\ =\ 0;}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIIndexedService}{IIndexedService}}\ \&getIndexedService()\ =\ 0;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIUnitService}{IUnitService}}\ \&getUnitService()\ =\ 0;}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIRefService}{IRefService}}\ \&getRefService()\ =\ 0;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIProgramRepository}{IProgramRepository}}\ \&getRepo()\ =\ 0;}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classLoader}{\string~Loader}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00037\ \};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classStaticLoader}{StaticLoader}}\ final\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classLoader}{Loader}}}
+\DoxyCodeLine{00040\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ std::unique\_ptr\ <View>\ view;}
+\DoxyCodeLine{00042\ \ \ \ \ std::unique\_ptr\ <IController>\ controller;}
+\DoxyCodeLine{00043\ \ \ \ \ std::unique\_ptr\ <IMemoryService>\ mem\_service;}
+\DoxyCodeLine{00044\ \ \ \ \ std::unique\_ptr\ <IProgramService>\ prog\_service;}
+\DoxyCodeLine{00045\ \ \ \ \ std::unique\_ptr\ <ISharedService>\ sh\_service;}
+\DoxyCodeLine{00046\ \ \ \ \ std::unique\_ptr\ <IIndexedService>\ idx\_service;}
+\DoxyCodeLine{00047\ \ \ \ \ std::unique\_ptr\ <IUnitService>\ unit\_service;}
+\DoxyCodeLine{00048\ \ \ \ \ std::unique\_ptr\ <IRefService>\ ref\_service;}
+\DoxyCodeLine{00049\ \ \ \ \ std::unique\_ptr\ <IProgramRepository>\ repo;}
+\DoxyCodeLine{00050\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00051\ \ \ \ \ \doxymbox{\hyperlink{classView}{View}}\ \&getView()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \doxymbox{\hyperlink{classIController}{IController}}\ \&getController()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \doxymbox{\hyperlink{classIMemoryService}{IMemoryService}}\ \&getMemoryService()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \doxymbox{\hyperlink{classIProgramService}{IProgramService}}\ \&getProgramService()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00058\ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \doxymbox{\hyperlink{classISharedService}{ISharedService}}\ \&getSharedService()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \doxymbox{\hyperlink{classIIndexedService}{IIndexedService}}\ \&getIndexedService()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \doxymbox{\hyperlink{classIUnitService}{IUnitService}}\ \&getUnitService()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \doxymbox{\hyperlink{classIRefService}{IRefService}}\ \&getRefService()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \doxymbox{\hyperlink{classIProgramRepository}{IProgramRepository}}\ \&getRepo()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \doxymbox{\hyperlink{classStaticLoader}{\string~StaticLoader}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00070\ \};}
+
+\end{DoxyCode}

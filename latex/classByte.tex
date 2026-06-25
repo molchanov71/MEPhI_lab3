@@ -1,0 +1,122 @@
+\doxysection{Byte Class Reference}
+\hypertarget{classByte}{}\label{classByte}\index{Byte@{Byte}}
+
+
+Класс одного байта (хранит в себе значение и флаг, обозначающий его использование).  
+
+
+
+
+{\ttfamily \+\#include $<$repository.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classByte_a27e27fce0d3bb6a781d34413a87a93a0}\label{classByte_a27e27fce0d3bb6a781d34413a87a93a0} 
+{\bfseries Byte} ()
+\begin{DoxyCompactList}\small\item\em Пустой конструктор (инициализирует байт по умолчанию). \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{classByte_ae206a9440902cf5267da37f2392e18df}{is\+Busy}} () const
+\begin{DoxyCompactList}\small\item\em Геттер флага байта \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classByte_aa912f9f0fe97a3ef07cd3e229df8d43c}{grant}} ()
+\begin{DoxyCompactList}\small\item\em Выдать этот байт программе (ставит флаг в значение true). \end{DoxyCompactList}\item 
+uint8\+\_\+t \doxymbox{\hyperlink{classByte_a709001e675aca40ffba01d4303a78cd5}{read}} () const
+\begin{DoxyCompactList}\small\item\em Геттер значения \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classByte_ab7dc39dd229c24ceb5c247b6e59a4ef6}{write}} (uint8\+\_\+t new\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Сеттер значения \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classByte_a45d0aba33b7e72be0f692cb0cad1df88}{detach}} ()
+\begin{DoxyCompactList}\small\item\em Освободить байт (ставит флаг в значение false). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Класс одного байта (хранит в себе значение и флаг, обозначающий его использование). 
+
+\label{doc-func-members}
+\Hypertarget{classByte_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classByte_a45d0aba33b7e72be0f692cb0cad1df88}\index{Byte@{Byte}!detach@{detach}}
+\index{detach@{detach}!Byte@{Byte}}
+\doxysubsubsection{\texorpdfstring{detach()}{detach()}}
+{\footnotesize\ttfamily \label{classByte_a45d0aba33b7e72be0f692cb0cad1df88} 
+void Byte::\+detach (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Освободить байт (ставит флаг в значение false). 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classDoubleFreeError}{Double\+Free\+Error}} & Если байт же освобождён \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classByte_aa912f9f0fe97a3ef07cd3e229df8d43c}\index{Byte@{Byte}!grant@{grant}}
+\index{grant@{grant}!Byte@{Byte}}
+\doxysubsubsection{\texorpdfstring{grant()}{grant()}}
+{\footnotesize\ttfamily \label{classByte_aa912f9f0fe97a3ef07cd3e229df8d43c} 
+void Byte::\+grant (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Выдать этот байт программе (ставит флаг в значение true). 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+runtime\+\_\+error} & Если байт уже выдан \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classByte_ae206a9440902cf5267da37f2392e18df}\index{Byte@{Byte}!isBusy@{isBusy}}
+\index{isBusy@{isBusy}!Byte@{Byte}}
+\doxysubsubsection{\texorpdfstring{isBusy()}{isBusy()}}
+{\footnotesize\ttfamily \label{classByte_ae206a9440902cf5267da37f2392e18df} 
+bool Byte::\+is\+Busy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}}
+
+
+
+Геттер флага байта 
+
+\begin{DoxyReturn}{Returns}
+Владеет ли какая-\/либо переменная этим байтом 
+\end{DoxyReturn}
+\Hypertarget{classByte_a709001e675aca40ffba01d4303a78cd5}\index{Byte@{Byte}!read@{read}}
+\index{read@{read}!Byte@{Byte}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily \label{classByte_a709001e675aca40ffba01d4303a78cd5} 
+uint8\+\_\+t Byte::\+read (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}}
+
+
+
+Геттер значения 
+
+\begin{DoxyReturn}{Returns}
+Значение байта 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если байт не используется (флаг false) \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{classByte_ab7dc39dd229c24ceb5c247b6e59a4ef6}\index{Byte@{Byte}!write@{write}}
+\index{write@{write}!Byte@{Byte}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily \label{classByte_ab7dc39dd229c24ceb5c247b6e59a4ef6} 
+void Byte::\+write (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{new\+\_\+value}{}\end{DoxyParamCaption})}
+
+
+
+Сеттер значения 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+value} & Новое значение \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если байт не используется (флаг false) \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+repository.\+hpp\item 
+src/\+model/\+repository/\+repository.\+cpp\end{DoxyCompactItemize}

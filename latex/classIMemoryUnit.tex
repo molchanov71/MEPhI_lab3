@@ -1,0 +1,106 @@
+\doxysection{IMemory\+Unit Class Reference}
+\hypertarget{classIMemoryUnit}{}\label{classIMemoryUnit}\index{IMemoryUnit@{IMemoryUnit}}
+
+
+Интерфейс физического элемента памяти  
+
+
+
+
+{\ttfamily \+\#include $<$unit.\+hpp$>$}
+
+Inheritance diagram for IMemory\+Unit:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{classIMemoryUnit}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual size\+\_\+t \doxymbox{\hyperlink{classIMemoryUnit_af7e2efc674c91ffc19ecd4e6b8cd9580}{get\+Total\+Size}} () const =0
+\begin{DoxyCompactList}\small\item\em Полный размер элемента в памяти \end{DoxyCompactList}\item 
+virtual size\+\_\+t \doxymbox{\hyperlink{classIMemoryUnit_ab080f0cece697c1db2459498981258a9}{get\+Address}} () const =0
+\begin{DoxyCompactList}\small\item\em Адрес элемента в памяти \end{DoxyCompactList}\item 
+virtual std::\+string \doxymbox{\hyperlink{classIMemoryUnit_ae52e436ae57a1ecef0346f321271d09e}{get\+Type}} () const =0
+\begin{DoxyCompactList}\small\item\em Тип элемента (в данной работе:\+ Variable/\+\+Array/\+\+Shared). \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIMemoryUnit_ac86f5f437aeb669e37e58641d485ebed}{set\+Address}} (size\+\_\+t)=0
+\begin{DoxyCompactList}\small\item\em Сеттер адреса (при дефрагментации). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Интерфейс физического элемента памяти 
+
+\label{doc-func-members}
+\Hypertarget{classIMemoryUnit_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIMemoryUnit_ab080f0cece697c1db2459498981258a9}\index{IMemoryUnit@{IMemoryUnit}!getAddress@{getAddress}}
+\index{getAddress@{getAddress}!IMemoryUnit@{IMemoryUnit}}
+\doxysubsubsection{\texorpdfstring{getAddress()}{getAddress()}}
+{\footnotesize\ttfamily \label{classIMemoryUnit_ab080f0cece697c1db2459498981258a9} 
+virtual size\+\_\+t IMemory\+Unit::\+get\+Address (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Адрес элемента в памяти 
+
+\begin{DoxyReturn}{Returns}
+Адрес (индекс в массиве байтов) 
+\end{DoxyReturn}
+
+
+Implemented in \doxymbox{\hyperlink{classAbstractMemoryUnit_a7267e158e65f00a74fddc3f04e6e894b}{Abstract\+Memory\+Unit}}.
+
+\Hypertarget{classIMemoryUnit_af7e2efc674c91ffc19ecd4e6b8cd9580}\index{IMemoryUnit@{IMemoryUnit}!getTotalSize@{getTotalSize}}
+\index{getTotalSize@{getTotalSize}!IMemoryUnit@{IMemoryUnit}}
+\doxysubsubsection{\texorpdfstring{getTotalSize()}{getTotalSize()}}
+{\footnotesize\ttfamily \label{classIMemoryUnit_af7e2efc674c91ffc19ecd4e6b8cd9580} 
+virtual size\+\_\+t IMemory\+Unit::\+get\+Total\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Полный размер элемента в памяти 
+
+\begin{DoxyReturn}{Returns}
+Размер элемента 
+\end{DoxyReturn}
+
+
+Implemented in \doxymbox{\hyperlink{classAbstractMemoryUnit_a0334245161b37ab95263c2fec3b9c474}{Abstract\+Memory\+Unit}}.
+
+\Hypertarget{classIMemoryUnit_ae52e436ae57a1ecef0346f321271d09e}\index{IMemoryUnit@{IMemoryUnit}!getType@{getType}}
+\index{getType@{getType}!IMemoryUnit@{IMemoryUnit}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{classIMemoryUnit_ae52e436ae57a1ecef0346f321271d09e} 
+virtual std::\+string IMemory\+Unit::\+get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Тип элемента (в данной работе:\+ Variable/\+\+Array/\+\+Shared). 
+
+\begin{DoxyReturn}{Returns}
+Строка ("{}\+Variable"{}/\+"{}\+Array"{}/\+"{}\+Shared"{}) 
+\end{DoxyReturn}
+
+
+Implemented in \doxymbox{\hyperlink{classArray_ac7b2821ca734787ab2009301e04d6ea0}{Array}}, \doxymbox{\hyperlink{classShared_a4f0d7a41f124d89645ed6a743092d08c}{Shared}}, and \doxymbox{\hyperlink{classVariable_ae3bcc79e3cfdab6fe4474f846000ff06}{Variable}}.
+
+\Hypertarget{classIMemoryUnit_ac86f5f437aeb669e37e58641d485ebed}\index{IMemoryUnit@{IMemoryUnit}!setAddress@{setAddress}}
+\index{setAddress@{setAddress}!IMemoryUnit@{IMemoryUnit}}
+\doxysubsubsection{\texorpdfstring{setAddress()}{setAddress()}}
+{\footnotesize\ttfamily \label{classIMemoryUnit_ac86f5f437aeb669e37e58641d485ebed} 
+virtual void IMemory\+Unit::\+set\+Address (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Сеттер адреса (при дефрагментации). 
+
+
+
+Implemented in \doxymbox{\hyperlink{classAbstractMemoryUnit_ad466d8149aa9fb108c39a2567597ffbc}{Abstract\+Memory\+Unit}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+entity/\+unit.\+hpp\end{DoxyCompactItemize}

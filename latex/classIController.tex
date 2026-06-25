@@ -1,0 +1,621 @@
+\doxysection{IController Class Reference}
+\hypertarget{classIController}{}\label{classIController}\index{IController@{IController}}
+
+
+Интерфейс контроллера (содержит методы всех сервисов, в кажом методе использует нужный сервис).  
+
+
+
+
+{\ttfamily \+\#include $<$controller.\+hpp$>$}
+
+Inheritance diagram for IController:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIController}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{classIController_ac2cc30aeaa96a23e86b63a63cc68b6af}{defragment}} () const =0
+\begin{DoxyCompactList}\small\item\em Дефрагментация \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIController_a9da4f1757201ec6d8ae4b31ea8ce9d6d}{create\+Program}} (std::\+string prog\+\_\+path, size\+\_\+t quota)=0
+\begin{DoxyCompactList}\small\item\em Создать программу \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIController_aa755be9b63fe36c612236f61e7f42348}{destroy\+Program}} (const std::\+string \&prog\+\_\+path)=0
+\begin{DoxyCompactList}\small\item\em Удалить программу \end{DoxyCompactList}\item 
+virtual size\+\_\+t \doxymbox{\hyperlink{classIController_a64a7912c59fe5035f7684b932505d5a3}{get\+Total\+Memory\+Usage}} (const std::\+string \&path) const =0
+\begin{DoxyCompactList}\small\item\em Подсчитать общий объём памяти, используемый программой \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIController_a1a0e45af9372973c16dd70feb87166df}{create\+Shared}} (std::\+string unit\+\_\+name, size\+\_\+t total\+\_\+size, size\+\_\+t el\+\_\+size)=0
+\begin{DoxyCompactList}\small\item\em Создать разделяемый сегмент (с выделением памяти). \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIController_ae13f779ef3fc0614f690a66bf1b2f178}{grant\+Shared}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name)=0
+\begin{DoxyCompactList}\small\item\em Предоставить программе доступ к разделяемому сегменту \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIController_a370b19a0b3e550c0277da24b2fae34ab}{revoke\+Shared}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name)=0
+\begin{DoxyCompactList}\small\item\em Отозвать от программы доступ к разделяемому сегменту \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIController_a82bc635f8abb2384d6b504b2d6ded64c}{create\+Array}} (const std::\+string \&prog\+\_\+path, std::\+string unit\+\_\+name, size\+\_\+t total\+\_\+size, size\+\_\+t el\+\_\+size)=0
+\begin{DoxyCompactList}\small\item\em Создать массив (с выделением памяти). \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIController_ac6a6c1f2907ccbfd0529afd69d862ff3}{create\+Ref}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name, const std::\+string \&ref\+\_\+name)=0
+\begin{DoxyCompactList}\small\item\em Создать ссылку \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIController_a476635fa6a250d0d6cf01b0cbac00149}{remove\+Ref}} (const std::\+string \&prog\+\_\+path, const std::\+string \&ref\+\_\+name)=0
+\begin{DoxyCompactList}\small\item\em Удалить ссылку \end{DoxyCompactList}\item 
+virtual std::\+vector$<$ uint8\+\_\+t $>$ \doxymbox{\hyperlink{classIController_a7a74d8201d007416004735b7dc0b07ee}{read\+Index}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name, size\+\_\+t idx) const =0
+\begin{DoxyCompactList}\small\item\em Прочитать данные по индексу \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIController_a20b6f6b1881ff3b45e49ee667892ad6d}{write\+Index}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name, size\+\_\+t idx, const std::\+vector$<$ uint8\+\_\+t $>$ \&new\+\_\+data)=0
+\begin{DoxyCompactList}\small\item\em Записать данные по индексу \end{DoxyCompactList}\item 
+virtual std::\+vector$<$ uint8\+\_\+t $>$ \doxymbox{\hyperlink{classIController_a8a7626869c3d7b048b4b81d17a29dfbd}{get\+Arr\+Range}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name, size\+\_\+t begin, size\+\_\+t end) const =0
+\begin{DoxyCompactList}\small\item\em Прочитать данные массива из диапазона по двум индексам \end{DoxyCompactList}\item 
+virtual std::\+vector$<$ uint8\+\_\+t $>$ \doxymbox{\hyperlink{classIController_a41fdba9ab7d900fe691df8c9e0f42cdc}{get\+Sh\+Range}} (const std::\+string \&unit\+\_\+name, size\+\_\+t begin, size\+\_\+t end) const =0
+\begin{DoxyCompactList}\small\item\em Прочитать данные разделяемого сегмента из диапазона по двум индексам \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIController_ac3a89260a0b48711ccac61d66c7faffa}{create\+Variable}} (const std::\+string \&prog\+\_\+path, std::\+string unit\+\_\+name, size\+\_\+t size)=0
+\begin{DoxyCompactList}\small\item\em Создать переменную \end{DoxyCompactList}\item 
+virtual const \doxymbox{\hyperlink{classAbstractUnit}{Abstract\+Unit}} \& \doxymbox{\hyperlink{classIController_a33596598034e9dfb48b48461fd072402}{get\+Unit}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name) const =0
+\begin{DoxyCompactList}\small\item\em Геттер элемента памяти (одиночной переменной/\+массива/\+разделяемого сегмента). \end{DoxyCompactList}\item 
+virtual std::\+vector$<$ uint8\+\_\+t $>$ \doxymbox{\hyperlink{classIController_abca5407cca15c0fac0d83b4344052fcc}{read\+Unit}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name) const =0
+\begin{DoxyCompactList}\small\item\em Геттер данных из элемента \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIController_ab630e96e66069e7e0b421a0a2a2d58f1}{write\+Unit}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name, const std::\+vector$<$ uint8\+\_\+t $>$ \&new\+\_\+data)=0
+\begin{DoxyCompactList}\small\item\em Запись данных в элемент \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIController_a91ef9dc977f61fcbc33f65220a5231a0}{destroy\+Own\+Unit}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name)=0
+\begin{DoxyCompactList}\small\item\em Удалить собственный элемент \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Интерфейс контроллера (содержит методы всех сервисов, в кажом методе использует нужный сервис). 
+
+\label{doc-func-members}
+\Hypertarget{classIController_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIController_a82bc635f8abb2384d6b504b2d6ded64c}\index{IController@{IController}!createArray@{createArray}}
+\index{createArray@{createArray}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{createArray()}{createArray()}}
+{\footnotesize\ttfamily \label{classIController_a82bc635f8abb2384d6b504b2d6ded64c} 
+virtual void IController::\+create\+Array (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{std::\+string}]{unit\+\_\+name}{, }\item[{size\+\_\+t}]{total\+\_\+size}{, }\item[{size\+\_\+t}]{el\+\_\+size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Создать массив (с выделением памяти). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя массива \\
+\hline
+{\em total\+\_\+size} & Полный размер \\
+\hline
+{\em el\+\_\+size} & Размер одного элемента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена или total\+\_\+size не кратен el\+\_\+size \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classController_aba26cd9d13ed0180c83d6d7cddb2f811}{Controller}}.
+
+\Hypertarget{classIController_a9da4f1757201ec6d8ae4b31ea8ce9d6d}\index{IController@{IController}!createProgram@{createProgram}}
+\index{createProgram@{createProgram}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{createProgram()}{createProgram()}}
+{\footnotesize\ttfamily \label{classIController_a9da4f1757201ec6d8ae4b31ea8ce9d6d} 
+virtual void IController::\+create\+Program (\begin{DoxyParamCaption}\item[{std::\+string}]{prog\+\_\+path}{, }\item[{size\+\_\+t}]{quota}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Создать программу 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em quota} & Квота программы \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если путь дублируется или квота слишком большая \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classController_ac5038f9e9699179c97915c2c2480d8f8}{Controller}}.
+
+\Hypertarget{classIController_ac6a6c1f2907ccbfd0529afd69d862ff3}\index{IController@{IController}!createRef@{createRef}}
+\index{createRef@{createRef}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{createRef()}{createRef()}}
+{\footnotesize\ttfamily \label{classIController_ac6a6c1f2907ccbfd0529afd69d862ff3} 
+virtual void IController::\+create\+Ref (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{, }\item[{const std::\+string \&}]{ref\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Создать ссылку 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя переменной, на которую создаётся ссылка \\
+\hline
+{\em ref\+\_\+name} & Имя ссылки \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена или имя ссылки дублируется \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если переменная не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classController_ae71a19093f1faec9c5b84a6d5d50c4c3}{Controller}}.
+
+\Hypertarget{classIController_a1a0e45af9372973c16dd70feb87166df}\index{IController@{IController}!createShared@{createShared}}
+\index{createShared@{createShared}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{createShared()}{createShared()}}
+{\footnotesize\ttfamily \label{classIController_a1a0e45af9372973c16dd70feb87166df} 
+virtual void IController::\+create\+Shared (\begin{DoxyParamCaption}\item[{std::\+string}]{unit\+\_\+name}{, }\item[{size\+\_\+t}]{total\+\_\+size}{, }\item[{size\+\_\+t}]{el\+\_\+size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Создать разделяемый сегмент (с выделением памяти). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unit\+\_\+name} & Имя сегмента \\
+\hline
+{\em total\+\_\+size} & Полный размер сегмента \\
+\hline
+{\em el\+\_\+size} & Размер одного элемента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если имя дублируется \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classController_a8db3b5f7c69ff2976cb3543c27ed7eb6}{Controller}}.
+
+\Hypertarget{classIController_ac3a89260a0b48711ccac61d66c7faffa}\index{IController@{IController}!createVariable@{createVariable}}
+\index{createVariable@{createVariable}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{createVariable()}{createVariable()}}
+{\footnotesize\ttfamily \label{classIController_ac3a89260a0b48711ccac61d66c7faffa} 
+virtual void IController::\+create\+Variable (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{std::\+string}]{unit\+\_\+name}{, }\item[{size\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Создать переменную 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя переменной \\
+\hline
+{\em size} & Размер переменной \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена или имя переменной дублируется \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classController_a95fbf8db44d02c255f527f03c15fb2b5}{Controller}}.
+
+\Hypertarget{classIController_ac2cc30aeaa96a23e86b63a63cc68b6af}\index{IController@{IController}!defragment@{defragment}}
+\index{defragment@{defragment}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{defragment()}{defragment()}}
+{\footnotesize\ttfamily \label{classIController_ac2cc30aeaa96a23e86b63a63cc68b6af} 
+virtual void IController::\+defragment (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Дефрагментация 
+
+
+
+Implemented in \doxymbox{\hyperlink{classController_af2d6915e0013c0aa0a843ba7bb25a6bb}{Controller}}.
+
+\Hypertarget{classIController_a91ef9dc977f61fcbc33f65220a5231a0}\index{IController@{IController}!destroyOwnUnit@{destroyOwnUnit}}
+\index{destroyOwnUnit@{destroyOwnUnit}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{destroyOwnUnit()}{destroyOwnUnit()}}
+{\footnotesize\ttfamily \label{classIController_a91ef9dc977f61fcbc33f65220a5231a0} 
+virtual void IController::\+destroy\+Own\+Unit (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Удалить собственный элемент 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя элемента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если собственный элемент не найден \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classController_a7abbbe5a2dc499f49d5aba4d4931986f}{Controller}}.
+
+\Hypertarget{classIController_aa755be9b63fe36c612236f61e7f42348}\index{IController@{IController}!destroyProgram@{destroyProgram}}
+\index{destroyProgram@{destroyProgram}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{destroyProgram()}{destroyProgram()}}
+{\footnotesize\ttfamily \label{classIController_aa755be9b63fe36c612236f61e7f42348} 
+virtual void IController::\+destroy\+Program (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Удалить программу 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь удаляемой программы \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+{\em \doxylink{classLeakError}{Leak\+Error}} & Если у программы на момент удаления оставались собственные элементы \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classController_aa58329160d4af32e2702c5e3c5da35a5}{Controller}}.
+
+\Hypertarget{classIController_a8a7626869c3d7b048b4b81d17a29dfbd}\index{IController@{IController}!getArrRange@{getArrRange}}
+\index{getArrRange@{getArrRange}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{getArrRange()}{getArrRange()}}
+{\footnotesize\ttfamily \label{classIController_a8a7626869c3d7b048b4b81d17a29dfbd} 
+virtual std::\+vector$<$ uint8\+\_\+t $>$ IController::\+get\+Arr\+Range (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{, }\item[{size\+\_\+t}]{begin}{, }\item[{size\+\_\+t}]{end}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Прочитать данные массива из диапазона по двум индексам 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя массива \\
+\hline
+{\em begin} & Индекс начала (включительно) \\
+\hline
+{\em end} & Индекс конца (не включительно) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Данные из диапазона \+[begin, end) 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classIndexError}{Index\+Error}} & Если idx выходит за рамки массива \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если индексируемый элемент не найден \\
+\hline
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classController_a2b5322e4191cc6d915079ca64de36597}{Controller}}.
+
+\Hypertarget{classIController_a41fdba9ab7d900fe691df8c9e0f42cdc}\index{IController@{IController}!getShRange@{getShRange}}
+\index{getShRange@{getShRange}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{getShRange()}{getShRange()}}
+{\footnotesize\ttfamily \label{classIController_a41fdba9ab7d900fe691df8c9e0f42cdc} 
+virtual std::\+vector$<$ uint8\+\_\+t $>$ IController::\+get\+Sh\+Range (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{unit\+\_\+name}{, }\item[{size\+\_\+t}]{begin}{, }\item[{size\+\_\+t}]{end}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Прочитать данные разделяемого сегмента из диапазона по двум индексам 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unit\+\_\+name} & Имя разделяемого сегмента \\
+\hline
+{\em begin} & Индекс начала (включительно) \\
+\hline
+{\em end} & Индекс конца (не включительно) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Данные из диапазона \+[begin, end) 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classIndexError}{Index\+Error}} & Если idx выходит за рамки массива \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если индексируемый элемент не найден \\
+\hline
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classController_a34e5ef1b2561ae941815c40a59b5d0d3}{Controller}}.
+
+\Hypertarget{classIController_a64a7912c59fe5035f7684b932505d5a3}\index{IController@{IController}!getTotalMemoryUsage@{getTotalMemoryUsage}}
+\index{getTotalMemoryUsage@{getTotalMemoryUsage}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{getTotalMemoryUsage()}{getTotalMemoryUsage()}}
+{\footnotesize\ttfamily \label{classIController_a64a7912c59fe5035f7684b932505d5a3} 
+virtual size\+\_\+t IController::\+get\+Total\+Memory\+Usage (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{path}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Подсчитать общий объём памяти, используемый программой 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Путь программы \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Общий объём памяти, используемый программой 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classController_ab266cb75a82fc733045671342af7d682}{Controller}}.
+
+\Hypertarget{classIController_a33596598034e9dfb48b48461fd072402}\index{IController@{IController}!getUnit@{getUnit}}
+\index{getUnit@{getUnit}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{getUnit()}{getUnit()}}
+{\footnotesize\ttfamily \label{classIController_a33596598034e9dfb48b48461fd072402} 
+virtual const \doxymbox{\hyperlink{classAbstractUnit}{Abstract\+Unit}} \& IController::\+get\+Unit (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Геттер элемента памяти (одиночной переменной/\+массива/\+разделяемого сегмента). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя элемента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Константная ссылка на элемент 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если элемент не найден \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classController_aeb2db7b17eb8f8316e7e098d15886b85}{Controller}}.
+
+\Hypertarget{classIController_ae13f779ef3fc0614f690a66bf1b2f178}\index{IController@{IController}!grantShared@{grantShared}}
+\index{grantShared@{grantShared}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{grantShared()}{grantShared()}}
+{\footnotesize\ttfamily \label{classIController_ae13f779ef3fc0614f690a66bf1b2f178} 
+virtual void IController::\+grant\+Shared (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Предоставить программе доступ к разделяемому сегменту 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя сегмента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа или сегмент не найдены \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classController_a2e0057fe08f955d061da221bf3aaa0ce}{Controller}}.
+
+\Hypertarget{classIController_a7a74d8201d007416004735b7dc0b07ee}\index{IController@{IController}!readIndex@{readIndex}}
+\index{readIndex@{readIndex}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{readIndex()}{readIndex()}}
+{\footnotesize\ttfamily \label{classIController_a7a74d8201d007416004735b7dc0b07ee} 
+virtual std::\+vector$<$ uint8\+\_\+t $>$ IController::\+read\+Index (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{, }\item[{size\+\_\+t}]{idx}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Прочитать данные по индексу 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя массива/\+разделяемого сегмента, к которому имеет доступ программа \\
+\hline
+{\em idx} & Искомый индекс \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Данные по индексу idx 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classIndexError}{Index\+Error}} & Если idx выходит за рамки массива \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если индексируемый элемент не найден \\
+\hline
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classController_aa86197d06e30124388e52ae17bfd18ca}{Controller}}.
+
+\Hypertarget{classIController_abca5407cca15c0fac0d83b4344052fcc}\index{IController@{IController}!readUnit@{readUnit}}
+\index{readUnit@{readUnit}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{readUnit()}{readUnit()}}
+{\footnotesize\ttfamily \label{classIController_abca5407cca15c0fac0d83b4344052fcc} 
+virtual std::\+vector$<$ uint8\+\_\+t $>$ IController::\+read\+Unit (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Геттер данных из элемента 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя элемента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Данные элемента 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если элемент не найден \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classController_a240dd2906ae4f131db779b9e883b0503}{Controller}}.
+
+\Hypertarget{classIController_a476635fa6a250d0d6cf01b0cbac00149}\index{IController@{IController}!removeRef@{removeRef}}
+\index{removeRef@{removeRef}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{removeRef()}{removeRef()}}
+{\footnotesize\ttfamily \label{classIController_a476635fa6a250d0d6cf01b0cbac00149} 
+virtual void IController::\+remove\+Ref (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{ref\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Удалить ссылку 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em ref\+\_\+name} & Имя ссылки \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если ссылка не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classController_ab3290818728cf03a1c7a81ecb396c88c}{Controller}}.
+
+\Hypertarget{classIController_a370b19a0b3e550c0277da24b2fae34ab}\index{IController@{IController}!revokeShared@{revokeShared}}
+\index{revokeShared@{revokeShared}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{revokeShared()}{revokeShared()}}
+{\footnotesize\ttfamily \label{classIController_a370b19a0b3e550c0277da24b2fae34ab} 
+virtual void IController::\+revoke\+Shared (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Отозвать от программы доступ к разделяемому сегменту 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя сегмента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа или сегмент не найдены \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classController_aeb8bd5082425a73d034bf82d268bba2a}{Controller}}.
+
+\Hypertarget{classIController_a20b6f6b1881ff3b45e49ee667892ad6d}\index{IController@{IController}!writeIndex@{writeIndex}}
+\index{writeIndex@{writeIndex}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{writeIndex()}{writeIndex()}}
+{\footnotesize\ttfamily \label{classIController_a20b6f6b1881ff3b45e49ee667892ad6d} 
+virtual void IController::\+write\+Index (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{, }\item[{size\+\_\+t}]{idx}{, }\item[{const std::\+vector$<$ uint8\+\_\+t $>$ \&}]{new\+\_\+data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Записать данные по индексу 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя массива/\+разделяемого сегмента, к которому имеет доступ программа \\
+\hline
+{\em idx} & Искомый индекс \\
+\hline
+{\em new\+\_\+data} & Новые данные \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classIndexError}{Index\+Error}} & Если idx выходит за рамки массива \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если индексируемый элемент не найден \\
+\hline
+{\em std::\+logic\+\_\+error} & Если программа не найдена или размер new\+\_\+data не совпадает с размером одного элемента \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classController_a888de0a6be8f36c7221db5009d36a5ef}{Controller}}.
+
+\Hypertarget{classIController_ab630e96e66069e7e0b421a0a2a2d58f1}\index{IController@{IController}!writeUnit@{writeUnit}}
+\index{writeUnit@{writeUnit}!IController@{IController}}
+\doxysubsubsection{\texorpdfstring{writeUnit()}{writeUnit()}}
+{\footnotesize\ttfamily \label{classIController_ab630e96e66069e7e0b421a0a2a2d58f1} 
+virtual void IController::\+write\+Unit (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{, }\item[{const std::\+vector$<$ uint8\+\_\+t $>$ \&}]{new\+\_\+data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Запись данных в элемент 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя элемента \\
+\hline
+{\em new\+\_\+data} & Новые данные \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена или размер новых данных не совпадает с размером элемента \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если элемент не найден \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classController_a073ed62404a7a80ea3d3073d45a53cf1}{Controller}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+controller.\+hpp\end{DoxyCompactItemize}

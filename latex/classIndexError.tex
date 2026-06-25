@@ -1,0 +1,61 @@
+\doxysection{Index\+Error Class Reference}
+\hypertarget{classIndexError}{}\label{classIndexError}\index{IndexError@{IndexError}}
+Inheritance diagram for Index\+Error:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classIndexError}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classIndexError_aa2d11c8565094809ec97ffbde63451ce}\label{classIndexError_aa2d11c8565094809ec97ffbde63451ce} 
+{\bfseries Index\+Error} (const std::\+string \&message\+\_\+, const time\+\_\+point tp\+\_\+=system\+\_\+clock::\+now()) noexcept
+\item 
+std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} $>$ \doxymbox{\hyperlink{classIndexError_afc66319a58e655b4d4f31fff8c6fc4ef}{create\+Unique}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Memory\+Error} (std::\+string message\+\_\+, const time\+\_\+point tp\+\_\+=system\+\_\+clock::\+now(), std::\+string type\+\_\+="{}Memory error"{}) noexcept
+\item 
+{\bfseries Memory\+Error} (const \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} \&other)
+\item 
+{\bfseries Memory\+Error} (\doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} \&\&other) noexcept
+\item 
+time\+\_\+point {\bfseries get\+Time\+Point} () const
+\item 
+const char \texorpdfstring{$\ast$}{*} {\bfseries what} () const noexcept override
+\item 
+const std::\+string \& {\bfseries get\+Type} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}}}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string {\bfseries message}
+\item 
+std::\+string {\bfseries type}
+\item 
+time\+\_\+point {\bfseries tp}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{classIndexError_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIndexError_afc66319a58e655b4d4f31fff8c6fc4ef}\index{IndexError@{IndexError}!createUnique@{createUnique}}
+\index{createUnique@{createUnique}!IndexError@{IndexError}}
+\doxysubsubsection{\texorpdfstring{createUnique()}{createUnique()}}
+{\footnotesize\ttfamily \label{classIndexError_afc66319a58e655b4d4f31fff8c6fc4ef} 
+std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} $>$ Index\+Error::\+create\+Unique (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+errors.\+hpp\end{DoxyCompactItemize}

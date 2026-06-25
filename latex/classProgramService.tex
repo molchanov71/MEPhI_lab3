@@ -1,0 +1,141 @@
+\doxysection{Program\+Service Class Reference}
+\hypertarget{classProgramService}{}\label{classProgramService}\index{ProgramService@{ProgramService}}
+
+
+Сервис по управлению программами  
+
+
+
+
+{\ttfamily \+\#include $<$service.\+hpp$>$}
+
+Inheritance diagram for Program\+Service:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classProgramService}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classProgramService_a8beff9c4b2659b578b1a522cf908aeb4}{Program\+Service}} (\doxymbox{\hyperlink{classIMemoryService}{IMemory\+Service}} \&mem\+\_\+service\+\_\+)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classProgramService_afb70a8c5326957647f29ab2925fe55d9}{create\+Program}} (std::\+string prog\+\_\+path, size\+\_\+t quota) override
+\begin{DoxyCompactList}\small\item\em Создать программу \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classProgramService_a72919b0fac878e6da4b4d2eff92cc08b}{destroy\+Program}} (const std::\+string \&prog\+\_\+path) override
+\begin{DoxyCompactList}\small\item\em Удалить программу \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{classProgramService_a61d2a7493613697ac9be98381e5287ab}{get\+Total\+Memory\+Usage}} (const std::\+string \&path) const override
+\begin{DoxyCompactList}\small\item\em Подсчитать общий объём памяти, используемый программой \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Сервис по управлению программами 
+
+\label{doc-constructors}
+\Hypertarget{classProgramService_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classProgramService_a8beff9c4b2659b578b1a522cf908aeb4}\index{ProgramService@{ProgramService}!ProgramService@{ProgramService}}
+\index{ProgramService@{ProgramService}!ProgramService@{ProgramService}}
+\doxysubsubsection{\texorpdfstring{ProgramService()}{ProgramService()}}
+{\footnotesize\ttfamily \label{classProgramService_a8beff9c4b2659b578b1a522cf908aeb4} 
+Program\+Service::\+\+Program\+Service (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classIMemoryService}{IMemory\+Service}} \&}]{mem\+\_\+service\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Конструктор 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem\+\_\+service\+\_\+} & Ссылка на сервис по управлению памятью \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classProgramService_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classProgramService_afb70a8c5326957647f29ab2925fe55d9}\index{ProgramService@{ProgramService}!createProgram@{createProgram}}
+\index{createProgram@{createProgram}!ProgramService@{ProgramService}}
+\doxysubsubsection{\texorpdfstring{createProgram()}{createProgram()}}
+{\footnotesize\ttfamily \label{classProgramService_afb70a8c5326957647f29ab2925fe55d9} 
+void Program\+Service::\+create\+Program (\begin{DoxyParamCaption}\item[{std::\+string}]{prog\+\_\+path}{, }\item[{size\+\_\+t}]{quota}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Создать программу 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em quota} & Квота программы \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если путь дублируется или квота слишком большая \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIProgramService_a0565578f2524c0adfa98d59afafcb11b}{IProgram\+Service}}.
+
+\Hypertarget{classProgramService_a72919b0fac878e6da4b4d2eff92cc08b}\index{ProgramService@{ProgramService}!destroyProgram@{destroyProgram}}
+\index{destroyProgram@{destroyProgram}!ProgramService@{ProgramService}}
+\doxysubsubsection{\texorpdfstring{destroyProgram()}{destroyProgram()}}
+{\footnotesize\ttfamily \label{classProgramService_a72919b0fac878e6da4b4d2eff92cc08b} 
+void Program\+Service::\+destroy\+Program (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Удалить программу 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь удаляемой программы \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+{\em \doxylink{classLeakError}{Leak\+Error}} & Если у программы на момент удаления оставались собственные элементы \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIProgramService_a7413259f53e70ba899d1e428bf256fa8}{IProgram\+Service}}.
+
+\Hypertarget{classProgramService_a61d2a7493613697ac9be98381e5287ab}\index{ProgramService@{ProgramService}!getTotalMemoryUsage@{getTotalMemoryUsage}}
+\index{getTotalMemoryUsage@{getTotalMemoryUsage}!ProgramService@{ProgramService}}
+\doxysubsubsection{\texorpdfstring{getTotalMemoryUsage()}{getTotalMemoryUsage()}}
+{\footnotesize\ttfamily \label{classProgramService_a61d2a7493613697ac9be98381e5287ab} 
+size\+\_\+t Program\+Service::\+get\+Total\+Memory\+Usage (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{path}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Подсчитать общий объём памяти, используемый программой 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Путь программы \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Общий объём памяти, используемый программой 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIProgramService_a6841247b07a9eb3056278f92937513ac}{IProgram\+Service}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+service.\+hpp\item 
+src/\+model/\+service/\+service.\+cpp\end{DoxyCompactItemize}

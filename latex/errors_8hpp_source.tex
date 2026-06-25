@@ -1,0 +1,161 @@
+\doxysection{errors.\+hpp}
+\hypertarget{errors_8hpp_source}{}\label{errors_8hpp_source}\index{include/errors.hpp@{include/errors.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{using\ }std::chrono::system\_clock;}
+\DoxyCodeLine{00007\ \textcolor{keyword}{using\ }time\_point\ =\ system\_clock::time\_point;}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{template}\ <>}
+\DoxyCodeLine{00010\ \textcolor{keyword}{struct\ }std::hash\ <system\_clock::time\_point>}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ operator\ ()(system\_clock::time\_point)\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept};}
+\DoxyCodeLine{00013\ \};}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }MemoryError\ :\ \textcolor{keyword}{public}\ std::exception}
+\DoxyCodeLine{00016\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00018\ \ \ \ \ std::string\ message,\ type;}
+\DoxyCodeLine{00019\ \ \ \ \ time\_point\ tp;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{explicit}\ MemoryError(std::string\ message\_,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ time\_point\ tp\_\ =\ system\_clock::now(),}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ type\_\ =\ \textcolor{stringliteral}{"{}Memory\ error"{}})\ noexcept\ :\ message(std::move(message\_)),}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type(std::move(type\_)),}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tp(tp\_)}
+\DoxyCodeLine{00027\ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ MemoryError(\textcolor{keyword}{const}\ MemoryError\ \&other)\ :\ message(other.message),}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type(other.type),}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tp(other.tp)}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ MemoryError(MemoryError\ \&\&other)\ noexcept\ :\ message(std::move(other.message)),}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ type(std::move(other.type)),}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tp(other.tp)}
+\DoxyCodeLine{00039\ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ [[nodiscard]]\ time\_point\ getTimePoint()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ tp;\ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *what()\ \textcolor{keyword}{const}\ \textcolor{keyword}{noexcept}\ \textcolor{keyword}{override}}
+\DoxyCodeLine{00045\ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ message.c\_str();}
+\DoxyCodeLine{00047\ \ \ \ \ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ std::string\ \&getType()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ type;\ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ std::unique\_ptr\ <MemoryError>\ createUnique()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00052\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_unique\ <MemoryError>(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{class\ }IndexError\ final\ :\ \textcolor{keyword}{public}\ MemoryError}
+\DoxyCodeLine{00058\ \{}
+\DoxyCodeLine{00059\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{explicit}\ IndexError(\textcolor{keyword}{const}\ std::string\ \&message\_,\ \textcolor{keyword}{const}\ time\_point\ tp\_\ =\ system\_clock::now())\ noexcept\ :\ MemoryError(}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ message\_,}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ tp\_,}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Index\ error"{}})}
+\DoxyCodeLine{00064\ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ [[nodiscard]]\ std::unique\_ptr\ <MemoryError>\ createUnique()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00068\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_unique\ <IndexError>(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{class\ }LeakError\ final\ :\ \textcolor{keyword}{public}\ MemoryError}
+\DoxyCodeLine{00074\ \{}
+\DoxyCodeLine{00075\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{explicit}\ LeakError(\textcolor{keyword}{const}\ std::string\ \&message\_,\ \textcolor{keyword}{const}\ time\_point\ tp\_\ =\ system\_clock::now())\ noexcept\ :\ MemoryError(}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ message\_,}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ tp\_,}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Leak\ error"{}})}
+\DoxyCodeLine{00080\ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ [[nodiscard]]\ std::unique\_ptr\ <MemoryError>\ createUnique()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00084\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_unique\ <LeakError>(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00086\ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \};}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \textcolor{keyword}{class\ }DoubleFreeError\ final\ :\ \textcolor{keyword}{public}\ MemoryError}
+\DoxyCodeLine{00090\ \{}
+\DoxyCodeLine{00091\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{explicit}\ DoubleFreeError(\textcolor{keyword}{const}\ std::string\ \&message\_,}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ time\_point\ tp\_\ =\ system\_clock::now())\ noexcept\ :\ MemoryError(}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ message\_,}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ tp\_,}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Double\ free\ error"{}})}
+\DoxyCodeLine{00097\ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ [[nodiscard]]\ std::unique\_ptr\ <MemoryError>\ createUnique()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00101\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_unique\ <DoubleFreeError>(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \};}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \textcolor{keyword}{class\ }IdAccessError\ final\ :\ \textcolor{keyword}{public}\ MemoryError}
+\DoxyCodeLine{00107\ \{}
+\DoxyCodeLine{00108\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keyword}{explicit}\ IdAccessError(\textcolor{keyword}{const}\ std::string\ \&message\_,}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ time\_point\ tp\_\ =\ system\_clock::now())\ noexcept\ :\ MemoryError(}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ message\_,}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ tp\_,}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Id\ access\ error"{}})}
+\DoxyCodeLine{00114\ \ \ \ \ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ [[nodiscard]]\ std::unique\_ptr\ <MemoryError>\ createUnique()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00118\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_unique\ <IdAccessError>(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00120\ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \textcolor{keyword}{class\ }ReferenceError\ final\ :\ \textcolor{keyword}{public}\ MemoryError}
+\DoxyCodeLine{00124\ \{}
+\DoxyCodeLine{00125\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keyword}{explicit}\ ReferenceError(\textcolor{keyword}{const}\ std::string\ \&message\_,}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ time\_point\ tp\_\ =\ system\_clock::now())\ noexcept\ :\ MemoryError(}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ message\_,}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ tp\_,}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Reference\ error"{}})}
+\DoxyCodeLine{00131\ \ \ \ \ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ [[nodiscard]]\ std::unique\_ptr\ <MemoryError>\ createUnique()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00135\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_unique\ <ReferenceError>(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00137\ \ \ \ \ \}}
+\DoxyCodeLine{00138\ \};}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \textcolor{keyword}{class\ }DoubleDefineError\ final\ :\ \textcolor{keyword}{public}\ MemoryError}
+\DoxyCodeLine{00141\ \{}
+\DoxyCodeLine{00142\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keyword}{explicit}\ DoubleDefineError(\textcolor{keyword}{const}\ std::string\ \&message\_,}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ time\_point\ tp\_\ =\ system\_clock::now())\ noexcept\ :\ MemoryError(}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ message\_,}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ tp\_,}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Double\ define\ error"{}})}
+\DoxyCodeLine{00148\ \ \ \ \ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \}}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ [[nodiscard]]\ std::unique\_ptr\ <MemoryError>\ createUnique()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00152\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_unique\ <DoubleDefineError>(*\textcolor{keyword}{this});}
+\DoxyCodeLine{00154\ \ \ \ \ \}}
+\DoxyCodeLine{00155\ \};}
+
+\end{DoxyCode}

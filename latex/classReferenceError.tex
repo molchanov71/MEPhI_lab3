@@ -1,0 +1,61 @@
+\doxysection{Reference\+Error Class Reference}
+\hypertarget{classReferenceError}{}\label{classReferenceError}\index{ReferenceError@{ReferenceError}}
+Inheritance diagram for Reference\+Error:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classReferenceError}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classReferenceError_ac83e986e1a4b6bf9fcce5ef992dc8c5f}\label{classReferenceError_ac83e986e1a4b6bf9fcce5ef992dc8c5f} 
+{\bfseries Reference\+Error} (const std::\+string \&message\+\_\+, const time\+\_\+point tp\+\_\+=system\+\_\+clock::\+now()) noexcept
+\item 
+std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} $>$ \doxymbox{\hyperlink{classReferenceError_a2af09218d02aa96a0d838825ba3f5b28}{create\+Unique}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Memory\+Error} (std::\+string message\+\_\+, const time\+\_\+point tp\+\_\+=system\+\_\+clock::\+now(), std::\+string type\+\_\+="{}Memory error"{}) noexcept
+\item 
+{\bfseries Memory\+Error} (const \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} \&other)
+\item 
+{\bfseries Memory\+Error} (\doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} \&\&other) noexcept
+\item 
+time\+\_\+point {\bfseries get\+Time\+Point} () const
+\item 
+const char \texorpdfstring{$\ast$}{*} {\bfseries what} () const noexcept override
+\item 
+const std::\+string \& {\bfseries get\+Type} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}}}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string {\bfseries message}
+\item 
+std::\+string {\bfseries type}
+\item 
+time\+\_\+point {\bfseries tp}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{classReferenceError_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classReferenceError_a2af09218d02aa96a0d838825ba3f5b28}\index{ReferenceError@{ReferenceError}!createUnique@{createUnique}}
+\index{createUnique@{createUnique}!ReferenceError@{ReferenceError}}
+\doxysubsubsection{\texorpdfstring{createUnique()}{createUnique()}}
+{\footnotesize\ttfamily \label{classReferenceError_a2af09218d02aa96a0d838825ba3f5b28} 
+std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} $>$ Reference\+Error::\+create\+Unique (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+errors.\+hpp\end{DoxyCompactItemize}

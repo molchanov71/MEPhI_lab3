@@ -1,0 +1,61 @@
+\doxysection{Double\+Define\+Error Class Reference}
+\hypertarget{classDoubleDefineError}{}\label{classDoubleDefineError}\index{DoubleDefineError@{DoubleDefineError}}
+Inheritance diagram for Double\+Define\+Error:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classDoubleDefineError}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classDoubleDefineError_a16ee7b9654ae2945ae0cdac3a29c7520}\label{classDoubleDefineError_a16ee7b9654ae2945ae0cdac3a29c7520} 
+{\bfseries Double\+Define\+Error} (const std::\+string \&message\+\_\+, const time\+\_\+point tp\+\_\+=system\+\_\+clock::\+now()) noexcept
+\item 
+std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} $>$ \doxymbox{\hyperlink{classDoubleDefineError_aae4af6aeca67b7771bff63006778da8e}{create\+Unique}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Memory\+Error} (std::\+string message\+\_\+, const time\+\_\+point tp\+\_\+=system\+\_\+clock::\+now(), std::\+string type\+\_\+="{}Memory error"{}) noexcept
+\item 
+{\bfseries Memory\+Error} (const \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} \&other)
+\item 
+{\bfseries Memory\+Error} (\doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} \&\&other) noexcept
+\item 
+time\+\_\+point {\bfseries get\+Time\+Point} () const
+\item 
+const char \texorpdfstring{$\ast$}{*} {\bfseries what} () const noexcept override
+\item 
+const std::\+string \& {\bfseries get\+Type} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}}}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string {\bfseries message}
+\item 
+std::\+string {\bfseries type}
+\item 
+time\+\_\+point {\bfseries tp}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{classDoubleDefineError_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classDoubleDefineError_aae4af6aeca67b7771bff63006778da8e}\index{DoubleDefineError@{DoubleDefineError}!createUnique@{createUnique}}
+\index{createUnique@{createUnique}!DoubleDefineError@{DoubleDefineError}}
+\doxysubsubsection{\texorpdfstring{createUnique()}{createUnique()}}
+{\footnotesize\ttfamily \label{classDoubleDefineError_aae4af6aeca67b7771bff63006778da8e} 
+std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} $>$ Double\+Define\+Error::\+create\+Unique (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+errors.\+hpp\end{DoxyCompactItemize}

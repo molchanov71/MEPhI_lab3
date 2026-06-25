@@ -1,0 +1,167 @@
+\doxysection{IUnit\+Manager Class Reference}
+\hypertarget{classIUnitManager}{}\label{classIUnitManager}\index{IUnitManager@{IUnitManager}}
+
+
+Интерфейс управления программой элементами памяти  
+
+
+
+
+{\ttfamily \+\#include $<$program.\+hpp$>$}
+
+Inheritance diagram for IUnit\+Manager:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIUnitManager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{classIUnitManager_a33282ff77e4cd56107b9e51dbd99dde4}{create\+Var}} (std::\+string name, size\+\_\+t address, size\+\_\+t size)=0
+\begin{DoxyCompactList}\small\item\em Создать переменную \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIUnitManager_a0d43412d42c5558bc97855f27a9c1a26}{create\+Arr}} (std::\+string name, size\+\_\+t address, size\+\_\+t size, size\+\_\+t el\+\_\+size)=0
+\begin{DoxyCompactList}\small\item\em Создать массив \end{DoxyCompactList}\item 
+virtual bool \doxymbox{\hyperlink{classIUnitManager_a112fca853b697d044deb9ed9b71b6c6f}{has\+Own\+Unit}} (const std::\+string \&name) const =0
+\begin{DoxyCompactList}\small\item\em Есть ли у программы такой собственный элемент \end{DoxyCompactList}\item 
+virtual const \doxymbox{\hyperlink{classTable}{Table}}$<$ std::\+string, std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classOwnUnit}{Own\+Unit}} $>$ $>$ \& \doxymbox{\hyperlink{classIUnitManager_acb82398b0342fedb79f1f979ba1e4673}{get\+Own\+Units}} () const =0
+\begin{DoxyCompactList}\small\item\em Геттер таблицы собственных элементов \end{DoxyCompactList}\item 
+virtual std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classOwnUnit}{Own\+Unit}} $>$ \doxymbox{\hyperlink{classIUnitManager_ae891ce556a813b4725c894453a3495f6}{extract\+Own\+Unit}} (const std::\+string \&name)=0
+\begin{DoxyCompactList}\small\item\em Отделить собственный элемент \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Интерфейс управления программой элементами памяти 
+
+\label{doc-func-members}
+\Hypertarget{classIUnitManager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIUnitManager_a0d43412d42c5558bc97855f27a9c1a26}\index{IUnitManager@{IUnitManager}!createArr@{createArr}}
+\index{createArr@{createArr}!IUnitManager@{IUnitManager}}
+\doxysubsubsection{\texorpdfstring{createArr()}{createArr()}}
+{\footnotesize\ttfamily \label{classIUnitManager_a0d43412d42c5558bc97855f27a9c1a26} 
+virtual void IUnit\+Manager::\+create\+Arr (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{, }\item[{size\+\_\+t}]{address}{, }\item[{size\+\_\+t}]{size}{, }\item[{size\+\_\+t}]{el\+\_\+size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Создать массив 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя \\
+\hline
+{\em address} & Адрес \\
+\hline
+{\em size} & Полный размер \\
+\hline
+{\em el\+\_\+size} & Размер одного элемента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если имя дублируется или превышена квота \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classProgram_a882edd509e3afc9f5288cf9e665f6738}{Program}}.
+
+\Hypertarget{classIUnitManager_a33282ff77e4cd56107b9e51dbd99dde4}\index{IUnitManager@{IUnitManager}!createVar@{createVar}}
+\index{createVar@{createVar}!IUnitManager@{IUnitManager}}
+\doxysubsubsection{\texorpdfstring{createVar()}{createVar()}}
+{\footnotesize\ttfamily \label{classIUnitManager_a33282ff77e4cd56107b9e51dbd99dde4} 
+virtual void IUnit\+Manager::\+create\+Var (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{, }\item[{size\+\_\+t}]{address}{, }\item[{size\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Создать переменную 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя \\
+\hline
+{\em address} & Адрес \\
+\hline
+{\em size} & Размер \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если имя дублируется или превышена квота \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classProgram_af9317e1852720a2d475da51895da7077}{Program}}.
+
+\Hypertarget{classIUnitManager_ae891ce556a813b4725c894453a3495f6}\index{IUnitManager@{IUnitManager}!extractOwnUnit@{extractOwnUnit}}
+\index{extractOwnUnit@{extractOwnUnit}!IUnitManager@{IUnitManager}}
+\doxysubsubsection{\texorpdfstring{extractOwnUnit()}{extractOwnUnit()}}
+{\footnotesize\ttfamily \label{classIUnitManager_ae891ce556a813b4725c894453a3495f6} 
+virtual std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classOwnUnit}{Own\+Unit}} $>$ IUnit\+Manager::\+extract\+Own\+Unit (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Отделить собственный элемент 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя собственного элемента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Указатель на отделённый элемент 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если элемент не найден \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classProgram_a08131a50e0caaea1b49bb1ca2e85cc5f}{Program}}.
+
+\Hypertarget{classIUnitManager_acb82398b0342fedb79f1f979ba1e4673}\index{IUnitManager@{IUnitManager}!getOwnUnits@{getOwnUnits}}
+\index{getOwnUnits@{getOwnUnits}!IUnitManager@{IUnitManager}}
+\doxysubsubsection{\texorpdfstring{getOwnUnits()}{getOwnUnits()}}
+{\footnotesize\ttfamily \label{classIUnitManager_acb82398b0342fedb79f1f979ba1e4673} 
+virtual const \doxymbox{\hyperlink{classTable}{Table}}$<$ std::\+string, std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classOwnUnit}{Own\+Unit}} $>$ $>$ \& IUnit\+Manager::\+get\+Own\+Units (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Геттер таблицы собственных элементов 
+
+\begin{DoxyReturn}{Returns}
+Константная ссылка на таблицу собственных элементов 
+\end{DoxyReturn}
+
+
+Implemented in \doxymbox{\hyperlink{classProgram_a0a09bd23446c470680871a1e5983a9a7}{Program}}.
+
+\Hypertarget{classIUnitManager_a112fca853b697d044deb9ed9b71b6c6f}\index{IUnitManager@{IUnitManager}!hasOwnUnit@{hasOwnUnit}}
+\index{hasOwnUnit@{hasOwnUnit}!IUnitManager@{IUnitManager}}
+\doxysubsubsection{\texorpdfstring{hasOwnUnit()}{hasOwnUnit()}}
+{\footnotesize\ttfamily \label{classIUnitManager_a112fca853b697d044deb9ed9b71b6c6f} 
+virtual bool IUnit\+Manager::\+has\+Own\+Unit (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Есть ли у программы такой собственный элемент 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Имя искомого элемента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Есть ли у программы такой собственный элемент 
+\end{DoxyReturn}
+
+
+Implemented in \doxymbox{\hyperlink{classProgram_abfd76f1a96720879eda786ab55b99352}{Program}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+entity/\+program.\+hpp\end{DoxyCompactItemize}

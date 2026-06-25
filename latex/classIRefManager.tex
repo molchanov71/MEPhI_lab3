@@ -1,0 +1,188 @@
+\doxysection{IRef\+Manager Class Reference}
+\hypertarget{classIRefManager}{}\label{classIRefManager}\index{IRefManager@{IRefManager}}
+
+
+Интерфейс управления ссылками  
+
+
+
+
+{\ttfamily \+\#include $<$program.\+hpp$>$}
+
+Inheritance diagram for IRef\+Manager:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIRefManager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{classIRefManager_a2df612607e7cec83e12ef1981e0871d4}{create\+Ref}} (const std::\+string \&unit\+\_\+name, std::\+string ref\+\_\+name)=0
+\begin{DoxyCompactList}\small\item\em Создать ссылку \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIRefManager_ab8b51586707ae20d8d59c2804a6f38c0}{remove\+Ref}} (const std::\+string \&ref\+\_\+name)=0
+\begin{DoxyCompactList}\small\item\em Удалить ссылку \end{DoxyCompactList}\item 
+virtual \doxymbox{\hyperlink{classReference}{Reference}} \& \doxymbox{\hyperlink{classIRefManager_ad707d5f5a056b972a1b4c3ce13cf89ea}{get\+Ref}} (const std::\+string \&ref\+\_\+name)=0
+\begin{DoxyCompactList}\small\item\em Геттер ссылки \end{DoxyCompactList}\item 
+virtual const \doxymbox{\hyperlink{classReference}{Reference}} \& \doxymbox{\hyperlink{classIRefManager_ae517c15ddab7221c024357e5b35688d1}{get\+Ref}} (const std::\+string \&ref\+\_\+name) const =0
+\begin{DoxyCompactList}\small\item\em Геттер ссылки (константный). \end{DoxyCompactList}\item 
+virtual bool \doxymbox{\hyperlink{classIRefManager_a65cd754c9358c0f713adfa9a2f5828c2}{has\+Ref}} (const std::\+string \&ref\+\_\+name) const =0
+\begin{DoxyCompactList}\small\item\em Есть ли у программы ссылка с указанным именем \end{DoxyCompactList}\item 
+virtual const \doxymbox{\hyperlink{classTable}{Table}}$<$ std::\+string, \doxymbox{\hyperlink{classReference}{Reference}} $>$ \& \doxymbox{\hyperlink{classIRefManager_aad2de32dd619bdbb1fe14df29639c99a}{get\+Refs}} () const =0
+\begin{DoxyCompactList}\small\item\em Геттер таблицы \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Интерфейс управления ссылками 
+
+\label{doc-func-members}
+\Hypertarget{classIRefManager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIRefManager_a2df612607e7cec83e12ef1981e0871d4}\index{IRefManager@{IRefManager}!createRef@{createRef}}
+\index{createRef@{createRef}!IRefManager@{IRefManager}}
+\doxysubsubsection{\texorpdfstring{createRef()}{createRef()}}
+{\footnotesize\ttfamily \label{classIRefManager_a2df612607e7cec83e12ef1981e0871d4} 
+virtual void IRef\+Manager::\+create\+Ref (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{unit\+\_\+name}{, }\item[{std::\+string}]{ref\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Создать ссылку 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unit\+\_\+name} & Имя элемента, на который указывает ссылка \\
+\hline
+{\em ref\+\_\+name} & Имя создаваемой ссылки \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если элемент не найден или имя дублируется \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classProgram_a5c8fdf29059820246747cb0c43c932e8}{Program}}.
+
+\Hypertarget{classIRefManager_ae517c15ddab7221c024357e5b35688d1}\index{IRefManager@{IRefManager}!getRef@{getRef}}
+\index{getRef@{getRef}!IRefManager@{IRefManager}}
+\doxysubsubsection{\texorpdfstring{getRef()}{getRef()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classIRefManager_ae517c15ddab7221c024357e5b35688d1} 
+virtual const \doxymbox{\hyperlink{classReference}{Reference}} \& IRef\+Manager::\+get\+Ref (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{ref\+\_\+name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Геттер ссылки (константный). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ref\+\_\+name} & Имя искомой ссылки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Константная ссылка на ссылку))) 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если ссылка не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classProgram_a6846540d6de53d2f203d424c5470977e}{Program}}.
+
+\Hypertarget{classIRefManager_ad707d5f5a056b972a1b4c3ce13cf89ea}\index{IRefManager@{IRefManager}!getRef@{getRef}}
+\index{getRef@{getRef}!IRefManager@{IRefManager}}
+\doxysubsubsection{\texorpdfstring{getRef()}{getRef()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classIRefManager_ad707d5f5a056b972a1b4c3ce13cf89ea} 
+virtual \doxymbox{\hyperlink{classReference}{Reference}} \& IRef\+Manager::\+get\+Ref (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{ref\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Геттер ссылки 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ref\+\_\+name} & Имя искомой ссылки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Ссылка на ссылку))) 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если ссылка не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classProgram_a7463a26ab8b57fb011d7d56f08436866}{Program}}.
+
+\Hypertarget{classIRefManager_aad2de32dd619bdbb1fe14df29639c99a}\index{IRefManager@{IRefManager}!getRefs@{getRefs}}
+\index{getRefs@{getRefs}!IRefManager@{IRefManager}}
+\doxysubsubsection{\texorpdfstring{getRefs()}{getRefs()}}
+{\footnotesize\ttfamily \label{classIRefManager_aad2de32dd619bdbb1fe14df29639c99a} 
+virtual const \doxymbox{\hyperlink{classTable}{Table}}$<$ std::\+string, \doxymbox{\hyperlink{classReference}{Reference}} $>$ \& IRef\+Manager::\+get\+Refs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Геттер таблицы 
+
+\begin{DoxyReturn}{Returns}
+Константная ссылка на таблицу всех ссылок программы 
+\end{DoxyReturn}
+
+
+Implemented in \doxymbox{\hyperlink{classProgram_ad6453b78bdd7e2849b5a741f45c073dc}{Program}}.
+
+\Hypertarget{classIRefManager_a65cd754c9358c0f713adfa9a2f5828c2}\index{IRefManager@{IRefManager}!hasRef@{hasRef}}
+\index{hasRef@{hasRef}!IRefManager@{IRefManager}}
+\doxysubsubsection{\texorpdfstring{hasRef()}{hasRef()}}
+{\footnotesize\ttfamily \label{classIRefManager_a65cd754c9358c0f713adfa9a2f5828c2} 
+virtual bool IRef\+Manager::\+has\+Ref (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{ref\+\_\+name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Есть ли у программы ссылка с указанным именем 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ref\+\_\+name} & Имя искомой ссылки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Есть ли у программы ссылка с указанным именем 
+\end{DoxyReturn}
+
+
+Implemented in \doxymbox{\hyperlink{classProgram_a3c10cab2a9efd2e38982d501e82872fe}{Program}}.
+
+\Hypertarget{classIRefManager_ab8b51586707ae20d8d59c2804a6f38c0}\index{IRefManager@{IRefManager}!removeRef@{removeRef}}
+\index{removeRef@{removeRef}!IRefManager@{IRefManager}}
+\doxysubsubsection{\texorpdfstring{removeRef()}{removeRef()}}
+{\footnotesize\ttfamily \label{classIRefManager_ab8b51586707ae20d8d59c2804a6f38c0} 
+virtual void IRef\+Manager::\+remove\+Ref (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{ref\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Удалить ссылку 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ref\+\_\+name} & Имя удаляемой ссылки \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если ссылка не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classProgram_aafcb0fba7e4d8e62864fa8fc9ffc572d}{Program}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+entity/\+program.\+hpp\end{DoxyCompactItemize}

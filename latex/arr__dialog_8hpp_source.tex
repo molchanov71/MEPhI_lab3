@@ -1,0 +1,42 @@
+\doxysection{arr\+\_\+dialog.\+hpp}
+\hypertarget{arr__dialog_8hpp_source}{}\label{arr__dialog_8hpp_source}\index{include/dialogs/arr\_dialog.hpp@{include/dialogs/arr\_dialog.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <QDialog>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ QT\_BEGIN\_NAMESPACE\ \textcolor{keyword}{namespace\ }Ui}
+\DoxyCodeLine{00006\ \{}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{class\ }ArrDialog;}
+\DoxyCodeLine{00008\ \}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ QT\_END\_NAMESPACE\ \textcolor{keyword}{class\ }ArrDialog\ final\ :\ \textcolor{keyword}{public}\ QDialog}
+\DoxyCodeLine{00011\ \{}
+\DoxyCodeLine{00012\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00015\ \ \ \ \ ArrDialog(std::string\ prog\_path\_,}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ unit\_name\_,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class}\ \doxymbox{\hyperlink{classIProgramRepository}{IProgramRepository}}\ \&,}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{class}\ \doxymbox{\hyperlink{classIController}{IController}}\ \&,}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \string~ArrDialog()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ Ui::ArrDialog\ *ui;}
+\DoxyCodeLine{00025\ \ \ \ \ std::string\ prog\_path,\ unit\_name;}
+\DoxyCodeLine{00026\ \ \ \ \ \doxymbox{\hyperlink{classIProgramRepository}{IProgramRepository}}\ \&repo;}
+\DoxyCodeLine{00027\ \ \ \ \ \doxymbox{\hyperlink{classIController}{IController}}\ \&controller;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ writeData();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ writeIndex(\textcolor{keywordtype}{size\_t});}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ updateData();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classAbstractIndexed}{AbstractIndexed}}\ *getArrPtr();}
+\DoxyCodeLine{00036\ \};}
+
+\end{DoxyCode}

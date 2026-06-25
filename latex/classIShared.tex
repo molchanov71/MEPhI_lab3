@@ -1,0 +1,65 @@
+\doxysection{IShared Class Reference}
+\hypertarget{classIShared}{}\label{classIShared}\index{IShared@{IShared}}
+
+
+Интерфейс разделяемого сегмента  
+
+
+
+
+{\ttfamily \+\#include $<$unit.\+hpp$>$}
+
+Inheritance diagram for IShared:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classIShared}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{classIShared_a15f5f071fa89690b8dcf0d938b6873d8}{grant\+Access}} (std::\+string)=0
+\begin{DoxyCompactList}\small\item\em Добавить программу в список пользователей сегментом \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIShared_a4f3df1eab47474b643c19e6acdad62d9}{revoke\+Access}} (const std::\+string \&)=0
+\begin{DoxyCompactList}\small\item\em Удалить программу из списка \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Интерфейс разделяемого сегмента 
+
+\label{doc-func-members}
+\Hypertarget{classIShared_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIShared_a15f5f071fa89690b8dcf0d938b6873d8}\index{IShared@{IShared}!grantAccess@{grantAccess}}
+\index{grantAccess@{grantAccess}!IShared@{IShared}}
+\doxysubsubsection{\texorpdfstring{grantAccess()}{grantAccess()}}
+{\footnotesize\ttfamily \label{classIShared_a15f5f071fa89690b8dcf0d938b6873d8} 
+virtual void IShared::\+grant\+Access (\begin{DoxyParamCaption}\item[{std::\+string}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Добавить программу в список пользователей сегментом 
+
+
+
+Implemented in \doxymbox{\hyperlink{classAbstractShared_a37b28593a7b0ee9a3445663d454bf70d}{Abstract\+Shared}}.
+
+\Hypertarget{classIShared_a4f3df1eab47474b643c19e6acdad62d9}\index{IShared@{IShared}!revokeAccess@{revokeAccess}}
+\index{revokeAccess@{revokeAccess}!IShared@{IShared}}
+\doxysubsubsection{\texorpdfstring{revokeAccess()}{revokeAccess()}}
+{\footnotesize\ttfamily \label{classIShared_a4f3df1eab47474b643c19e6acdad62d9} 
+virtual void IShared::\+revoke\+Access (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Удалить программу из списка 
+
+
+
+Implemented in \doxymbox{\hyperlink{classAbstractShared_a3ccf74583afe6e19d4c749ed4c135bb0}{Abstract\+Shared}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+entity/\+unit.\+hpp\end{DoxyCompactItemize}

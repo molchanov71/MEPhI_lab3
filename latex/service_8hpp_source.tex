@@ -1,0 +1,244 @@
+\doxysection{service.\+hpp}
+\hypertarget{service_8hpp_source}{}\label{service_8hpp_source}\index{include/model/service.hpp@{include/model/service.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIProgramRepository}{IProgramRepository}};}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIMemoryService}{IMemoryService}}}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{classIMemoryService_ac021224d546ea660dde602e84f041bc4}{searchForward}}(\textcolor{keywordtype}{size\_t}\ size)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00027\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIProgramRepository}{IProgramRepository}}\ \&\doxymbox{\hyperlink{classIMemoryService_a1d5bab0b9c034f2fad050e1055542537}{getRepo}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIMemoryService_a66663c389df40fe991ae970b21037b5f}{defragment}}()\ =\ 0;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIMemoryService}{\string~IMemoryService}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIProgramService}{IProgramService}}}
+\DoxyCodeLine{00041\ \{}
+\DoxyCodeLine{00042\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIProgramService_a0565578f2524c0adfa98d59afafcb11b}{createProgram}}(std::string\ prog\_path,\ \textcolor{keywordtype}{size\_t}\ quota)\ =\ 0;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIProgramService_a7413259f53e70ba899d1e428bf256fa8}{destroyProgram}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path)\ =\ 0;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00065\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{classIProgramService_a6841247b07a9eb3056278f92937513ac}{getTotalMemoryUsage}}(\textcolor{keyword}{const}\ std::string\ \&path)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIProgramService}{\string~IProgramService}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00068\ \};}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00073\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classISharedService}{ISharedService}}}
+\DoxyCodeLine{00074\ \{}
+\DoxyCodeLine{00075\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classISharedService_a2720e68418a60a28c2942ccbbdf330ba}{createShared}}(std::string\ unit\_name,\ \textcolor{keywordtype}{size\_t}\ total\_size,\ \textcolor{keywordtype}{size\_t}\ el\_size)\ =\ 0;}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classISharedService_a9f1cd2f553a1ef8f130030590a1940d3}{destroyShared}}(\textcolor{keyword}{const}\ std::string\ \&unit\_name)\ =\ 0;}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classISharedService_a4bcc3f9e97cf7b8cc3436c232267f76b}{grantShared}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ =\ 0;}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classISharedService_a5a6edc37d094ee2bce3b10fff95b5833}{revokeShared}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ =\ 0;}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classISharedService}{\string~ISharedService}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00109\ \};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00114\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIIndexedService}{IIndexedService}}}
+\DoxyCodeLine{00115\ \{}
+\DoxyCodeLine{00116\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIIndexedService_a5e01aed6697088747087a88ac113f4cf}{createArray}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ unit\_name,}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ total\_size,}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ el\_size)\ =\ 0;}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00140\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ std::vector\ <uint8\_t>\ \doxymbox{\hyperlink{classIIndexedService_ab62692f0edf4a34a46b5f30b91c1bffe}{readIndex}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name,}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIIndexedService_ab78115466a86e171d1c0b371da2261f2}{writeIndex}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name,}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx,}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector\ <uint8\_t>\ \&new\_data)\ =\ 0;}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00170\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ std::vector\ <uint8\_t>\ \doxymbox{\hyperlink{classIIndexedService_a93cd3cf5c970f523f8197ebdb2fb493c}{getArrRange}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name,}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ begin,}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ end)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00185\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ std::vector\ <uint8\_t>\ \doxymbox{\hyperlink{classIIndexedService_a047d36511932aeaa71f8885ba05e76cb}{getShRange}}(\textcolor{keyword}{const}\ std::string\ \&unit\_name,\ \textcolor{keywordtype}{size\_t}\ begin,\ \textcolor{keywordtype}{size\_t}\ end)\ \textcolor{keyword}{const}}
+\DoxyCodeLine{00186\ \ \ \ \ =\ 0;}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIIndexedService}{\string~IIndexedService}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00189\ \};}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00194\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIUnitService}{IUnitService}}}
+\DoxyCodeLine{00195\ \{}
+\DoxyCodeLine{00196\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00204\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIUnitService_a72a07195e45a25a472542fb035d758db}{createVariable}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ std::string\ unit\_name,\ \textcolor{keywordtype}{size\_t}\ size)\ =\ 0;}
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00214\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classAbstractUnit}{AbstractUnit}}\ \&\doxymbox{\hyperlink{classIUnitService_a4fe4db58da24b2424e2612adec9958af}{getUnit}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00225\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ std::vector\ <uint8\_t>\ \doxymbox{\hyperlink{classIUnitService_a803b8925a171d63dde2d2391d48f22a5}{readUnit}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIUnitService_af6c4e63644073b29d87e71aae6d4c706}{writeUnit}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name,}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector\ <uint8\_t>\ \&new\_data)\ =\ 0;}
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00247\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIUnitService_a990b2c7301e45c7b5d07021789651d37}{destroyOwnUnit}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ =\ 0;}
+\DoxyCodeLine{00248\ }
+\DoxyCodeLine{00249\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIUnitService}{\string~IUnitService}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00250\ \};}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00255\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIRefService}{IRefService}}}
+\DoxyCodeLine{00256\ \{}
+\DoxyCodeLine{00257\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00266\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIRefService_a1b56b9cca5ea93aa4381299a38568618}{createRef}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name,\ \textcolor{keyword}{const}\ std::string\ \&ref\_name)\ =\ 0;}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00275\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIRefService_a909736dce54bdd168e1191347c444981}{removeRef}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&ref\_name)\ =\ 0;}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00277\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIRefService}{\string~IRefService}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00278\ \};}
+\DoxyCodeLine{00279\ }
+\DoxyCodeLine{00283\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classMemoryService_a5e7f871e2c9d5d386074fa99ccf77c59}{MemoryService}}\ final\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classIMemoryService}{IMemoryService}}}
+\DoxyCodeLine{00284\ \{}
+\DoxyCodeLine{00285\ \ \ \ \ \doxymbox{\hyperlink{classIProgramRepository}{IProgramRepository}}\ \&repo;\ }
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00293\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ searchForward(\textcolor{keywordtype}{size\_t}\ size)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00295\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00300\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{classMemoryService_a5e7f871e2c9d5d386074fa99ccf77c59}{MemoryService}}(\doxymbox{\hyperlink{classIProgramRepository}{IProgramRepository}}\ \&repo\_)\ :\ repo(repo\_)}
+\DoxyCodeLine{00301\ \ \ \ \ \{}
+\DoxyCodeLine{00302\ \ \ \ \ \}}
+\DoxyCodeLine{00303\ }
+\DoxyCodeLine{00308\ \ \ \ \ [[nodiscard]]\ \doxymbox{\hyperlink{classIProgramRepository}{IProgramRepository}}\ \&\doxymbox{\hyperlink{classMemoryService_a94c96de52ebb214b9a3018775f2580d2}{getRepo}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ repo;\ \}}
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00313\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classMemoryService_a928c6899ce7a9eeda272fc94597043db}{defragment}}()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00314\ \};}
+\DoxyCodeLine{00315\ }
+\DoxyCodeLine{00319\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classProgramService_a8beff9c4b2659b578b1a522cf908aeb4}{ProgramService}}\ final\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classIProgramService}{IProgramService}}}
+\DoxyCodeLine{00320\ \{}
+\DoxyCodeLine{00321\ \ \ \ \ \doxymbox{\hyperlink{classIMemoryService}{IMemoryService}}\ \&mem\_service;\ }
+\DoxyCodeLine{00322\ }
+\DoxyCodeLine{00323\ \ \ \ \ \doxymbox{\hyperlink{classIProgramRepository}{IProgramRepository}}\ \&repo;\ }
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00325\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00330\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{classProgramService_a8beff9c4b2659b578b1a522cf908aeb4}{ProgramService}}(\doxymbox{\hyperlink{classIMemoryService}{IMemoryService}}\ \&mem\_service\_)\ :\ mem\_service(mem\_service\_),}
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ repo(mem\_service.getRepo())}
+\DoxyCodeLine{00332\ \ \ \ \ \{}
+\DoxyCodeLine{00333\ \ \ \ \ \}}
+\DoxyCodeLine{00334\ }
+\DoxyCodeLine{00341\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classProgramService_afb70a8c5326957647f29ab2925fe55d9}{createProgram}}(std::string\ prog\_path,\ \textcolor{keywordtype}{size\_t}\ quota)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00342\ }
+\DoxyCodeLine{00349\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classProgramService_a72919b0fac878e6da4b4d2eff92cc08b}{destroyProgram}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00350\ }
+\DoxyCodeLine{00357\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{classProgramService_a61d2a7493613697ac9be98381e5287ab}{getTotalMemoryUsage}}(\textcolor{keyword}{const}\ std::string\ \&path)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00358\ \};}
+\DoxyCodeLine{00359\ }
+\DoxyCodeLine{00363\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classSharedService_aea43c77227b790d528fab7c3529ca56a}{SharedService}}\ final\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classISharedService}{ISharedService}}}
+\DoxyCodeLine{00364\ \{}
+\DoxyCodeLine{00365\ \ \ \ \ \doxymbox{\hyperlink{classIMemoryService}{IMemoryService}}\ \&mem\_service;\ }
+\DoxyCodeLine{00366\ }
+\DoxyCodeLine{00367\ \ \ \ \ \doxymbox{\hyperlink{classIProgramRepository}{IProgramRepository}}\ \&repo;\ }
+\DoxyCodeLine{00368\ }
+\DoxyCodeLine{00369\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00374\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{classSharedService_aea43c77227b790d528fab7c3529ca56a}{SharedService}}(\doxymbox{\hyperlink{classIMemoryService}{IMemoryService}}\ \&mem\_service\_)\ :\ mem\_service(mem\_service\_),}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ repo(mem\_service.getRepo())}
+\DoxyCodeLine{00376\ \ \ \ \ \{}
+\DoxyCodeLine{00377\ \ \ \ \ \}}
+\DoxyCodeLine{00378\ }
+\DoxyCodeLine{00386\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classSharedService_aeee13566760a747a2e42e1fa87eb0256}{createShared}}(std::string\ unit\_name,\ \textcolor{keywordtype}{size\_t}\ total\_size,\ \textcolor{keywordtype}{size\_t}\ el\_size)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00387\ }
+\DoxyCodeLine{00393\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classSharedService_a3d49ef25feae7627e808b75a34277e49}{destroyShared}}(\textcolor{keyword}{const}\ std::string\ \&unit\_name)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00394\ }
+\DoxyCodeLine{00401\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classSharedService_a80516fd04c1938279807beacd7261708}{grantShared}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00402\ }
+\DoxyCodeLine{00409\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classSharedService_af5aeb1880c8fc43fd8fd28b93f18a58d}{revokeShared}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00410\ \};}
+\DoxyCodeLine{00411\ }
+\DoxyCodeLine{00415\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIndexedService_a6f4e91662064d4b3b74a22a0aa77afe3}{IndexedService}}\ final\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classIIndexedService}{IIndexedService}}}
+\DoxyCodeLine{00416\ \{}
+\DoxyCodeLine{00417\ \ \ \ \ \doxymbox{\hyperlink{classIMemoryService}{IMemoryService}}\ \&mem\_service;\ }
+\DoxyCodeLine{00418\ }
+\DoxyCodeLine{00419\ \ \ \ \ \doxymbox{\hyperlink{classIUnitService}{IUnitService}}\ \&unit\_service;\ }
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00421\ \ \ \ \ \doxymbox{\hyperlink{classIProgramRepository}{IProgramRepository}}\ \&repo;\ }
+\DoxyCodeLine{00422\ }
+\DoxyCodeLine{00423\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00429\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{classIndexedService_a6f4e91662064d4b3b74a22a0aa77afe3}{IndexedService}}(\doxymbox{\hyperlink{classIMemoryService}{IMemoryService}}\ \&mem\_service\_,\ \doxymbox{\hyperlink{classIUnitService}{IUnitService}}\ \&unit\_service\_)\ :\ mem\_service(mem\_service\_),}
+\DoxyCodeLine{00430\ \ \ \ \ \ \ \ \ unit\_service(unit\_service\_),}
+\DoxyCodeLine{00431\ \ \ \ \ \ \ \ \ repo(mem\_service.getRepo())}
+\DoxyCodeLine{00432\ \ \ \ \ \{}
+\DoxyCodeLine{00433\ \ \ \ \ \}}
+\DoxyCodeLine{00434\ }
+\DoxyCodeLine{00443\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIndexedService_aee7052818a04ceb061f6ca78db6bc384}{createArray}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ std::string\ unit\_name,\ \textcolor{keywordtype}{size\_t}\ total\_size,\ \textcolor{keywordtype}{size\_t}\ el\_size)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00444\ }
+\DoxyCodeLine{00445\ }
+\DoxyCodeLine{00456\ \ \ \ \ [[nodiscard]]\ std::vector\ <uint8\_t>\ \doxymbox{\hyperlink{classIndexedService_a1631210d0120d5bb55d2e3ba8d57c856}{readIndex}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name,}
+\DoxyCodeLine{00458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00459\ }
+\DoxyCodeLine{00470\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIndexedService_ac07e3c315ed7746cc6149df73c85e33c}{writeIndex}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name,}
+\DoxyCodeLine{00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ idx,}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector\ <uint8\_t>\ \&new\_data)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00474\ }
+\DoxyCodeLine{00486\ \ \ \ \ [[nodiscard]]\ std::vector\ <uint8\_t>\ \doxymbox{\hyperlink{classIndexedService_a86a8e40e046e9b426bff72f35858537c}{getArrRange}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00487\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name,}
+\DoxyCodeLine{00488\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ begin,}
+\DoxyCodeLine{00489\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ end)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00490\ }
+\DoxyCodeLine{00501\ \ \ \ \ [[nodiscard]]\ std::vector\ <uint8\_t>}
+\DoxyCodeLine{00502\ \ \ \ \ \doxymbox{\hyperlink{classIndexedService_a89f4b604feadc117619baab6ceb7fe47}{getShRange}}(\textcolor{keyword}{const}\ std::string\ \&unit\_name,\ \textcolor{keywordtype}{size\_t}\ begin,\ \textcolor{keywordtype}{size\_t}\ end)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00503\ \};}
+\DoxyCodeLine{00504\ }
+\DoxyCodeLine{00508\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classUnitService_a87913a1dff515cc2d17bd4014a4c189f}{UnitService}}\ final\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classIUnitService}{IUnitService}}}
+\DoxyCodeLine{00509\ \{}
+\DoxyCodeLine{00510\ \ \ \ \ \doxymbox{\hyperlink{classIMemoryService}{IMemoryService}}\ \&mem\_service;\ }
+\DoxyCodeLine{00511\ }
+\DoxyCodeLine{00512\ \ \ \ \ \doxymbox{\hyperlink{classIProgramRepository}{IProgramRepository}}\ \&repo;\ }
+\DoxyCodeLine{00513\ }
+\DoxyCodeLine{00514\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00519\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{classUnitService_a87913a1dff515cc2d17bd4014a4c189f}{UnitService}}(\doxymbox{\hyperlink{classIMemoryService}{IMemoryService}}\ \&mem\_service\_)\ :\ mem\_service(mem\_service\_),}
+\DoxyCodeLine{00520\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ repo(mem\_service.getRepo())}
+\DoxyCodeLine{00521\ \ \ \ \ \{}
+\DoxyCodeLine{00522\ \ \ \ \ \}}
+\DoxyCodeLine{00523\ }
+\DoxyCodeLine{00531\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classUnitService_aebf921a9654529dfa19cc732de382756}{createVariable}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ std::string\ unit\_name,\ \textcolor{keywordtype}{size\_t}\ size)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00532\ }
+\DoxyCodeLine{00541\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classAbstractUnit}{AbstractUnit}}\ \&}
+\DoxyCodeLine{00542\ \ \ \ \ \doxymbox{\hyperlink{classUnitService_a4abce20452285eb2def59bb2697e5d61}{getUnit}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00543\ }
+\DoxyCodeLine{00552\ \ \ \ \ [[nodiscard]]\ std::vector\ <uint8\_t>\ \doxymbox{\hyperlink{classUnitService_a27c313b36919dcaeb80156e926f76a8c}{readUnit}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00554\ }
+\DoxyCodeLine{00563\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classUnitService_af525efd3279cb60b231e6d72cc386629}{writeUnit}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,}
+\DoxyCodeLine{00564\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::string\ \&unit\_name,}
+\DoxyCodeLine{00565\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector\ <uint8\_t>\ \&new\_data)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00566\ }
+\DoxyCodeLine{00574\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classUnitService_ab1f043abc69f423c787f2e46db625c5d}{destroyOwnUnit}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00575\ \};}
+\DoxyCodeLine{00576\ }
+\DoxyCodeLine{00580\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classRefService_ae9f759d8e2b58edf19f06f03ce4fccd4}{RefService}}\ final\ :\ \textcolor{keyword}{public}\ \doxymbox{\hyperlink{classIRefService}{IRefService}}}
+\DoxyCodeLine{00581\ \{}
+\DoxyCodeLine{00582\ \ \ \ \ \doxymbox{\hyperlink{classIMemoryService}{IMemoryService}}\ \&mem\_service;\ }
+\DoxyCodeLine{00583\ \ \ \ \ \doxymbox{\hyperlink{classIProgramRepository}{IProgramRepository}}\ \&repo;\ }
+\DoxyCodeLine{00584\ }
+\DoxyCodeLine{00585\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00590\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{classRefService_ae9f759d8e2b58edf19f06f03ce4fccd4}{RefService}}(\doxymbox{\hyperlink{classIMemoryService}{IMemoryService}}\ \&mem\_service\_)\ :\ mem\_service(mem\_service\_),}
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ repo(mem\_service.getRepo())}
+\DoxyCodeLine{00592\ \ \ \ \ \{}
+\DoxyCodeLine{00593\ \ \ \ \ \}}
+\DoxyCodeLine{00594\ }
+\DoxyCodeLine{00603\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classRefService_ad9196516e95bf8c6100b216c9e3bc765}{createRef}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&unit\_name,\ \textcolor{keyword}{const}\ std::string\ \&ref\_name)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00604\ }
+\DoxyCodeLine{00612\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classRefService_ae7549fd8c641f077fb4dc608a3348762}{removeRef}}(\textcolor{keyword}{const}\ std::string\ \&prog\_path,\ \textcolor{keyword}{const}\ std::string\ \&ref\_name)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00613\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,130 @@
+\doxysection{Abstract\+Memory\+Unit Class Reference}
+\hypertarget{classAbstractMemoryUnit}{}\label{classAbstractMemoryUnit}\index{AbstractMemoryUnit@{AbstractMemoryUnit}}
+
+
+Абстрактный класс элемента памяти  
+
+
+
+
+{\ttfamily \+\#include $<$unit.\+hpp$>$}
+
+Inheritance diagram for Abstract\+Memory\+Unit:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{classAbstractMemoryUnit}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classAbstractMemoryUnit_affcebd40bee840d8364a054b9ef7e320}{Abstract\+Memory\+Unit}} (const size\+\_\+t address\+\_\+, const size\+\_\+t size\+\_\+)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{classAbstractMemoryUnit_a7267e158e65f00a74fddc3f04e6e894b}{get\+Address}} () const override
+\begin{DoxyCompactList}\small\item\em Адрес элемента в памяти \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{classAbstractMemoryUnit_a0334245161b37ab95263c2fec3b9c474}{get\+Total\+Size}} () const override
+\begin{DoxyCompactList}\small\item\em Полный размер элемента в памяти \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classAbstractMemoryUnit_ad466d8149aa9fb108c39a2567597ffbc}{set\+Address}} (const size\+\_\+t new\+\_\+address) override
+\begin{DoxyCompactList}\small\item\em Сеттер адреса (при дефрагментации). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classIMemoryUnit}{IMemory\+Unit}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual std::\+string \doxymbox{\hyperlink{classIMemoryUnit_ae52e436ae57a1ecef0346f321271d09e}{get\+Type}} () const =0
+\begin{DoxyCompactList}\small\item\em Тип элемента (в данной работе:\+ Variable/\+\+Array/\+\+Shared). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classAbstractMemoryUnit_a0355b317c0638cf3dffcb4d945ca93b7}\label{classAbstractMemoryUnit_a0355b317c0638cf3dffcb4d945ca93b7} 
+size\+\_\+t {\bfseries address}
+\item 
+\Hypertarget{classAbstractMemoryUnit_aa399e91410b1a9084cd3cfc11074de36}\label{classAbstractMemoryUnit_aa399e91410b1a9084cd3cfc11074de36} 
+size\+\_\+t {\bfseries size}
+\begin{DoxyCompactList}\small\item\em Адрес элемента и его размер \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Абстрактный класс элемента памяти 
+
+\label{doc-constructors}
+\Hypertarget{classAbstractMemoryUnit_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classAbstractMemoryUnit_affcebd40bee840d8364a054b9ef7e320}\index{AbstractMemoryUnit@{AbstractMemoryUnit}!AbstractMemoryUnit@{AbstractMemoryUnit}}
+\index{AbstractMemoryUnit@{AbstractMemoryUnit}!AbstractMemoryUnit@{AbstractMemoryUnit}}
+\doxysubsubsection{\texorpdfstring{AbstractMemoryUnit()}{AbstractMemoryUnit()}}
+{\footnotesize\ttfamily \label{classAbstractMemoryUnit_affcebd40bee840d8364a054b9ef7e320} 
+Abstract\+Memory\+Unit::\+\+Abstract\+Memory\+Unit (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{address\+\_\+}{, }\item[{const size\+\_\+t}]{size\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address\+\_\+} & Адрес \\
+\hline
+{\em size\+\_\+} & Размер \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classAbstractMemoryUnit_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classAbstractMemoryUnit_a7267e158e65f00a74fddc3f04e6e894b}\index{AbstractMemoryUnit@{AbstractMemoryUnit}!getAddress@{getAddress}}
+\index{getAddress@{getAddress}!AbstractMemoryUnit@{AbstractMemoryUnit}}
+\doxysubsubsection{\texorpdfstring{getAddress()}{getAddress()}}
+{\footnotesize\ttfamily \label{classAbstractMemoryUnit_a7267e158e65f00a74fddc3f04e6e894b} 
+size\+\_\+t Abstract\+Memory\+Unit::\+get\+Address (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Адрес элемента в памяти 
+
+\begin{DoxyReturn}{Returns}
+Адрес (индекс в массиве байтов) 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classIMemoryUnit_ab080f0cece697c1db2459498981258a9}{IMemory\+Unit}}.
+
+\Hypertarget{classAbstractMemoryUnit_a0334245161b37ab95263c2fec3b9c474}\index{AbstractMemoryUnit@{AbstractMemoryUnit}!getTotalSize@{getTotalSize}}
+\index{getTotalSize@{getTotalSize}!AbstractMemoryUnit@{AbstractMemoryUnit}}
+\doxysubsubsection{\texorpdfstring{getTotalSize()}{getTotalSize()}}
+{\footnotesize\ttfamily \label{classAbstractMemoryUnit_a0334245161b37ab95263c2fec3b9c474} 
+size\+\_\+t Abstract\+Memory\+Unit::\+get\+Total\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Полный размер элемента в памяти 
+
+\begin{DoxyReturn}{Returns}
+Размер элемента 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classIMemoryUnit_af7e2efc674c91ffc19ecd4e6b8cd9580}{IMemory\+Unit}}.
+
+\Hypertarget{classAbstractMemoryUnit_ad466d8149aa9fb108c39a2567597ffbc}\index{AbstractMemoryUnit@{AbstractMemoryUnit}!setAddress@{setAddress}}
+\index{setAddress@{setAddress}!AbstractMemoryUnit@{AbstractMemoryUnit}}
+\doxysubsubsection{\texorpdfstring{setAddress()}{setAddress()}}
+{\footnotesize\ttfamily \label{classAbstractMemoryUnit_ad466d8149aa9fb108c39a2567597ffbc} 
+void Abstract\+Memory\+Unit::\+set\+Address (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{new\+\_\+address}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Сеттер адреса (при дефрагментации). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+\_\+address} & Новый адрес \\
+\hline
+\end{DoxyParams}
+
+
+Implements \doxymbox{\hyperlink{classIMemoryUnit_ac86f5f437aeb669e37e58641d485ebed}{IMemory\+Unit}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+entity/\+unit.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,239 @@
+\doxysection{Indexed\+Service Class Reference}
+\hypertarget{classIndexedService}{}\label{classIndexedService}\index{IndexedService@{IndexedService}}
+
+
+Сервис по управлению индексируемыми элементами  
+
+
+
+
+{\ttfamily \+\#include $<$service.\+hpp$>$}
+
+Inheritance diagram for Indexed\+Service:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIndexedService}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classIndexedService_a6f4e91662064d4b3b74a22a0aa77afe3}{Indexed\+Service}} (\doxymbox{\hyperlink{classIMemoryService}{IMemory\+Service}} \&mem\+\_\+service\+\_\+, \doxymbox{\hyperlink{classIUnitService}{IUnit\+Service}} \&unit\+\_\+service\+\_\+)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classIndexedService_aee7052818a04ceb061f6ca78db6bc384}{create\+Array}} (const std::\+string \&prog\+\_\+path, std::\+string unit\+\_\+name, size\+\_\+t total\+\_\+size, size\+\_\+t el\+\_\+size) override
+\begin{DoxyCompactList}\small\item\em Создать массив (с выделением памяти). \end{DoxyCompactList}\item 
+std::\+vector$<$ uint8\+\_\+t $>$ \doxymbox{\hyperlink{classIndexedService_a1631210d0120d5bb55d2e3ba8d57c856}{read\+Index}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name, size\+\_\+t idx) const override
+\begin{DoxyCompactList}\small\item\em Прочитать данные по индексу \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classIndexedService_ac07e3c315ed7746cc6149df73c85e33c}{write\+Index}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name, size\+\_\+t idx, const std::\+vector$<$ uint8\+\_\+t $>$ \&new\+\_\+data) override
+\begin{DoxyCompactList}\small\item\em Записать данные по индексу \end{DoxyCompactList}\item 
+std::\+vector$<$ uint8\+\_\+t $>$ \doxymbox{\hyperlink{classIndexedService_a86a8e40e046e9b426bff72f35858537c}{get\+Arr\+Range}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name, size\+\_\+t begin, size\+\_\+t end) const override
+\begin{DoxyCompactList}\small\item\em Прочитать данные массива из диапазона по двум индексам \end{DoxyCompactList}\item 
+std::\+vector$<$ uint8\+\_\+t $>$ \doxymbox{\hyperlink{classIndexedService_a89f4b604feadc117619baab6ceb7fe47}{get\+Sh\+Range}} (const std::\+string \&unit\+\_\+name, size\+\_\+t begin, size\+\_\+t end) const override
+\begin{DoxyCompactList}\small\item\em Прочитать данные разделяемого сегмента из диапазона по двум индексам \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Сервис по управлению индексируемыми элементами 
+
+\label{doc-constructors}
+\Hypertarget{classIndexedService_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classIndexedService_a6f4e91662064d4b3b74a22a0aa77afe3}\index{IndexedService@{IndexedService}!IndexedService@{IndexedService}}
+\index{IndexedService@{IndexedService}!IndexedService@{IndexedService}}
+\doxysubsubsection{\texorpdfstring{IndexedService()}{IndexedService()}}
+{\footnotesize\ttfamily \label{classIndexedService_a6f4e91662064d4b3b74a22a0aa77afe3} 
+Indexed\+Service::\+\+Indexed\+Service (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classIMemoryService}{IMemory\+Service}} \&}]{mem\+\_\+service\+\_\+}{, }\item[{\doxymbox{\hyperlink{classIUnitService}{IUnit\+Service}} \&}]{unit\+\_\+service\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Конструктор 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem\+\_\+service\+\_\+} & Ссылка на сервис по управлению памятью \\
+\hline
+{\em unit\+\_\+service\+\_\+} & Ссылка на сервис по управлению элементами памяти \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classIndexedService_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIndexedService_aee7052818a04ceb061f6ca78db6bc384}\index{IndexedService@{IndexedService}!createArray@{createArray}}
+\index{createArray@{createArray}!IndexedService@{IndexedService}}
+\doxysubsubsection{\texorpdfstring{createArray()}{createArray()}}
+{\footnotesize\ttfamily \label{classIndexedService_aee7052818a04ceb061f6ca78db6bc384} 
+void Indexed\+Service::\+create\+Array (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{std::\+string}]{unit\+\_\+name}{, }\item[{size\+\_\+t}]{total\+\_\+size}{, }\item[{size\+\_\+t}]{el\+\_\+size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Создать массив (с выделением памяти). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя массива \\
+\hline
+{\em total\+\_\+size} & Полный размер \\
+\hline
+{\em el\+\_\+size} & Размер одного элемента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена или total\+\_\+size не кратен el\+\_\+size \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIIndexedService_a5e01aed6697088747087a88ac113f4cf}{IIndexed\+Service}}.
+
+\Hypertarget{classIndexedService_a86a8e40e046e9b426bff72f35858537c}\index{IndexedService@{IndexedService}!getArrRange@{getArrRange}}
+\index{getArrRange@{getArrRange}!IndexedService@{IndexedService}}
+\doxysubsubsection{\texorpdfstring{getArrRange()}{getArrRange()}}
+{\footnotesize\ttfamily \label{classIndexedService_a86a8e40e046e9b426bff72f35858537c} 
+std::\+vector$<$ uint8\+\_\+t $>$ Indexed\+Service::\+get\+Arr\+Range (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{, }\item[{size\+\_\+t}]{begin}{, }\item[{size\+\_\+t}]{end}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Прочитать данные массива из диапазона по двум индексам 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя массива \\
+\hline
+{\em begin} & Индекс начала (включительно) \\
+\hline
+{\em end} & Индекс конца (не включительно) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Данные из диапазона \+[begin, end) 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classIndexError}{Index\+Error}} & Если idx выходит за рамки массива \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если индексируемый элемент не найден \\
+\hline
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIIndexedService_a93cd3cf5c970f523f8197ebdb2fb493c}{IIndexed\+Service}}.
+
+\Hypertarget{classIndexedService_a89f4b604feadc117619baab6ceb7fe47}\index{IndexedService@{IndexedService}!getShRange@{getShRange}}
+\index{getShRange@{getShRange}!IndexedService@{IndexedService}}
+\doxysubsubsection{\texorpdfstring{getShRange()}{getShRange()}}
+{\footnotesize\ttfamily \label{classIndexedService_a89f4b604feadc117619baab6ceb7fe47} 
+std::\+vector$<$ uint8\+\_\+t $>$ Indexed\+Service::\+get\+Sh\+Range (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{unit\+\_\+name}{, }\item[{size\+\_\+t}]{begin}{, }\item[{size\+\_\+t}]{end}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Прочитать данные разделяемого сегмента из диапазона по двум индексам 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unit\+\_\+name} & Имя разделяемого сегмента \\
+\hline
+{\em begin} & Индекс начала (включительно) \\
+\hline
+{\em end} & Индекс конца (не включительно) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Данные из диапазона \+[begin, end) 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classIndexError}{Index\+Error}} & Если idx выходит за рамки массива \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если индексируемый элемент не найден \\
+\hline
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIIndexedService_a047d36511932aeaa71f8885ba05e76cb}{IIndexed\+Service}}.
+
+\Hypertarget{classIndexedService_a1631210d0120d5bb55d2e3ba8d57c856}\index{IndexedService@{IndexedService}!readIndex@{readIndex}}
+\index{readIndex@{readIndex}!IndexedService@{IndexedService}}
+\doxysubsubsection{\texorpdfstring{readIndex()}{readIndex()}}
+{\footnotesize\ttfamily \label{classIndexedService_a1631210d0120d5bb55d2e3ba8d57c856} 
+std::\+vector$<$ uint8\+\_\+t $>$ Indexed\+Service::\+read\+Index (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{, }\item[{size\+\_\+t}]{idx}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Прочитать данные по индексу 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя массива/\+разделяемого сегмента, к которому имеет доступ программа \\
+\hline
+{\em idx} & Искомый индекс \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Данные по индексу idx 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classIndexError}{Index\+Error}} & Если idx выходит за рамки массива \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если индексируемый элемент не найден \\
+\hline
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIIndexedService_ab62692f0edf4a34a46b5f30b91c1bffe}{IIndexed\+Service}}.
+
+\Hypertarget{classIndexedService_ac07e3c315ed7746cc6149df73c85e33c}\index{IndexedService@{IndexedService}!writeIndex@{writeIndex}}
+\index{writeIndex@{writeIndex}!IndexedService@{IndexedService}}
+\doxysubsubsection{\texorpdfstring{writeIndex()}{writeIndex()}}
+{\footnotesize\ttfamily \label{classIndexedService_ac07e3c315ed7746cc6149df73c85e33c} 
+void Indexed\+Service::\+write\+Index (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{, }\item[{size\+\_\+t}]{idx}{, }\item[{const std::\+vector$<$ uint8\+\_\+t $>$ \&}]{new\+\_\+data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Записать данные по индексу 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя массива/\+разделяемого сегмента, к которому имеет доступ программа \\
+\hline
+{\em idx} & Искомый индекс \\
+\hline
+{\em new\+\_\+data} & Новые данные \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classIndexError}{Index\+Error}} & Если idx выходит за рамки массива \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если индексируемый элемент не найден \\
+\hline
+{\em std::\+logic\+\_\+error} & Если программа не найдена или размер new\+\_\+data не совпадает с размером одного элемента \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIIndexedService_ab78115466a86e171d1c0b371da2261f2}{IIndexed\+Service}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+service.\+hpp\item 
+src/\+model/\+service/\+service.\+cpp\end{DoxyCompactItemize}

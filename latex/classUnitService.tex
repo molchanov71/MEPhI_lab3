@@ -1,0 +1,214 @@
+\doxysection{Unit\+Service Class Reference}
+\hypertarget{classUnitService}{}\label{classUnitService}\index{UnitService@{UnitService}}
+
+
+Сервис по управлению элементами памяти  
+
+
+
+
+{\ttfamily \+\#include $<$service.\+hpp$>$}
+
+Inheritance diagram for Unit\+Service:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classUnitService}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classUnitService_a87913a1dff515cc2d17bd4014a4c189f}{Unit\+Service}} (\doxymbox{\hyperlink{classIMemoryService}{IMemory\+Service}} \&mem\+\_\+service\+\_\+)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classUnitService_aebf921a9654529dfa19cc732de382756}{create\+Variable}} (const std::\+string \&prog\+\_\+path, std::\+string unit\+\_\+name, size\+\_\+t size) override
+\begin{DoxyCompactList}\small\item\em Создать переменную \end{DoxyCompactList}\item 
+const \doxymbox{\hyperlink{classAbstractUnit}{Abstract\+Unit}} \& \doxymbox{\hyperlink{classUnitService_a4abce20452285eb2def59bb2697e5d61}{get\+Unit}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name) const override
+\begin{DoxyCompactList}\small\item\em Геттер элемента памяти (одиночной переменной/\+массива/\+разделяемого сегмента). \end{DoxyCompactList}\item 
+std::\+vector$<$ uint8\+\_\+t $>$ \doxymbox{\hyperlink{classUnitService_a27c313b36919dcaeb80156e926f76a8c}{read\+Unit}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name) const override
+\begin{DoxyCompactList}\small\item\em Геттер данных из элемента \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classUnitService_af525efd3279cb60b231e6d72cc386629}{write\+Unit}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name, const std::\+vector$<$ uint8\+\_\+t $>$ \&new\+\_\+data) override
+\begin{DoxyCompactList}\small\item\em Запись данных в элемент \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classUnitService_ab1f043abc69f423c787f2e46db625c5d}{destroy\+Own\+Unit}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name) override
+\begin{DoxyCompactList}\small\item\em Удалить собственный элемент \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Сервис по управлению элементами памяти 
+
+\label{doc-constructors}
+\Hypertarget{classUnitService_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classUnitService_a87913a1dff515cc2d17bd4014a4c189f}\index{UnitService@{UnitService}!UnitService@{UnitService}}
+\index{UnitService@{UnitService}!UnitService@{UnitService}}
+\doxysubsubsection{\texorpdfstring{UnitService()}{UnitService()}}
+{\footnotesize\ttfamily \label{classUnitService_a87913a1dff515cc2d17bd4014a4c189f} 
+Unit\+Service::\+\+Unit\+Service (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classIMemoryService}{IMemory\+Service}} \&}]{mem\+\_\+service\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Конструктор 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mem\+\_\+service\+\_\+} & Ссылка на сервис по управлению памятью \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classUnitService_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classUnitService_aebf921a9654529dfa19cc732de382756}\index{UnitService@{UnitService}!createVariable@{createVariable}}
+\index{createVariable@{createVariable}!UnitService@{UnitService}}
+\doxysubsubsection{\texorpdfstring{createVariable()}{createVariable()}}
+{\footnotesize\ttfamily \label{classUnitService_aebf921a9654529dfa19cc732de382756} 
+void Unit\+Service::\+create\+Variable (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{std::\+string}]{unit\+\_\+name}{, }\item[{size\+\_\+t}]{size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Создать переменную 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя переменной \\
+\hline
+{\em size} & Размер переменной \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена или имя переменной дублируется \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIUnitService_a72a07195e45a25a472542fb035d758db}{IUnit\+Service}}.
+
+\Hypertarget{classUnitService_ab1f043abc69f423c787f2e46db625c5d}\index{UnitService@{UnitService}!destroyOwnUnit@{destroyOwnUnit}}
+\index{destroyOwnUnit@{destroyOwnUnit}!UnitService@{UnitService}}
+\doxysubsubsection{\texorpdfstring{destroyOwnUnit()}{destroyOwnUnit()}}
+{\footnotesize\ttfamily \label{classUnitService_ab1f043abc69f423c787f2e46db625c5d} 
+void Unit\+Service::\+destroy\+Own\+Unit (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Удалить собственный элемент 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя элемента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если собственный элемент не найден \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIUnitService_a990b2c7301e45c7b5d07021789651d37}{IUnit\+Service}}.
+
+\Hypertarget{classUnitService_a4abce20452285eb2def59bb2697e5d61}\index{UnitService@{UnitService}!getUnit@{getUnit}}
+\index{getUnit@{getUnit}!UnitService@{UnitService}}
+\doxysubsubsection{\texorpdfstring{getUnit()}{getUnit()}}
+{\footnotesize\ttfamily \label{classUnitService_a4abce20452285eb2def59bb2697e5d61} 
+const \doxymbox{\hyperlink{classAbstractUnit}{Abstract\+Unit}} \& Unit\+Service::\+get\+Unit (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Геттер элемента памяти (одиночной переменной/\+массива/\+разделяемого сегмента). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя элемента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Константная ссылка на элемент 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если элемент не найден \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIUnitService_a4fe4db58da24b2424e2612adec9958af}{IUnit\+Service}}.
+
+\Hypertarget{classUnitService_a27c313b36919dcaeb80156e926f76a8c}\index{UnitService@{UnitService}!readUnit@{readUnit}}
+\index{readUnit@{readUnit}!UnitService@{UnitService}}
+\doxysubsubsection{\texorpdfstring{readUnit()}{readUnit()}}
+{\footnotesize\ttfamily \label{classUnitService_a27c313b36919dcaeb80156e926f76a8c} 
+std::\+vector$<$ uint8\+\_\+t $>$ Unit\+Service::\+read\+Unit (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Геттер данных из элемента 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя элемента \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Данные элемента 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если элемент не найден \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIUnitService_a803b8925a171d63dde2d2391d48f22a5}{IUnit\+Service}}.
+
+\Hypertarget{classUnitService_af525efd3279cb60b231e6d72cc386629}\index{UnitService@{UnitService}!writeUnit@{writeUnit}}
+\index{writeUnit@{writeUnit}!UnitService@{UnitService}}
+\doxysubsubsection{\texorpdfstring{writeUnit()}{writeUnit()}}
+{\footnotesize\ttfamily \label{classUnitService_af525efd3279cb60b231e6d72cc386629} 
+void Unit\+Service::\+write\+Unit (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{, }\item[{const std::\+vector$<$ uint8\+\_\+t $>$ \&}]{new\+\_\+data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Запись данных в элемент 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя элемента \\
+\hline
+{\em new\+\_\+data} & Новые данные \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена или размер новых данных не совпадает с размером элемента \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если элемент не найден \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \doxymbox{\hyperlink{classIUnitService_af6c4e63644073b29d87e71aae6d4c706}{IUnit\+Service}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+service.\+hpp\item 
+src/\+model/\+service/\+service.\+cpp\end{DoxyCompactItemize}

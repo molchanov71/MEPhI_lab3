@@ -1,0 +1,33 @@
+\doxysection{create\+\_\+own\+\_\+unit\+\_\+dialog.\+hpp}
+\hypertarget{create__own__unit__dialog_8hpp_source}{}\label{create__own__unit__dialog_8hpp_source}\index{include/dialogs/create\_own\_unit\_dialog.hpp@{include/dialogs/create\_own\_unit\_dialog.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <QDialog>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIController}{IController}};}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ QT\_BEGIN\_NAMESPACE\ \textcolor{keyword}{namespace\ }Ui}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \ \ \ \ \textcolor{keyword}{class\ }CreateOwnUnitDialog;}
+\DoxyCodeLine{00010\ \}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ QT\_END\_NAMESPACE\ \textcolor{keyword}{class\ }CreateOwnUnitDialog\ final\ :\ \textcolor{keyword}{public}\ QDialog}
+\DoxyCodeLine{00013\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ Q\_OBJECT}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ CreateOwnUnitDialog(\doxymbox{\hyperlink{classIController}{IController}}\ \&,\ std::string,\ QWidget\ *parent\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \string~CreateOwnUnitDialog()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022\ \ \ \ \ Ui::CreateOwnUnitDialog\ *ui;}
+\DoxyCodeLine{00023\ \ \ \ \ \doxymbox{\hyperlink{classIController}{IController}}\ \&controller;}
+\DoxyCodeLine{00024\ \ \ \ \ std::string\ prog\_path;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ onButtonClicked();}
+\DoxyCodeLine{00027\ \};}
+
+\end{DoxyCode}

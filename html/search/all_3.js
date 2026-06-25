@@ -1,0 +1,12 @@
+var searchData=
+[
+  ['defragment_0',['defragment',['../classIController.html#ac2cc30aeaa96a23e86b63a63cc68b6af',1,'IController::defragment()'],['../classController.html#af2d6915e0013c0aa0a843ba7bb25a6bb',1,'Controller::defragment()'],['../classIMemoryService.html#a66663c389df40fe991ae970b21037b5f',1,'IMemoryService::defragment()'],['../classMemoryService.html#a928c6899ce7a9eeda272fc94597043db',1,'MemoryService::defragment()']]],
+  ['destroyownunit_1',['destroyOwnUnit',['../classIController.html#a91ef9dc977f61fcbc33f65220a5231a0',1,'IController::destroyOwnUnit()'],['../classController.html#a7abbbe5a2dc499f49d5aba4d4931986f',1,'Controller::destroyOwnUnit()'],['../classIUnitService.html#a990b2c7301e45c7b5d07021789651d37',1,'IUnitService::destroyOwnUnit()'],['../classUnitService.html#ab1f043abc69f423c787f2e46db625c5d',1,'UnitService::destroyOwnUnit()']]],
+  ['destroyprogram_2',['destroyProgram',['../classIController.html#aa755be9b63fe36c612236f61e7f42348',1,'IController::destroyProgram()'],['../classController.html#aa58329160d4af32e2702c5e3c5da35a5',1,'Controller::destroyProgram()'],['../classIProgramService.html#a7413259f53e70ba899d1e428bf256fa8',1,'IProgramService::destroyProgram()'],['../classProgramService.html#a72919b0fac878e6da4b4d2eff92cc08b',1,'ProgramService::destroyProgram()']]],
+  ['destroyshared_3',['destroyShared',['../classISharedService.html#a9f1cd2f553a1ef8f130030590a1940d3',1,'ISharedService::destroyShared()'],['../classSharedService.html#a3d49ef25feae7627e808b75a34277e49',1,'SharedService::destroyShared()']]],
+  ['detach_4',['detach',['../classIReference.html#adbb4480c2c76deb372a326354483be9a',1,'IReference::detach()'],['../classReference.html#ac45528cd597a38dca46210c88fc9363c',1,'Reference::detach()'],['../classByte.html#a45d0aba33b7e72be0f692cb0cad1df88',1,'Byte::detach()']]],
+  ['detachaccess_5',['detachAccess',['../classISharedManager.html#afd634d72e1c2f17a68ca86bd2e0522fe',1,'ISharedManager::detachAccess()'],['../classProgram.html#a7f07daf3d05952d967c469bf9c545298',1,'Program::detachAccess()']]],
+  ['detached_6',['detached',['../classIReference.html#a7ff43c54ad50fa200e18f720e38b2e1e',1,'IReference::detached()'],['../classReference.html#a1314bf84df443059ba35a8fc6f52f484',1,'Reference::detached()']]],
+  ['doubledefineerror_7',['DoubleDefineError',['../classDoubleDefineError.html',1,'']]],
+  ['doublefreeerror_8',['DoubleFreeError',['../classDoubleFreeError.html',1,'']]]
+];

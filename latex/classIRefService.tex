@@ -1,0 +1,95 @@
+\doxysection{IRef\+Service Class Reference}
+\hypertarget{classIRefService}{}\label{classIRefService}\index{IRefService@{IRefService}}
+
+
+Интерфейс сервиса по управлению ссылками  
+
+
+
+
+{\ttfamily \+\#include $<$service.\+hpp$>$}
+
+Inheritance diagram for IRef\+Service:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIRefService}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{classIRefService_a1b56b9cca5ea93aa4381299a38568618}{create\+Ref}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name, const std::\+string \&ref\+\_\+name)=0
+\begin{DoxyCompactList}\small\item\em Создать ссылку \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIRefService_a909736dce54bdd168e1191347c444981}{remove\+Ref}} (const std::\+string \&prog\+\_\+path, const std::\+string \&ref\+\_\+name)=0
+\begin{DoxyCompactList}\small\item\em Удалить ссылку \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Интерфейс сервиса по управлению ссылками 
+
+\label{doc-func-members}
+\Hypertarget{classIRefService_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIRefService_a1b56b9cca5ea93aa4381299a38568618}\index{IRefService@{IRefService}!createRef@{createRef}}
+\index{createRef@{createRef}!IRefService@{IRefService}}
+\doxysubsubsection{\texorpdfstring{createRef()}{createRef()}}
+{\footnotesize\ttfamily \label{classIRefService_a1b56b9cca5ea93aa4381299a38568618} 
+virtual void IRef\+Service::\+create\+Ref (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{, }\item[{const std::\+string \&}]{ref\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Создать ссылку 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя переменной, на которую создаётся ссылка \\
+\hline
+{\em ref\+\_\+name} & Имя ссылки \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена или имя ссылки дублируется \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если переменная не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classRefService_ad9196516e95bf8c6100b216c9e3bc765}{Ref\+Service}}.
+
+\Hypertarget{classIRefService_a909736dce54bdd168e1191347c444981}\index{IRefService@{IRefService}!removeRef@{removeRef}}
+\index{removeRef@{removeRef}!IRefService@{IRefService}}
+\doxysubsubsection{\texorpdfstring{removeRef()}{removeRef()}}
+{\footnotesize\ttfamily \label{classIRefService_a909736dce54bdd168e1191347c444981} 
+virtual void IRef\+Service::\+remove\+Ref (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{ref\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Удалить ссылку 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em ref\+\_\+name} & Имя ссылки \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если ссылка не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classRefService_ae7549fd8c641f077fb4dc608a3348762}{Ref\+Service}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+service.\+hpp\end{DoxyCompactItemize}

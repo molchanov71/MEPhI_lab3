@@ -1,0 +1,91 @@
+\doxysection{Memory\+Service Class Reference}
+\hypertarget{classMemoryService}{}\label{classMemoryService}\index{MemoryService@{MemoryService}}
+
+
+Сервис по управлению памятью  
+
+
+
+
+{\ttfamily \+\#include $<$service.\+hpp$>$}
+
+Inheritance diagram for Memory\+Service:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMemoryService}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classMemoryService_a5e7f871e2c9d5d386074fa99ccf77c59}{Memory\+Service}} (\doxymbox{\hyperlink{classIProgramRepository}{IProgram\+Repository}} \&repo\+\_\+)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{classIProgramRepository}{IProgram\+Repository}} \& \doxymbox{\hyperlink{classMemoryService_a94c96de52ebb214b9a3018775f2580d2}{get\+Repo}} () const override
+\begin{DoxyCompactList}\small\item\em Геттер репозитория \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classMemoryService_a928c6899ce7a9eeda272fc94597043db}{defragment}} () override
+\begin{DoxyCompactList}\small\item\em Дефрагментация \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Сервис по управлению памятью 
+
+\label{doc-constructors}
+\Hypertarget{classMemoryService_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classMemoryService_a5e7f871e2c9d5d386074fa99ccf77c59}\index{MemoryService@{MemoryService}!MemoryService@{MemoryService}}
+\index{MemoryService@{MemoryService}!MemoryService@{MemoryService}}
+\doxysubsubsection{\texorpdfstring{MemoryService()}{MemoryService()}}
+{\footnotesize\ttfamily \label{classMemoryService_a5e7f871e2c9d5d386074fa99ccf77c59} 
+Memory\+Service::\+\+Memory\+Service (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{classIProgramRepository}{IProgram\+Repository}} \&}]{repo\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Конструктор 
+
+
+\begin{DoxyParams}{Parameters}
+{\em repo\+\_\+} & Ссылка на репозиторий \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classMemoryService_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classMemoryService_a928c6899ce7a9eeda272fc94597043db}\index{MemoryService@{MemoryService}!defragment@{defragment}}
+\index{defragment@{defragment}!MemoryService@{MemoryService}}
+\doxysubsubsection{\texorpdfstring{defragment()}{defragment()}}
+{\footnotesize\ttfamily \label{classMemoryService_a928c6899ce7a9eeda272fc94597043db} 
+void Memory\+Service::\+defragment (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Дефрагментация 
+
+
+
+Implements \doxymbox{\hyperlink{classIMemoryService_a66663c389df40fe991ae970b21037b5f}{IMemory\+Service}}.
+
+\Hypertarget{classMemoryService_a94c96de52ebb214b9a3018775f2580d2}\index{MemoryService@{MemoryService}!getRepo@{getRepo}}
+\index{getRepo@{getRepo}!MemoryService@{MemoryService}}
+\doxysubsubsection{\texorpdfstring{getRepo()}{getRepo()}}
+{\footnotesize\ttfamily \label{classMemoryService_a94c96de52ebb214b9a3018775f2580d2} 
+\doxymbox{\hyperlink{classIProgramRepository}{IProgram\+Repository}} \& Memory\+Service::\+get\+Repo (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Геттер репозитория 
+
+\begin{DoxyReturn}{Returns}
+Ссылка на репозиторий 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classIMemoryService_a1d5bab0b9c034f2fad050e1055542537}{IMemory\+Service}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+service.\+hpp\item 
+src/\+model/\+service/\+service.\+cpp\end{DoxyCompactItemize}

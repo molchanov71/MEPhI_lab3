@@ -1,0 +1,61 @@
+\doxysection{Double\+Free\+Error Class Reference}
+\hypertarget{classDoubleFreeError}{}\label{classDoubleFreeError}\index{DoubleFreeError@{DoubleFreeError}}
+Inheritance diagram for Double\+Free\+Error:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classDoubleFreeError}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classDoubleFreeError_ad03f7899b90ecd726a3f7cc1ff7dcca8}\label{classDoubleFreeError_ad03f7899b90ecd726a3f7cc1ff7dcca8} 
+{\bfseries Double\+Free\+Error} (const std::\+string \&message\+\_\+, const time\+\_\+point tp\+\_\+=system\+\_\+clock::\+now()) noexcept
+\item 
+std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} $>$ \doxymbox{\hyperlink{classDoubleFreeError_af623f8425ec1fdc12a7a1a00bc954411}{create\+Unique}} () const override
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Memory\+Error} (std::\+string message\+\_\+, const time\+\_\+point tp\+\_\+=system\+\_\+clock::\+now(), std::\+string type\+\_\+="{}Memory error"{}) noexcept
+\item 
+{\bfseries Memory\+Error} (const \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} \&other)
+\item 
+{\bfseries Memory\+Error} (\doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} \&\&other) noexcept
+\item 
+time\+\_\+point {\bfseries get\+Time\+Point} () const
+\item 
+const char \texorpdfstring{$\ast$}{*} {\bfseries what} () const noexcept override
+\item 
+const std::\+string \& {\bfseries get\+Type} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}}}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string {\bfseries message}
+\item 
+std::\+string {\bfseries type}
+\item 
+time\+\_\+point {\bfseries tp}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{classDoubleFreeError_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classDoubleFreeError_af623f8425ec1fdc12a7a1a00bc954411}\index{DoubleFreeError@{DoubleFreeError}!createUnique@{createUnique}}
+\index{createUnique@{createUnique}!DoubleFreeError@{DoubleFreeError}}
+\doxysubsubsection{\texorpdfstring{createUnique()}{createUnique()}}
+{\footnotesize\ttfamily \label{classDoubleFreeError_af623f8425ec1fdc12a7a1a00bc954411} 
+std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} $>$ Double\+Free\+Error::\+create\+Unique (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+errors.\+hpp\end{DoxyCompactItemize}

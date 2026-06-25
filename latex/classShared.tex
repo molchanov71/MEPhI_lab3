@@ -1,0 +1,163 @@
+\doxysection{Shared Class Reference}
+\hypertarget{classShared}{}\label{classShared}\index{Shared@{Shared}}
+
+
+Разделяемый сегмент (индексируемый и используется несколькими программами).  
+
+
+
+
+{\ttfamily \+\#include $<$unit.\+hpp$>$}
+
+Inheritance diagram for Shared:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{classShared}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classShared_ac86339394bba210d00b83ad2c79687f5}{Shared}} (std::\+string name\+\_\+, const size\+\_\+t address\+\_\+, const size\+\_\+t size\+\_\+, const size\+\_\+t el\+\_\+size\+\_\+)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{classShared_a4d1c613ce0bf9575578d16016558055d}{get\+Len}} () const override
+\begin{DoxyCompactList}\small\item\em Длина разделяемого сегмента \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{classShared_a4f0d7a41f124d89645ed6a743092d08c}{get\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em Тип элемента \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classAbstractShared}{Abstract\+Shared}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classAbstractShared_a57bdd064ad0ab7bd0bb37c27b187ddac}{Abstract\+Shared}} (std::\+string name\+\_\+, const size\+\_\+t address\+\_\+, const size\+\_\+t size\+\_\+, const size\+\_\+t el\+\_\+size\+\_\+)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classAbstractShared_a37b28593a7b0ee9a3445663d454bf70d}{grant\+Access}} (std::\+string) override
+\begin{DoxyCompactList}\small\item\em Добавить программу в список пользователей сегментом \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classAbstractShared_a3ccf74583afe6e19d4c749ed4c135bb0}{revoke\+Access}} (const std::\+string \&) override
+\begin{DoxyCompactList}\small\item\em Удалить программу из списка \end{DoxyCompactList}\item 
+const std::\+unordered\+\_\+set$<$ std::\+string $>$ \& \doxymbox{\hyperlink{classAbstractShared_a07246dfd0eee2b80e788eb28f3257487}{get\+Owning\+Programs}} () const
+\begin{DoxyCompactList}\small\item\em Геттер множества использующих программ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classAbstractUnit}{Abstract\+Unit}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classAbstractUnit_a75098e8eb0021401a4237d385e078b70}{Abstract\+Unit}} (std::\+string name\+\_\+, const size\+\_\+t address\+\_\+, const size\+\_\+t size\+\_\+)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classAbstractNamed}{Abstract\+Named}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classAbstractNamed_a194eb0c237f5cc1645bd1a24ec980b2d}{Abstract\+Named}} (std::\+string name\+\_\+)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
+const std::\+string \& \doxymbox{\hyperlink{classAbstractNamed_ae8fcdd2f0c52d16496e980f6f589d0d9}{get\+Name}} () const override
+\begin{DoxyCompactList}\small\item\em Геттер имени \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classAbstractMemoryUnit}{Abstract\+Memory\+Unit}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classAbstractMemoryUnit_affcebd40bee840d8364a054b9ef7e320}{Abstract\+Memory\+Unit}} (const size\+\_\+t address\+\_\+, const size\+\_\+t size\+\_\+)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{classAbstractMemoryUnit_a7267e158e65f00a74fddc3f04e6e894b}{get\+Address}} () const override
+\begin{DoxyCompactList}\small\item\em Адрес элемента в памяти \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{classAbstractMemoryUnit_a0334245161b37ab95263c2fec3b9c474}{get\+Total\+Size}} () const override
+\begin{DoxyCompactList}\small\item\em Полный размер элемента в памяти \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classAbstractMemoryUnit_ad466d8149aa9fb108c39a2567597ffbc}{set\+Address}} (const size\+\_\+t new\+\_\+address) override
+\begin{DoxyCompactList}\small\item\em Сеттер адреса (при дефрагментации). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classAbstractIndexed}{Abstract\+Indexed}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classAbstractIndexed_a47db509d8188abc26844ac6e9025e529}{Abstract\+Indexed}} (const size\+\_\+t el\+\_\+size\+\_\+)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{classAbstractIndexed_ad0ae44051e548923fea2a42ed71fe75e}{get\+El\+Size}} () const override
+\begin{DoxyCompactList}\small\item\em Геттер размера одного элемента \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{classAbstractShared}{Abstract\+Shared}}}
+\begin{DoxyCompactItemize}
+\item 
+std::\+unordered\+\_\+set$<$ std::\+string $>$ {\bfseries owning\+\_\+programs}
+\begin{DoxyCompactList}\small\item\em Программы, которые пользуются сегментом \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{classAbstractNamed}{Abstract\+Named}}}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string {\bfseries name}
+\begin{DoxyCompactList}\small\item\em имя элемента \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{classAbstractMemoryUnit}{Abstract\+Memory\+Unit}}}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t {\bfseries address}
+\item 
+size\+\_\+t {\bfseries size}
+\begin{DoxyCompactList}\small\item\em Адрес элемента и его размер \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{classAbstractIndexed}{Abstract\+Indexed}}}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t {\bfseries el\+\_\+size}
+\begin{DoxyCompactList}\small\item\em Размер одного элемента \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Разделяемый сегмент (индексируемый и используется несколькими программами). 
+
+\label{doc-constructors}
+\Hypertarget{classShared_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classShared_ac86339394bba210d00b83ad2c79687f5}\index{Shared@{Shared}!Shared@{Shared}}
+\index{Shared@{Shared}!Shared@{Shared}}
+\doxysubsubsection{\texorpdfstring{Shared()}{Shared()}}
+{\footnotesize\ttfamily \label{classShared_ac86339394bba210d00b83ad2c79687f5} 
+Shared::\+\+Shared (\begin{DoxyParamCaption}\item[{std::\+string}]{name\+\_\+}{, }\item[{const size\+\_\+t}]{address\+\_\+}{, }\item[{const size\+\_\+t}]{size\+\_\+}{, }\item[{const size\+\_\+t}]{el\+\_\+size\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name\+\_\+} & Имя \\
+\hline
+{\em address\+\_\+} & Адрес \\
+\hline
+{\em size\+\_\+} & Полный размер \\
+\hline
+{\em el\+\_\+size\+\_\+} & Размер одного элемента \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classShared_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classShared_a4d1c613ce0bf9575578d16016558055d}\index{Shared@{Shared}!getLen@{getLen}}
+\index{getLen@{getLen}!Shared@{Shared}}
+\doxysubsubsection{\texorpdfstring{getLen()}{getLen()}}
+{\footnotesize\ttfamily \label{classShared_a4d1c613ce0bf9575578d16016558055d} 
+size\+\_\+t Shared::\+get\+Len (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Длина разделяемого сегмента 
+
+\begin{DoxyReturn}{Returns}
+Количество элементов 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classIIndexed_aaf5b150dad59119e02622bbc3ca9530a}{IIndexed}}.
+
+\Hypertarget{classShared_a4f0d7a41f124d89645ed6a743092d08c}\index{Shared@{Shared}!getType@{getType}}
+\index{getType@{getType}!Shared@{Shared}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{classShared_a4f0d7a41f124d89645ed6a743092d08c} 
+std::\+string Shared::\+get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Тип элемента 
+
+\begin{DoxyReturn}{Returns}
+Строка "{}\+Shared"{} 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classIMemoryUnit_ae52e436ae57a1ecef0346f321271d09e}{IMemory\+Unit}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+entity/\+unit.\+hpp\end{DoxyCompactItemize}

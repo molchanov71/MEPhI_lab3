@@ -1,0 +1,122 @@
+\doxysection{program.\+hpp}
+\hypertarget{program_8hpp_source}{}\label{program_8hpp_source}\index{include/model/entity/program.hpp@{include/model/entity/program.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}model/entity/unit.hpp"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}table.hpp"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}errors.hpp"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIUnitManager}{IUnitManager}}}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIUnitManager_a33282ff77e4cd56107b9e51dbd99dde4}{createVar}}(std::string\ name,\ \textcolor{keywordtype}{size\_t}\ address,\ \textcolor{keywordtype}{size\_t}\ size)\ =\ 0;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIUnitManager_a0d43412d42c5558bc97855f27a9c1a26}{createArr}}(std::string\ name,\ \textcolor{keywordtype}{size\_t}\ address,\ \textcolor{keywordtype}{size\_t}\ size,\ \textcolor{keywordtype}{size\_t}\ el\_size)\ =\ 0;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00038\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classIUnitManager_a112fca853b697d044deb9ed9b71b6c6f}{hasOwnUnit}}(\textcolor{keyword}{const}\ std::string\ \&name)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00044\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ Table\ <std::string,\ std::unique\_ptr\ <OwnUnit>\ >\ \&\doxymbox{\hyperlink{classIUnitManager_acb82398b0342fedb79f1f979ba1e4673}{getOwnUnits}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{virtual}\ std::unique\_ptr\ <OwnUnit>\ \doxymbox{\hyperlink{classIUnitManager_ae891ce556a813b4725c894453a3495f6}{extractOwnUnit}}(\textcolor{keyword}{const}\ std::string\ \&name)\ =\ 0;}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIUnitManager}{\string~IUnitManager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00060\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classIRefManager}{IRefManager}}}
+\DoxyCodeLine{00061\ \{}
+\DoxyCodeLine{00062\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIRefManager_a2df612607e7cec83e12ef1981e0871d4}{createRef}}(\textcolor{keyword}{const}\ std::string\ \&unit\_name,\ std::string\ ref\_name)\ =\ 0;}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classIRefManager_ab8b51586707ae20d8d59c2804a6f38c0}{removeRef}}(\textcolor{keyword}{const}\ std::string\ \&ref\_name)\ =\ 0;}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00084\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classReference}{Reference}}\ \&\doxymbox{\hyperlink{classIRefManager_ad707d5f5a056b972a1b4c3ce13cf89ea}{getRef}}(\textcolor{keyword}{const}\ std::string\ \&ref\_name)\ =\ 0;}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00092\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classReference}{Reference}}\ \&\doxymbox{\hyperlink{classIRefManager_ae517c15ddab7221c024357e5b35688d1}{getRef}}(\textcolor{keyword}{const}\ std::string\ \&ref\_name)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00099\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classIRefManager_a65cd754c9358c0f713adfa9a2f5828c2}{hasRef}}(\textcolor{keyword}{const}\ std::string\ \&ref\_name)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00105\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ Table\ <std::string,\ Reference>\ \&\doxymbox{\hyperlink{classIRefManager_aad2de32dd619bdbb1fe14df29639c99a}{getRefs}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIRefManager}{\string~IRefManager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00108\ \};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00113\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classISharedManager}{ISharedManager}}}
+\DoxyCodeLine{00114\ \{}
+\DoxyCodeLine{00115\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classISharedManager_a94a36f5120468bcf056080d64888728d}{getAccess}}(std::shared\_ptr\ <AbstractShared>\ sptr)\ =\ 0;}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classISharedManager_afd634d72e1c2f17a68ca86bd2e0522fe}{detachAccess}}(\textcolor{keyword}{const}\ std::string\ \&name)\ =\ 0;}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00134\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classISharedManager_a854c7ad491cc16bd4830f5c90b6f21e8}{hasShared}}(\textcolor{keyword}{const}\ std::string\ \&name)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00140\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{virtual}\ \textcolor{keyword}{const}\ Table\ <std::string,\ std::weak\_ptr\ <AbstractShared>\ >\ \&\doxymbox{\hyperlink{classISharedManager_a834f7a0f535357516e1a00f9609eeb12}{getSharedUnits}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classISharedManager}{\string~ISharedManager}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00143\ \};}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{classProgram_aba2cc6c93fc145b30569c9aa7119680e}{Program}}\ final\ :\ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIUnitManager}{IUnitManager}},\ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classIRefManager}{IRefManager}},\ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \doxymbox{\hyperlink{classISharedManager}{ISharedManager}}}
+\DoxyCodeLine{00146\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ std::string\ path;\ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ quota,\ own\_space;}
+\DoxyCodeLine{00150\ \ \ \ \ Table\ <std::string,\ std::unique\_ptr\ <OwnUnit>\ >\ own\_units;\ }
+\DoxyCodeLine{00151\ \ \ \ \ Table\ <std::string,\ std::weak\_ptr\ <AbstractShared>\ >\ shared\_units;\ }
+\DoxyCodeLine{00152\ \ \ \ \ Table\ <std::string,\ Reference>\ refs;\ }
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00160\ \ \ \ \ \doxymbox{\hyperlink{classProgram_aba2cc6c93fc145b30569c9aa7119680e}{Program}}(std::string\ path\_,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ quota\_)\ :\ path(std::move(path\_)),}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ quota(quota\_),}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ own\_space(0)}
+\DoxyCodeLine{00163\ \ \ \ \ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \}}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00170\ \ \ \ \ [[nodiscard]]\ std::string\_view\ \doxymbox{\hyperlink{classProgram_a50a4005a4113f9c570992a8b2cac802a}{getPath}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ path;\ \}}
+\DoxyCodeLine{00171\ }
+\DoxyCodeLine{00176\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{size\_t}\ \doxymbox{\hyperlink{classProgram_a8931c31093becadf257be92cb1c59f0e}{getQuota}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ quota;\ \}}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classProgram_af9317e1852720a2d475da51895da7077}{createVar}}(std::string\ name,\ \textcolor{keywordtype}{size\_t}\ address,\ \textcolor{keywordtype}{size\_t}\ size)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classProgram_a882edd509e3afc9f5288cf9e665f6738}{createArr}}(std::string\ name,\ \textcolor{keywordtype}{size\_t}\ address,\ \textcolor{keywordtype}{size\_t}\ size,\ \textcolor{keywordtype}{size\_t}\ el\_size)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00202\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classProgram_abfd76f1a96720879eda786ab55b99352}{hasOwnUnit}}(\textcolor{keyword}{const}\ std::string\ \&name)\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ own\_units.contains(name);\ \}}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00208\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ Table\ <std::string,\ std::unique\_ptr\ <OwnUnit>\ >\ \&\doxymbox{\hyperlink{classProgram_a0a09bd23446c470680871a1e5983a9a7}{getOwnUnits}}()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00209\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ own\_units;}
+\DoxyCodeLine{00211\ \ \ \ \ \}}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00219\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classProgram_a5c8fdf29059820246747cb0c43c932e8}{createRef}}(\textcolor{keyword}{const}\ std::string\ \&unit\_name,\ std::string\ ref\_name)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00220\ }
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classProgram_aafcb0fba7e4d8e62864fa8fc9ffc572d}{removeRef}}(\textcolor{keyword}{const}\ std::string\ \&ref\_name)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00234\ \ \ \ \ [[nodiscard]]\ \doxymbox{\hyperlink{classReference}{Reference}}\ \&\doxymbox{\hyperlink{classProgram_a7463a26ab8b57fb011d7d56f08436866}{getRef}}(\textcolor{keyword}{const}\ std::string\ \&ref\_name)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00242\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classReference}{Reference}}\ \&\doxymbox{\hyperlink{classProgram_a7463a26ab8b57fb011d7d56f08436866}{getRef}}(\textcolor{keyword}{const}\ std::string\ \&ref\_name)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00249\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classProgram_a3c10cab2a9efd2e38982d501e82872fe}{hasRef}}(\textcolor{keyword}{const}\ std::string\ \&ref\_name)\ \textcolor{keyword}{const\ override};}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00255\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ Table\ <std::string,\ Reference>\ \&\doxymbox{\hyperlink{classProgram_ad6453b78bdd7e2849b5a741f45c073dc}{getRefs}}()\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ refs;\ \}}
+\DoxyCodeLine{00256\ }
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classProgram_ae5773ef6ff2af3277b641deea8a2153e}{getAccess}}(std::shared\_ptr\ <AbstractShared>\ sptr)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00268\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{classProgram_a7f07daf3d05952d967c469bf9c545298}{detachAccess}}(\textcolor{keyword}{const}\ std::string\ \&name)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00275\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classProgram_afe83619c2b78fcd9060e0b0980b5700a}{hasShared}}(\textcolor{keyword}{const}\ std::string\ \&name)\textcolor{keyword}{\ const\ override\ }\{\ \textcolor{keywordflow}{return}\ shared\_units.contains(name);\ \}}
+\DoxyCodeLine{00276\ }
+\DoxyCodeLine{00281\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ Table\ <std::string,\ std::weak\_ptr\ <AbstractShared>\ >\ \&\doxymbox{\hyperlink{classProgram_aced4075113cf00b0cb5cc7fb6abf8f15}{getSharedUnits}}()\textcolor{keyword}{\ const\ override}}
+\DoxyCodeLine{00282\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shared\_units;}
+\DoxyCodeLine{00284\ \ \ \ \ \}}
+\DoxyCodeLine{00285\ }
+\DoxyCodeLine{00292\ \ \ \ \ std::unique\_ptr\ <OwnUnit>\ \doxymbox{\hyperlink{classProgram_a08131a50e0caaea1b49bb1ca2e85cc5f}{extractOwnUnit}}(\textcolor{keyword}{const}\ std::string\ \&name)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00293\ }
+\DoxyCodeLine{00299\ \ \ \ \ [[nodiscard]]\ \doxymbox{\hyperlink{classAbstractUnit}{AbstractUnit}}\ \&\doxymbox{\hyperlink{classProgram_aadebc7ea4de902737b46718dec15a9ed}{getUnit}}(\textcolor{keyword}{const}\ std::string\ \&);}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00307\ \ \ \ \ [[nodiscard]]\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{classAbstractUnit}{AbstractUnit}}\ \&\doxymbox{\hyperlink{classProgram_aadebc7ea4de902737b46718dec15a9ed}{getUnit}}(\textcolor{keyword}{const}\ std::string\ \&name)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00308\ }
+\DoxyCodeLine{00314\ \ \ \ \ [[nodiscard]]\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{classProgram_a7dcea18ef6c1948cc9c87e25694c28bf}{hasAnyUnit}}(\textcolor{keyword}{const}\ std::string\ \&name)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00315\ \};}
+
+\end{DoxyCode}

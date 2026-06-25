@@ -1,0 +1,82 @@
+\doxysection{Table\+Iterator\texorpdfstring{$<$}{<} K, V, is\+\_\+const \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classTableIterator}{}\label{classTableIterator}\index{TableIterator$<$ K, V, is\_const $>$@{TableIterator$<$ K, V, is\_const $>$}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classTableIterator_a97be48d06da05fd4f5a029a5a2577a98}\label{classTableIterator_a97be48d06da05fd4f5a029a5a2577a98} 
+using {\bfseries key\+\_\+type} = K
+\item 
+\Hypertarget{classTableIterator_ad614f2b7aec0c4a20886b99708389fb1}\label{classTableIterator_ad614f2b7aec0c4a20886b99708389fb1} 
+using {\bfseries mapped\+\_\+type} = V
+\item 
+\Hypertarget{classTableIterator_a40d3e646c82502208a953db9e6befc06}\label{classTableIterator_a40d3e646c82502208a953db9e6befc06} 
+using {\bfseries value\+\_\+type} = std::\+pair$<$const K, V$>$
+\item 
+\Hypertarget{classTableIterator_a46fbd7118c4680744bd53ebd3d540cfd}\label{classTableIterator_a46fbd7118c4680744bd53ebd3d540cfd} 
+using {\bfseries difference\+\_\+type} = ptrdiff\+\_\+t
+\item 
+\Hypertarget{classTableIterator_a20c176ce605c59a20b84b4898db50ccb}\label{classTableIterator_a20c176ce605c59a20b84b4898db50ccb} 
+using {\bfseries pointer} = std::\+conditional\+\_\+t$<$is\+\_\+const, const value\+\_\+type, value\+\_\+type$>$ \texorpdfstring{$\ast$}{*}
+\item 
+\Hypertarget{classTableIterator_a2bedf8d915d8ec2f06e9afda3e98a8e9}\label{classTableIterator_a2bedf8d915d8ec2f06e9afda3e98a8e9} 
+using {\bfseries reference} = std::\+conditional\+\_\+t$<$is\+\_\+const, const value\+\_\+type, value\+\_\+type$>$ \&
+\item 
+\Hypertarget{classTableIterator_a20ba46fcf9e26574d518982081712b83}\label{classTableIterator_a20ba46fcf9e26574d518982081712b83} 
+using {\bfseries iterator\+\_\+category} = std::\+forward\+\_\+iterator\+\_\+tag
+\item 
+\Hypertarget{classTableIterator_a08b214d3a59cc4021c8c48d0e4ae903f}\label{classTableIterator_a08b214d3a59cc4021c8c48d0e4ae903f} 
+using {\bfseries iterator\+\_\+concept} = std::\+forward\+\_\+iterator\+\_\+tag
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classTableIterator_a5a65e444b7abe36f0a49fbb92db07916}\label{classTableIterator_a5a65e444b7abe36f0a49fbb92db07916} 
+{\bfseries Table\+Iterator} (std::\+vector$<$ Bucket $>$ \texorpdfstring{$\ast$}{*}buckets\+\_\+ptr, const size\+\_\+t index, bucket\+\_\+iterator it\+\_\+) noexcept
+\item 
+\Hypertarget{classTableIterator_aa7f2b6f0f667ca8db8d6084aba37c0ba}\label{classTableIterator_aa7f2b6f0f667ca8db8d6084aba37c0ba} 
+{\bfseries Table\+Iterator} (const std::\+vector$<$ Bucket $>$ \texorpdfstring{$\ast$}{*}buckets\+\_\+ptr, const size\+\_\+t index, bucket\+\_\+iterator it\+\_\+) noexcept
+\item 
+\Hypertarget{classTableIterator_a9380928b9cf16017237d81e3f5d59ced}\label{classTableIterator_a9380928b9cf16017237d81e3f5d59ced} 
+{\footnotesize template$<$bool B = is\+\_\+const$>$ }\\{\bfseries Table\+Iterator} (const \doxymbox{\hyperlink{classTableIterator}{Table\+Iterator}}$<$ K, V, false $>$ \&other) noexcept
+\item 
+\Hypertarget{classTableIterator_a83f1ff19bb5cee3b3f7ba73545b776bd}\label{classTableIterator_a83f1ff19bb5cee3b3f7ba73545b776bd} 
+reference {\bfseries operator\texorpdfstring{$\ast$}{*}} () const
+\item 
+\Hypertarget{classTableIterator_ab913e6096275806fd60488f02f948465}\label{classTableIterator_ab913e6096275806fd60488f02f948465} 
+pointer {\bfseries operator-\/$>$} () const
+\item 
+\Hypertarget{classTableIterator_a42d652445e934c23a6b6e62d1c566608}\label{classTableIterator_a42d652445e934c23a6b6e62d1c566608} 
+\doxymbox{\hyperlink{classTableIterator}{Table\+Iterator}} \& {\bfseries operator++} ()
+\item 
+\Hypertarget{classTableIterator_a39b1fe4d5bb51ee42463593d7f3b4118}\label{classTableIterator_a39b1fe4d5bb51ee42463593d7f3b4118} 
+\doxymbox{\hyperlink{classTableIterator}{Table\+Iterator}} {\bfseries operator++} (int)
+\item 
+\Hypertarget{classTableIterator_aa654afabcb972f7c1853e9a3d2d0f82b}\label{classTableIterator_aa654afabcb972f7c1853e9a3d2d0f82b} 
+bool {\bfseries operator==} (const \doxymbox{\hyperlink{classTableIterator}{Table\+Iterator}} \&other) const
+\item 
+\Hypertarget{classTableIterator_a8a4c03fea4f15a76ac31da90fdd17a87}\label{classTableIterator_a8a4c03fea4f15a76ac31da90fdd17a87} 
+bool {\bfseries operator!=} (const \doxymbox{\hyperlink{classTableIterator}{Table\+Iterator}} \&other) const
+\item 
+\Hypertarget{classTableIterator_a8f4ceb48e6a643f8dd4303cb7f87781c}\label{classTableIterator_a8f4ceb48e6a643f8dd4303cb7f87781c} 
+{\bfseries Table\+Iterator} (const \doxymbox{\hyperlink{classTableIterator}{Table\+Iterator}} \&)=default
+\item 
+\Hypertarget{classTableIterator_a30ac352f14c7154c97071f86d6f17cf0}\label{classTableIterator_a30ac352f14c7154c97071f86d6f17cf0} 
+\doxymbox{\hyperlink{classTableIterator}{Table\+Iterator}} \& {\bfseries operator=} (const \doxymbox{\hyperlink{classTableIterator}{Table\+Iterator}} \&)=default
+\item 
+\Hypertarget{classTableIterator_a8b7538ae86bd3decab2b0ca926bfabfd}\label{classTableIterator_a8b7538ae86bd3decab2b0ca926bfabfd} 
+{\bfseries Table\+Iterator} (\doxymbox{\hyperlink{classTableIterator}{Table\+Iterator}} \&\&) noexcept=default
+\item 
+\Hypertarget{classTableIterator_a172b8ec9aea0b32ecd591d34eaa3752e}\label{classTableIterator_a172b8ec9aea0b32ecd591d34eaa3752e} 
+\doxymbox{\hyperlink{classTableIterator}{Table\+Iterator}} \& {\bfseries operator=} (\doxymbox{\hyperlink{classTableIterator}{Table\+Iterator}} \&\&) noexcept=default
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classTableIterator_a5a6b0c6fb4488cebfe0eb27616a66068}\label{classTableIterator_a5a6b0c6fb4488cebfe0eb27616a66068} 
+{\footnotesize template$<$typename, typename, typename, typename$>$ }\\class {\bfseries Table}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+table.\+hpp\end{DoxyCompactItemize}

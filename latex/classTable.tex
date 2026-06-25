@@ -1,0 +1,262 @@
+\doxysection{Table\texorpdfstring{$<$}{<} K, V, Hash, Key\+Equal \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classTable}{}\label{classTable}\index{Table$<$ K, V, Hash, KeyEqual $>$@{Table$<$ K, V, Hash, KeyEqual $>$}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classTable_a853c41d35fc88e975da578880b146852}\label{classTable_a853c41d35fc88e975da578880b146852} 
+using {\bfseries key\+\_\+type} = K
+\item 
+\Hypertarget{classTable_a4d55e8fffd200f17deee57fead262329}\label{classTable_a4d55e8fffd200f17deee57fead262329} 
+using {\bfseries value\+\_\+type} = std::\+pair$<$const K, V$>$
+\item 
+\Hypertarget{classTable_a10afb80980a6e5dd874dc83823629139}\label{classTable_a10afb80980a6e5dd874dc83823629139} 
+using {\bfseries pointer} = value\+\_\+type \texorpdfstring{$\ast$}{*}
+\item 
+\Hypertarget{classTable_a33fb7be3c322540a538d58d70611da0f}\label{classTable_a33fb7be3c322540a538d58d70611da0f} 
+using {\bfseries const\+\_\+pointer} = const value\+\_\+type \texorpdfstring{$\ast$}{*}
+\item 
+\Hypertarget{classTable_aa80b7100b3c269f173c1e1b1134c3155}\label{classTable_aa80b7100b3c269f173c1e1b1134c3155} 
+using {\bfseries reference} = value\+\_\+type \&
+\item 
+\Hypertarget{classTable_a57dd69e9c8750fa8e24d6f076f50b1bc}\label{classTable_a57dd69e9c8750fa8e24d6f076f50b1bc} 
+using {\bfseries const\+\_\+reference} = const value\+\_\+type \&
+\item 
+\Hypertarget{classTable_a04722c181e425adfc9614fbfc4e0b385}\label{classTable_a04722c181e425adfc9614fbfc4e0b385} 
+using {\bfseries iterator} = \doxymbox{\hyperlink{classTableIterator}{Table\+Iterator}}$<$K, V, false$>$
+\item 
+\Hypertarget{classTable_a1f124c4fc7428d2ea870849210dafd0f}\label{classTable_a1f124c4fc7428d2ea870849210dafd0f} 
+using {\bfseries const\+\_\+iterator} = \doxymbox{\hyperlink{classTableIterator}{Table\+Iterator}}$<$K, V, true$>$
+\item 
+\Hypertarget{classTable_aa2c1c6f8e69611ffb9309f2f434e87f3}\label{classTable_aa2c1c6f8e69611ffb9309f2f434e87f3} 
+using {\bfseries difference\+\_\+type} = ptrdiff\+\_\+t
+\item 
+\Hypertarget{classTable_a7a30526bddf1d6516e855e5d472afda3}\label{classTable_a7a30526bddf1d6516e855e5d472afda3} 
+using {\bfseries size\+\_\+type} = size\+\_\+t
+\item 
+\Hypertarget{classTable_ae6570be0db1308807d1dde7f87664694}\label{classTable_ae6570be0db1308807d1dde7f87664694} 
+using {\bfseries hasher} = Hash
+\item 
+\Hypertarget{classTable_a8a8c2297e9a484caf92d23ca8be04ab5}\label{classTable_a8a8c2297e9a484caf92d23ca8be04ab5} 
+using {\bfseries key\+\_\+equal} = Key\+Equal
+\item 
+\Hypertarget{classTable_a952fd8e3a29d0953e03f85e8fba24670}\label{classTable_a952fd8e3a29d0953e03f85e8fba24670} 
+using {\bfseries node\+\_\+type} = \doxymbox{\hyperlink{classTableNode}{Table\+Node}}$<$K, V$>$
+\item 
+\Hypertarget{classTable_a543b4ea9d8ff13f42daa147ba37ba3a7}\label{classTable_a543b4ea9d8ff13f42daa147ba37ba3a7} 
+using {\bfseries allocator\+\_\+type} = std::\+allocator$<$value\+\_\+type$>$
+\item 
+\Hypertarget{classTable_aa9a6cf9ea3300a15124695dabdcc0b69}\label{classTable_aa9a6cf9ea3300a15124695dabdcc0b69} 
+using {\bfseries local\+\_\+iterator} = Bucket::\+iterator
+\item 
+\Hypertarget{classTable_a7466e02324cbb1801240bda58a08dd53}\label{classTable_a7466e02324cbb1801240bda58a08dd53} 
+using {\bfseries const\+\_\+local\+\_\+iterator} = Bucket::\+const\+\_\+iterator
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classTable_a571d3819d71848cbd6cab8b5fb7af146}\label{classTable_a571d3819d71848cbd6cab8b5fb7af146} 
+{\bfseries Table} (const size\+\_\+t initial=101, Hash hf=std::\+hash$<$ K $>$(), Key\+Equal eq=std::\+equal\+\_\+to$<$ K $>$())
+\item 
+\Hypertarget{classTable_ac7e4e48b295c1c33a4ba7b50186befa1}\label{classTable_ac7e4e48b295c1c33a4ba7b50186befa1} 
+{\bfseries Table} (const \doxymbox{\hyperlink{classTable}{Table}} \&)=default
+\item 
+\Hypertarget{classTable_ade3fb6a67d239e266d4b04b23bb5b8ce}\label{classTable_ade3fb6a67d239e266d4b04b23bb5b8ce} 
+{\bfseries Table} (const \doxymbox{\hyperlink{classTable}{Table}} \&)=delete
+\item 
+\Hypertarget{classTable_ad36794ee1d0d19720d659d6af4f9a618}\label{classTable_ad36794ee1d0d19720d659d6af4f9a618} 
+{\bfseries Table} (\doxymbox{\hyperlink{classTable}{Table}} \&\&other) noexcept
+\item 
+\Hypertarget{classTable_aa4cc66a26ac835258550df0e5550d5fb}\label{classTable_aa4cc66a26ac835258550df0e5550d5fb} 
+{\footnotesize template$<$std::\+input\+\_\+iterator Iter$>$ }\\{\bfseries Table} (Iter from, Iter to, const size\+\_\+t initial=101, Hash hf=std::\+hash$<$ K $>$(), Key\+Equal eq=std::\+equal\+\_\+to$<$ K $>$())
+\item 
+\Hypertarget{classTable_ae9477c1e820996e2aeeff7725ad02196}\label{classTable_ae9477c1e820996e2aeeff7725ad02196} 
+{\bfseries Table} (std::\+initializer\+\_\+list$<$ value\+\_\+type $>$ il, const size\+\_\+t initial=101, Hash hf=std::\+hash$<$ K $>$(), Key\+Equal eq=std::\+equal\+\_\+to$<$ K $>$())
+\item 
+\Hypertarget{classTable_a8e39a53960624e67b2481bfb45c6a3da}\label{classTable_a8e39a53960624e67b2481bfb45c6a3da} 
+\doxymbox{\hyperlink{classTable}{Table}} \& {\bfseries operator=} (const \doxymbox{\hyperlink{classTable}{Table}} \&other)
+\item 
+\Hypertarget{classTable_a624ab8eaf4ae8385ae168fedc5715d65}\label{classTable_a624ab8eaf4ae8385ae168fedc5715d65} 
+\doxymbox{\hyperlink{classTable}{Table}} \& {\bfseries operator=} (const \doxymbox{\hyperlink{classTable}{Table}} \&other)=delete
+\item 
+\Hypertarget{classTable_a01ec0c6d928f3fee562bbd93c08dd6b4}\label{classTable_a01ec0c6d928f3fee562bbd93c08dd6b4} 
+\doxymbox{\hyperlink{classTable}{Table}} \& {\bfseries operator=} (\doxymbox{\hyperlink{classTable}{Table}} \&\&other) noexcept
+\item 
+\Hypertarget{classTable_a275aae48740d3946b406a4263ff0e6a1}\label{classTable_a275aae48740d3946b406a4263ff0e6a1} 
+\doxymbox{\hyperlink{classTable}{Table}} \& {\bfseries operator=} (std::\+initializer\+\_\+list$<$ value\+\_\+type $>$ il)
+\item 
+\Hypertarget{classTable_a0b19d31dd2da9f13c5c6063e18f722fc}\label{classTable_a0b19d31dd2da9f13c5c6063e18f722fc} 
+{\footnotesize template$<$class... Args$>$ }\\std::\+pair$<$ iterator, bool $>$ {\bfseries emplace} (Args \&\&... args)
+\item 
+\Hypertarget{classTable_aa6939a2c7e683bbb569bfc7b7cf9a80d}\label{classTable_aa6939a2c7e683bbb569bfc7b7cf9a80d} 
+std::\+pair$<$ iterator, bool $>$ {\bfseries insert} (const value\+\_\+type \&value)
+\item 
+\Hypertarget{classTable_ace816355adb86b1c5862cc0887104d3e}\label{classTable_ace816355adb86b1c5862cc0887104d3e} 
+std::\+pair$<$ iterator, bool $>$ {\bfseries insert} (value\+\_\+type \&\&value)
+\item 
+\Hypertarget{classTable_a9f6d8a95582ac24161290909bf9c76c5}\label{classTable_a9f6d8a95582ac24161290909bf9c76c5} 
+{\footnotesize template$<$class P$>$ }\\std::\+pair$<$ iterator, bool $>$ {\bfseries insert} (P \&\&value)
+\item 
+\Hypertarget{classTable_a0b5a3a2992e28afd12ca6c8dddd5c2b2}\label{classTable_a0b5a3a2992e28afd12ca6c8dddd5c2b2} 
+void {\bfseries insert} (const\+\_\+iterator from, const\+\_\+iterator to)
+\item 
+\Hypertarget{classTable_a433cec65c22f6d6b7fd933c2b9bb1838}\label{classTable_a433cec65c22f6d6b7fd933c2b9bb1838} 
+{\footnotesize template$<$std::\+ranges::\+input\+\_\+range R$>$ }\\void {\bfseries insert\+\_\+range} (R \&\&r)
+\item 
+\Hypertarget{classTable_ab99f3e6ea2dd4ea358efb3172a7fbf50}\label{classTable_ab99f3e6ea2dd4ea358efb3172a7fbf50} 
+void {\bfseries insert} (std::\+initializer\+\_\+list$<$ value\+\_\+type $>$ il)
+\item 
+\Hypertarget{classTable_a83493761b5d7334f18259841f5b61c6c}\label{classTable_a83493761b5d7334f18259841f5b61c6c} 
+iterator {\bfseries insert} (node\+\_\+type \&\&nh)
+\item 
+\Hypertarget{classTable_ac7b23c00ad8a9436189aa36548734a18}\label{classTable_ac7b23c00ad8a9436189aa36548734a18} 
+iterator {\bfseries insert} (const\+\_\+iterator, node\+\_\+type \&\&nh)
+\item 
+\Hypertarget{classTable_a256f090a9420a3c9ef8f09eed93348f0}\label{classTable_a256f090a9420a3c9ef8f09eed93348f0} 
+node\+\_\+type {\bfseries extract} (const K \&k)
+\item 
+\Hypertarget{classTable_a1e263100c2dc50315106cbce96ea7752}\label{classTable_a1e263100c2dc50315106cbce96ea7752} 
+node\+\_\+type {\bfseries extract} (iterator q)
+\item 
+\Hypertarget{classTable_af15e32257c842204310ecf59cc4ee093}\label{classTable_af15e32257c842204310ecf59cc4ee093} 
+void {\bfseries merge} (\doxymbox{\hyperlink{classTable}{Table}} \&other)
+\item 
+\Hypertarget{classTable_ae6cd826ba1ec201258d41feaf06b7fa2}\label{classTable_ae6cd826ba1ec201258d41feaf06b7fa2} 
+size\+\_\+t {\bfseries erase} (const K \&k)
+\item 
+\Hypertarget{classTable_a9d5172594ad19d58f48d964eff2f3cc1}\label{classTable_a9d5172594ad19d58f48d964eff2f3cc1} 
+iterator {\bfseries erase} (iterator it)
+\item 
+\Hypertarget{classTable_a7bdc86170f1691e29e6cfcfc52c460f5}\label{classTable_a7bdc86170f1691e29e6cfcfc52c460f5} 
+iterator {\bfseries erase} (const\+\_\+iterator it)
+\item 
+\Hypertarget{classTable_adfacc683b29fc16392d85aa79dd24fe6}\label{classTable_adfacc683b29fc16392d85aa79dd24fe6} 
+iterator {\bfseries erase} (const\+\_\+iterator from, const\+\_\+iterator to)
+\item 
+\Hypertarget{classTable_a730ee8eaa38bbc04b14799aab3fa1f19}\label{classTable_a730ee8eaa38bbc04b14799aab3fa1f19} 
+iterator {\bfseries find} (const K \&k)
+\item 
+\Hypertarget{classTable_af3153b36ebc2a0e8397d32e20351d133}\label{classTable_af3153b36ebc2a0e8397d32e20351d133} 
+const\+\_\+iterator {\bfseries find} (const K \&k) const
+\item 
+\Hypertarget{classTable_a77f528e4d2a2104d15d4d8c32a4ae4bf}\label{classTable_a77f528e4d2a2104d15d4d8c32a4ae4bf} 
+bool {\bfseries contains} (const K \&k) const
+\item 
+\Hypertarget{classTable_acbc856451ee21f105acdd3a37047f0b9}\label{classTable_acbc856451ee21f105acdd3a37047f0b9} 
+size\+\_\+t {\bfseries bucket\+\_\+count} () const
+\item 
+\Hypertarget{classTable_a956c450ad5417eed57b0658d1019b4e1}\label{classTable_a956c450ad5417eed57b0658d1019b4e1} 
+size\+\_\+t {\bfseries max\+\_\+bucket\+\_\+count} () const
+\item 
+\Hypertarget{classTable_aced7d5be5220af5714d8aa5fd0c1c5c5}\label{classTable_aced7d5be5220af5714d8aa5fd0c1c5c5} 
+size\+\_\+t {\bfseries bucket} (const K \&k) const
+\item 
+\Hypertarget{classTable_a9c4ae1ba5a9cc04719c2a3d4cbcc70db}\label{classTable_a9c4ae1ba5a9cc04719c2a3d4cbcc70db} 
+size\+\_\+t {\bfseries bucket\+\_\+size} (const size\+\_\+t n) const
+\item 
+\Hypertarget{classTable_a29805aff24d9736aa2b0c4b760b06529}\label{classTable_a29805aff24d9736aa2b0c4b760b06529} 
+V \& {\bfseries operator\+[$\,$]\+} (const K \&k)
+\item 
+\Hypertarget{classTable_a762c4adc26350b7b51e3fd3aac4410dc}\label{classTable_a762c4adc26350b7b51e3fd3aac4410dc} 
+V \& {\bfseries operator\+[$\,$]\+} (K \&\&k)
+\item 
+\Hypertarget{classTable_aa8c1971e66ad7c0279c2d85dd67bc0d2}\label{classTable_aa8c1971e66ad7c0279c2d85dd67bc0d2} 
+V \& {\bfseries at} (const K \&k)
+\item 
+\Hypertarget{classTable_a1bf1e0f0bd77571abdb5549f12214e65}\label{classTable_a1bf1e0f0bd77571abdb5549f12214e65} 
+const V \& {\bfseries at} (const K \&k) const
+\item 
+\Hypertarget{classTable_ab57cf85a373eb384e0650b5219c312a2}\label{classTable_ab57cf85a373eb384e0650b5219c312a2} 
+void {\bfseries clear} ()
+\item 
+\Hypertarget{classTable_a0de5f69cc703c672ff0ede5a4b7bbca7}\label{classTable_a0de5f69cc703c672ff0ede5a4b7bbca7} 
+allocator\+\_\+type {\bfseries get\+\_\+allocator} () const noexcept
+\item 
+\Hypertarget{classTable_a2d475be16e123a7ae9b161dedc42a315}\label{classTable_a2d475be16e123a7ae9b161dedc42a315} 
+void {\bfseries rehash} (size\+\_\+type n)
+\item 
+\Hypertarget{classTable_a5581fbd31d913b353d80c1bf8c0498fc}\label{classTable_a5581fbd31d913b353d80c1bf8c0498fc} 
+void {\bfseries reserve} (const size\+\_\+type n)
+\item 
+\Hypertarget{classTable_a20d6c7798f1c733b38e774a5ae199c71}\label{classTable_a20d6c7798f1c733b38e774a5ae199c71} 
+size\+\_\+type {\bfseries count} (const K \&k) const
+\item 
+\Hypertarget{classTable_a8bcd2b32d1f10f02f8456061d01bdec1}\label{classTable_a8bcd2b32d1f10f02f8456061d01bdec1} 
+std::\+pair$<$ iterator, iterator $>$ {\bfseries equal\+\_\+range} (const K \&k)
+\item 
+\Hypertarget{classTable_adbc3478475373102edc1fbc803198791}\label{classTable_adbc3478475373102edc1fbc803198791} 
+std::\+pair$<$ const\+\_\+iterator, const\+\_\+iterator $>$ {\bfseries equal\+\_\+range} (const K \&k) const
+\item 
+\Hypertarget{classTable_adc84ad68c8f9312e06ef683acb06bf7b}\label{classTable_adc84ad68c8f9312e06ef683acb06bf7b} 
+iterator {\bfseries begin} () noexcept
+\item 
+\Hypertarget{classTable_ac85d7ebb81ce4cfa715a6e0b33829178}\label{classTable_ac85d7ebb81ce4cfa715a6e0b33829178} 
+iterator {\bfseries end} () noexcept
+\item 
+\Hypertarget{classTable_a125a32476b136c83fbbde6cfb9b03574}\label{classTable_a125a32476b136c83fbbde6cfb9b03574} 
+const\+\_\+iterator {\bfseries begin} () const noexcept
+\item 
+\Hypertarget{classTable_a195fe782593e2222dd710cf76375baca}\label{classTable_a195fe782593e2222dd710cf76375baca} 
+const\+\_\+iterator {\bfseries end} () const noexcept
+\item 
+\Hypertarget{classTable_a4c3727c7e0aed43b21769aaa0a7595db}\label{classTable_a4c3727c7e0aed43b21769aaa0a7595db} 
+const\+\_\+iterator {\bfseries cbegin} () const noexcept
+\item 
+\Hypertarget{classTable_a380759b19af65305ba48cd51b334555d}\label{classTable_a380759b19af65305ba48cd51b334555d} 
+const\+\_\+iterator {\bfseries cend} () const noexcept
+\item 
+\Hypertarget{classTable_aed601da14ffab84a39d5889cc8cdacea}\label{classTable_aed601da14ffab84a39d5889cc8cdacea} 
+local\+\_\+iterator {\bfseries begin} (size\+\_\+type idx)
+\item 
+\Hypertarget{classTable_af1cb48e5b9d94dcab59ef62b04028d15}\label{classTable_af1cb48e5b9d94dcab59ef62b04028d15} 
+local\+\_\+iterator {\bfseries end} (size\+\_\+type idx)
+\item 
+\Hypertarget{classTable_a10eb7214d90bd98beb2a4316abe9fd82}\label{classTable_a10eb7214d90bd98beb2a4316abe9fd82} 
+const\+\_\+local\+\_\+iterator {\bfseries begin} (size\+\_\+type idx) const
+\item 
+\Hypertarget{classTable_a07bd0a9c5b5d41e1a91be4eb83a069ef}\label{classTable_a07bd0a9c5b5d41e1a91be4eb83a069ef} 
+const\+\_\+local\+\_\+iterator {\bfseries end} (size\+\_\+type idx) const
+\item 
+\Hypertarget{classTable_a88075301381220663591bd7f90c50d2e}\label{classTable_a88075301381220663591bd7f90c50d2e} 
+const\+\_\+local\+\_\+iterator {\bfseries cbegin} (size\+\_\+type idx) const
+\item 
+\Hypertarget{classTable_a4d30bdbca989835b42953cb00f9a1dbc}\label{classTable_a4d30bdbca989835b42953cb00f9a1dbc} 
+const\+\_\+local\+\_\+iterator {\bfseries cend} (size\+\_\+type idx) const
+\item 
+\Hypertarget{classTable_a4bebbe0a20f4bf01b0b3eb30b969b2d1}\label{classTable_a4bebbe0a20f4bf01b0b3eb30b969b2d1} 
+bool {\bfseries operator==} (const \doxymbox{\hyperlink{classTable}{Table}} \&other) const noexcept
+\item 
+\Hypertarget{classTable_abe31abaab0d76f083a9f0733dc082a2e}\label{classTable_abe31abaab0d76f083a9f0733dc082a2e} 
+bool {\bfseries operator!=} (const \doxymbox{\hyperlink{classTable}{Table}} \&other) const noexcept
+\item 
+\Hypertarget{classTable_aae6f0c24ff55a8c44ec2bb93e8450d1a}\label{classTable_aae6f0c24ff55a8c44ec2bb93e8450d1a} 
+void {\bfseries swap} (\doxymbox{\hyperlink{classTable}{Table}} \&other) noexcept
+\item 
+\Hypertarget{classTable_a52c8d2eb8a92203b606fa0d1005030a5}\label{classTable_a52c8d2eb8a92203b606fa0d1005030a5} 
+size\+\_\+type {\bfseries size} () const noexcept
+\item 
+\Hypertarget{classTable_a5f53646ee4799fb2ecb3c87ed6655573}\label{classTable_a5f53646ee4799fb2ecb3c87ed6655573} 
+size\+\_\+type {\bfseries max\+\_\+size} () const noexcept
+\item 
+\Hypertarget{classTable_ac78bdb676cad76732ce12ffc31bf3f17}\label{classTable_ac78bdb676cad76732ce12ffc31bf3f17} 
+float {\bfseries load\+\_\+factor} () const noexcept
+\item 
+\Hypertarget{classTable_a73178acfc7d06b9f17f7fba21f8ac46d}\label{classTable_a73178acfc7d06b9f17f7fba21f8ac46d} 
+float {\bfseries max\+\_\+load\+\_\+factor} () const noexcept
+\item 
+\Hypertarget{classTable_a76ee20372ea23b8954de533915be9a90}\label{classTable_a76ee20372ea23b8954de533915be9a90} 
+void {\bfseries max\+\_\+load\+\_\+factor} (const float z) noexcept
+\item 
+\Hypertarget{classTable_a1d8d85450287833af0a4869cf1b186aa}\label{classTable_a1d8d85450287833af0a4869cf1b186aa} 
+bool {\bfseries empty} () const noexcept
+\item 
+\Hypertarget{classTable_aa2f66de8122475fce334a5b7f520d380}\label{classTable_aa2f66de8122475fce334a5b7f520d380} 
+hasher {\bfseries hash\+\_\+function} () const noexcept
+\item 
+\Hypertarget{classTable_a1641a8c65b826048f586e844e3ba526d}\label{classTable_a1641a8c65b826048f586e844e3ba526d} 
+key\+\_\+equal {\bfseries key\+\_\+eq} () const noexcept
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+table.\+hpp\end{DoxyCompactItemize}

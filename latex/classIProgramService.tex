@@ -1,0 +1,118 @@
+\doxysection{IProgram\+Service Class Reference}
+\hypertarget{classIProgramService}{}\label{classIProgramService}\index{IProgramService@{IProgramService}}
+
+
+Интерфейс сервиса по управлению программами  
+
+
+
+
+{\ttfamily \+\#include $<$service.\+hpp$>$}
+
+Inheritance diagram for IProgram\+Service:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIProgramService}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{classIProgramService_a0565578f2524c0adfa98d59afafcb11b}{create\+Program}} (std::\+string prog\+\_\+path, size\+\_\+t quota)=0
+\begin{DoxyCompactList}\small\item\em Создать программу \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classIProgramService_a7413259f53e70ba899d1e428bf256fa8}{destroy\+Program}} (const std::\+string \&prog\+\_\+path)=0
+\begin{DoxyCompactList}\small\item\em Удалить программу \end{DoxyCompactList}\item 
+virtual size\+\_\+t \doxymbox{\hyperlink{classIProgramService_a6841247b07a9eb3056278f92937513ac}{get\+Total\+Memory\+Usage}} (const std::\+string \&path) const =0
+\begin{DoxyCompactList}\small\item\em Подсчитать общий объём памяти, используемый программой \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Интерфейс сервиса по управлению программами 
+
+\label{doc-func-members}
+\Hypertarget{classIProgramService_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classIProgramService_a0565578f2524c0adfa98d59afafcb11b}\index{IProgramService@{IProgramService}!createProgram@{createProgram}}
+\index{createProgram@{createProgram}!IProgramService@{IProgramService}}
+\doxysubsubsection{\texorpdfstring{createProgram()}{createProgram()}}
+{\footnotesize\ttfamily \label{classIProgramService_a0565578f2524c0adfa98d59afafcb11b} 
+virtual void IProgram\+Service::\+create\+Program (\begin{DoxyParamCaption}\item[{std::\+string}]{prog\+\_\+path}{, }\item[{size\+\_\+t}]{quota}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Создать программу 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em quota} & Квота программы \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если путь дублируется или квота слишком большая \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classProgramService_afb70a8c5326957647f29ab2925fe55d9}{Program\+Service}}.
+
+\Hypertarget{classIProgramService_a7413259f53e70ba899d1e428bf256fa8}\index{IProgramService@{IProgramService}!destroyProgram@{destroyProgram}}
+\index{destroyProgram@{destroyProgram}!IProgramService@{IProgramService}}
+\doxysubsubsection{\texorpdfstring{destroyProgram()}{destroyProgram()}}
+{\footnotesize\ttfamily \label{classIProgramService_a7413259f53e70ba899d1e428bf256fa8} 
+virtual void IProgram\+Service::\+destroy\+Program (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Удалить программу 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь удаляемой программы \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+{\em \doxylink{classLeakError}{Leak\+Error}} & Если у программы на момент удаления оставались собственные элементы \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classProgramService_a72919b0fac878e6da4b4d2eff92cc08b}{Program\+Service}}.
+
+\Hypertarget{classIProgramService_a6841247b07a9eb3056278f92937513ac}\index{IProgramService@{IProgramService}!getTotalMemoryUsage@{getTotalMemoryUsage}}
+\index{getTotalMemoryUsage@{getTotalMemoryUsage}!IProgramService@{IProgramService}}
+\doxysubsubsection{\texorpdfstring{getTotalMemoryUsage()}{getTotalMemoryUsage()}}
+{\footnotesize\ttfamily \label{classIProgramService_a6841247b07a9eb3056278f92937513ac} 
+virtual size\+\_\+t IProgram\+Service::\+get\+Total\+Memory\+Usage (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{path}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [nodiscard]}, {\ttfamily [pure virtual]}}
+
+
+
+Подсчитать общий объём памяти, используемый программой 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Путь программы \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Общий объём памяти, используемый программой 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа не найдена \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classProgramService_a61d2a7493613697ac9be98381e5287ab}{Program\+Service}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+service.\+hpp\end{DoxyCompactItemize}

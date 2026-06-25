@@ -1,0 +1,145 @@
+\doxysection{IShared\+Service Class Reference}
+\hypertarget{classISharedService}{}\label{classISharedService}\index{ISharedService@{ISharedService}}
+
+
+Интерфейс сервиса по управлению разделяемыми сегментами  
+
+
+
+
+{\ttfamily \+\#include $<$service.\+hpp$>$}
+
+Inheritance diagram for IShared\+Service:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classISharedService}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \doxymbox{\hyperlink{classISharedService_a2720e68418a60a28c2942ccbbdf330ba}{create\+Shared}} (std::\+string unit\+\_\+name, size\+\_\+t total\+\_\+size, size\+\_\+t el\+\_\+size)=0
+\begin{DoxyCompactList}\small\item\em Создать разделяемый сегмент (с выделением памяти). \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classISharedService_a9f1cd2f553a1ef8f130030590a1940d3}{destroy\+Shared}} (const std::\+string \&unit\+\_\+name)=0
+\begin{DoxyCompactList}\small\item\em Удалить разделяемый сегмент (с освобождением памяти). \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classISharedService_a4bcc3f9e97cf7b8cc3436c232267f76b}{grant\+Shared}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name)=0
+\begin{DoxyCompactList}\small\item\em Предоставить программе доступ к разделяемому сегменту \end{DoxyCompactList}\item 
+virtual void \doxymbox{\hyperlink{classISharedService_a5a6edc37d094ee2bce3b10fff95b5833}{revoke\+Shared}} (const std::\+string \&prog\+\_\+path, const std::\+string \&unit\+\_\+name)=0
+\begin{DoxyCompactList}\small\item\em Отозвать от программы доступ к разделяемому сегменту \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Интерфейс сервиса по управлению разделяемыми сегментами 
+
+\label{doc-func-members}
+\Hypertarget{classISharedService_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classISharedService_a2720e68418a60a28c2942ccbbdf330ba}\index{ISharedService@{ISharedService}!createShared@{createShared}}
+\index{createShared@{createShared}!ISharedService@{ISharedService}}
+\doxysubsubsection{\texorpdfstring{createShared()}{createShared()}}
+{\footnotesize\ttfamily \label{classISharedService_a2720e68418a60a28c2942ccbbdf330ba} 
+virtual void IShared\+Service::\+create\+Shared (\begin{DoxyParamCaption}\item[{std::\+string}]{unit\+\_\+name}{, }\item[{size\+\_\+t}]{total\+\_\+size}{, }\item[{size\+\_\+t}]{el\+\_\+size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Создать разделяемый сегмент (с выделением памяти). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unit\+\_\+name} & Имя сегмента \\
+\hline
+{\em total\+\_\+size} & Полный размер сегмента \\
+\hline
+{\em el\+\_\+size} & Размер одного элемента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если имя дублируется \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classSharedService_aeee13566760a747a2e42e1fa87eb0256}{Shared\+Service}}.
+
+\Hypertarget{classISharedService_a9f1cd2f553a1ef8f130030590a1940d3}\index{ISharedService@{ISharedService}!destroyShared@{destroyShared}}
+\index{destroyShared@{destroyShared}!ISharedService@{ISharedService}}
+\doxysubsubsection{\texorpdfstring{destroyShared()}{destroyShared()}}
+{\footnotesize\ttfamily \label{classISharedService_a9f1cd2f553a1ef8f130030590a1940d3} 
+virtual void IShared\+Service::\+destroy\+Shared (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{unit\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Удалить разделяемый сегмент (с освобождением памяти). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em unit\+\_\+name} & Имя сегмента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \doxylink{classIdAccessError}{Id\+Access\+Error}} & Если элемент не найден \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classSharedService_a3d49ef25feae7627e808b75a34277e49}{Shared\+Service}}.
+
+\Hypertarget{classISharedService_a4bcc3f9e97cf7b8cc3436c232267f76b}\index{ISharedService@{ISharedService}!grantShared@{grantShared}}
+\index{grantShared@{grantShared}!ISharedService@{ISharedService}}
+\doxysubsubsection{\texorpdfstring{grantShared()}{grantShared()}}
+{\footnotesize\ttfamily \label{classISharedService_a4bcc3f9e97cf7b8cc3436c232267f76b} 
+virtual void IShared\+Service::\+grant\+Shared (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Предоставить программе доступ к разделяемому сегменту 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя сегмента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа или сегмент не найдены \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classSharedService_a80516fd04c1938279807beacd7261708}{Shared\+Service}}.
+
+\Hypertarget{classISharedService_a5a6edc37d094ee2bce3b10fff95b5833}\index{ISharedService@{ISharedService}!revokeShared@{revokeShared}}
+\index{revokeShared@{revokeShared}!ISharedService@{ISharedService}}
+\doxysubsubsection{\texorpdfstring{revokeShared()}{revokeShared()}}
+{\footnotesize\ttfamily \label{classISharedService_a5a6edc37d094ee2bce3b10fff95b5833} 
+virtual void IShared\+Service::\+revoke\+Shared (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{prog\+\_\+path}{, }\item[{const std::\+string \&}]{unit\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Отозвать от программы доступ к разделяемому сегменту 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prog\+\_\+path} & Путь программы \\
+\hline
+{\em unit\+\_\+name} & Имя сегмента \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+logic\+\_\+error} & Если программа или сегмент не найдены \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \doxymbox{\hyperlink{classSharedService_af5aeb1880c8fc43fd8fd28b93f18a58d}{Shared\+Service}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+service.\+hpp\end{DoxyCompactItemize}

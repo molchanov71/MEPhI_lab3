@@ -1,0 +1,119 @@
+\doxysection{Variable Class Reference}
+\hypertarget{classVariable}{}\label{classVariable}\index{Variable@{Variable}}
+
+
+Конкретный класс одиночной переменной  
+
+
+
+
+{\ttfamily \+\#include $<$unit.\+hpp$>$}
+
+Inheritance diagram for Variable:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=5.000000cm]{classVariable}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classVariable_ad1e98049705b832b50353646fc945e90}{Variable}} (std::\+string name\+\_\+, const size\+\_\+t address\+\_\+, const size\+\_\+t size\+\_\+)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{classVariable_ae3bcc79e3cfdab6fe4474f846000ff06}{get\+Type}} () const override
+\begin{DoxyCompactList}\small\item\em Тип элемента \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classOwnUnit}{Own\+Unit}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classOwnUnit_a09c43717bd7348d38d41d6cb2f3ae522}{Own\+Unit}} (std::\+string name\+\_\+, const size\+\_\+t address\+\_\+, const size\+\_\+t size\+\_\+)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classAbstractUnit}{Abstract\+Unit}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classAbstractUnit_a75098e8eb0021401a4237d385e078b70}{Abstract\+Unit}} (std::\+string name\+\_\+, const size\+\_\+t address\+\_\+, const size\+\_\+t size\+\_\+)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classAbstractNamed}{Abstract\+Named}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classAbstractNamed_a194eb0c237f5cc1645bd1a24ec980b2d}{Abstract\+Named}} (std::\+string name\+\_\+)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
+const std::\+string \& \doxymbox{\hyperlink{classAbstractNamed_ae8fcdd2f0c52d16496e980f6f589d0d9}{get\+Name}} () const override
+\begin{DoxyCompactList}\small\item\em Геттер имени \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classAbstractMemoryUnit}{Abstract\+Memory\+Unit}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classAbstractMemoryUnit_affcebd40bee840d8364a054b9ef7e320}{Abstract\+Memory\+Unit}} (const size\+\_\+t address\+\_\+, const size\+\_\+t size\+\_\+)
+\begin{DoxyCompactList}\small\item\em Конструктор \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{classAbstractMemoryUnit_a7267e158e65f00a74fddc3f04e6e894b}{get\+Address}} () const override
+\begin{DoxyCompactList}\small\item\em Адрес элемента в памяти \end{DoxyCompactList}\item 
+size\+\_\+t \doxymbox{\hyperlink{classAbstractMemoryUnit_a0334245161b37ab95263c2fec3b9c474}{get\+Total\+Size}} () const override
+\begin{DoxyCompactList}\small\item\em Полный размер элемента в памяти \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{classAbstractMemoryUnit_ad466d8149aa9fb108c39a2567597ffbc}{set\+Address}} (const size\+\_\+t new\+\_\+address) override
+\begin{DoxyCompactList}\small\item\em Сеттер адреса (при дефрагментации). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{classAbstractNamed}{Abstract\+Named}}}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string {\bfseries name}
+\begin{DoxyCompactList}\small\item\em имя элемента \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{classAbstractMemoryUnit}{Abstract\+Memory\+Unit}}}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t {\bfseries address}
+\item 
+size\+\_\+t {\bfseries size}
+\begin{DoxyCompactList}\small\item\em Адрес элемента и его размер \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Конкретный класс одиночной переменной 
+
+\label{doc-constructors}
+\Hypertarget{classVariable_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVariable_ad1e98049705b832b50353646fc945e90}\index{Variable@{Variable}!Variable@{Variable}}
+\index{Variable@{Variable}!Variable@{Variable}}
+\doxysubsubsection{\texorpdfstring{Variable()}{Variable()}}
+{\footnotesize\ttfamily \label{classVariable_ad1e98049705b832b50353646fc945e90} 
+Variable::\+\+Variable (\begin{DoxyParamCaption}\item[{std::\+string}]{name\+\_\+}{, }\item[{const size\+\_\+t}]{address\+\_\+}{, }\item[{const size\+\_\+t}]{size\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name\+\_\+} & Имя \\
+\hline
+{\em address\+\_\+} & Адрес \\
+\hline
+{\em size\+\_\+} & Размер \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{classVariable_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVariable_ae3bcc79e3cfdab6fe4474f846000ff06}\index{Variable@{Variable}!getType@{getType}}
+\index{getType@{getType}!Variable@{Variable}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily \label{classVariable_ae3bcc79e3cfdab6fe4474f846000ff06} 
+std::\+string Variable::\+get\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [nodiscard]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Тип элемента 
+
+\begin{DoxyReturn}{Returns}
+Строка "{}\+Variable"{} 
+\end{DoxyReturn}
+
+
+Implements \doxymbox{\hyperlink{classIMemoryUnit_ae52e436ae57a1ecef0346f321271d09e}{IMemory\+Unit}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+model/\+entity/\+unit.\+hpp\end{DoxyCompactItemize}

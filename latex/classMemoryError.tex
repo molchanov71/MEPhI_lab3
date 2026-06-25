@@ -1,0 +1,49 @@
+\doxysection{Memory\+Error Class Reference}
+\hypertarget{classMemoryError}{}\label{classMemoryError}\index{MemoryError@{MemoryError}}
+Inheritance diagram for Memory\+Error:\+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.204725cm]{classMemoryError}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMemoryError_a49200a614a659f8157400b33be0bbfa7}\label{classMemoryError_a49200a614a659f8157400b33be0bbfa7} 
+{\bfseries Memory\+Error} (std::\+string message\+\_\+, const time\+\_\+point tp\+\_\+=system\+\_\+clock::\+now(), std::\+string type\+\_\+="{}Memory error"{}) noexcept
+\item 
+\Hypertarget{classMemoryError_a92e1291a818c56d7b700ffd3b0d5af76}\label{classMemoryError_a92e1291a818c56d7b700ffd3b0d5af76} 
+{\bfseries Memory\+Error} (const \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} \&other)
+\item 
+\Hypertarget{classMemoryError_a88c3724e143cb536308b246251575585}\label{classMemoryError_a88c3724e143cb536308b246251575585} 
+{\bfseries Memory\+Error} (\doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} \&\&other) noexcept
+\item 
+\Hypertarget{classMemoryError_a7dfb1b521ea72280f198c130565f173a}\label{classMemoryError_a7dfb1b521ea72280f198c130565f173a} 
+time\+\_\+point {\bfseries get\+Time\+Point} () const
+\item 
+\Hypertarget{classMemoryError_a3fa79b8e12907e0e47080063432a5e57}\label{classMemoryError_a3fa79b8e12907e0e47080063432a5e57} 
+const char \texorpdfstring{$\ast$}{*} {\bfseries what} () const noexcept override
+\item 
+\Hypertarget{classMemoryError_aac1540be1c61d8cd356294351a244b90}\label{classMemoryError_aac1540be1c61d8cd356294351a244b90} 
+const std::\+string \& {\bfseries get\+Type} () const
+\item 
+\Hypertarget{classMemoryError_a45ad7105ef7e43a4a8a5d605515b8c51}\label{classMemoryError_a45ad7105ef7e43a4a8a5d605515b8c51} 
+virtual std::\+unique\+\_\+ptr$<$ \doxymbox{\hyperlink{classMemoryError}{Memory\+Error}} $>$ {\bfseries create\+Unique} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classMemoryError_acef3eda75774c9bbb423869c159ea87a}\label{classMemoryError_acef3eda75774c9bbb423869c159ea87a} 
+std::\+string {\bfseries message}
+\item 
+\Hypertarget{classMemoryError_a9888ec866951fda334e6f2ec7ffb552a}\label{classMemoryError_a9888ec866951fda334e6f2ec7ffb552a} 
+std::\+string {\bfseries type}
+\item 
+\Hypertarget{classMemoryError_a2fa61aad8554c9acfedddc11401f56c1}\label{classMemoryError_a2fa61aad8554c9acfedddc11401f56c1} 
+time\+\_\+point {\bfseries tp}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+include/\+errors.\+hpp\end{DoxyCompactItemize}
